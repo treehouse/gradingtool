@@ -1,0 +1,18 @@
+section.right-panel {
+    ul {
+        @include flex(column, nowrap, flex-start, center);
+        li {
+            @include size(auto, 100%);
+            @include center-flex;
+            cursor: pointer;
+            padding: .66rem .25rem;
+            transition: background .3s ease;
+            i {
+                color: var(--copy-dark);
+            }
+            &:hover {
+                background: var(--right-panel-item-hover)
+            }
+        }
+    }
+}

@@ -1,3 +1,10 @@
+.divider {
+  @include size(3px, 100%);
+  @include radius(25px);
+  @include bg(var(--progress-bar-bg));
+  margin: 1rem auto;
+}
+
 .shimmer {
   background-image: linear-gradient(
     90deg,

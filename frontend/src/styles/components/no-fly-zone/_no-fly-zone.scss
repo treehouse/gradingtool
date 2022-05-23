@@ -1,0 +1,19 @@
+.no-fly-zone {
+    @include bg(var(--card-item-bg));
+    @include radius(1rem);
+    @include wrapper(500px);
+    position: relative;
+    box-shadow: 0 4px 4px rgba(black, 0.15);
+    max-width: 90%;
+    color: var(--card-item-copy);
+    padding: 2rem;
+    header {
+        @include flex(row, wrap, flex-start, center);
+        i {
+            color: $fewd;
+            font-size: 3rem;
+            margin-right: 1.6rem;
+            animation: tada 1.5s ease-in-out infinite;
+        }
+    }   
+}

@@ -20,7 +20,7 @@
   width: $width;
 }
 
-@mixin simple-size($size) {
+@mixin same-size($size) {
   @content;
   height: $size;
   width: $size;
@@ -39,7 +39,7 @@
   margin: 0 auto;
 }
 
-@mixin textOverflow($lines) {
+@mixin text-overflow($lines) {
   @content;
   display: -webkit-box;
   text-overflow: ellipsis;
@@ -70,6 +70,11 @@
 @mixin glass($blur) {
   @content;
   backdrop-filter: blur($blur);
+}
+
+@mixin theme-transition() {
+  @content;
+  transition: background .6s ease, color .6s ease;
 }
 
 @mixin break($breakpoint) {

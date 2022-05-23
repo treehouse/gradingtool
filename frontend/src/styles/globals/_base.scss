@@ -1,0 +1,63 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    margin: 0;
+    list-style: none;
+}
+::-webkit-scrollbar {
+    width: 0px;
+}
+::-webkit-scrollbar-track {
+    @include bg(transparent);
+}
+::-webkit-scrollbar-thumb {
+    @include bg(transparent);
+}
+
+body {
+    @include bg(var(--panel-bg));
+    @include center-flex;
+    @include theme-transition;
+    font-family: 'Poppins', sans-serif;
+    color: var(--copy-dark);
+    min-height: 100vh;
+    transition: filter 1s ease;
+    .desktop {
+        display: none;
+    }
+    @include break(medium) {
+        @include flex(row, nowrap, flex-start, stretch);
+        .mobile {
+            display: none;
+        }
+        .desktop {
+            display: grid;
+        }
+    }
+}
+
+// class based colors
+.fewd-bg {
+    @include bg($fewd);
+  }
+  .fsjs-bg {
+    @include bg($fsjs);
+  }
+  .wd-bg {
+    @include bg($wd);
+  }
+  .python-bg {
+    @include bg($python);
+  }
+  .dataanalysis-bg {
+    @include bg($dataanalysis);
+  }
+  .ux-bg {
+    @include bg($ux);
+  }

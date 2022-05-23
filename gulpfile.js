@@ -41,7 +41,7 @@ function watchTask() {
         './frontend/src/scripts/**/*.js',
         './frontend/src/images/**/*'
     ], 
-        series(styles, scripts, browsersyncReload))
+        series(styles, scripts, images, browsersyncReload))
 }
 
 exports.default = series(

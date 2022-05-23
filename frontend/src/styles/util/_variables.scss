@@ -14,3 +14,73 @@ $breakpoints: (
   "xxlarge": 1440px,
   "widescreen": 1440px
 ) !default;
+
+
+
+
+// global color palette
+
+// td colors
+$fewd: #5FCF80;
+$fsjs: #3289F5;
+$wd: #00AB9E;
+$python: #009AC4;
+$dataanalysis: #D5609A;
+$ux: #9080FF;
+
+$needs-work: #ef8985;
+$meets: #72a4d4;
+$exceeds: #96e7a1;
+$no-color: #E3E3E3;
+
+$view-header-height: 100px;
+
+$left-panel-width: 300px;
+$middle-width: 1fr;
+$right-panel-width: 50px;
+$off-screen-panel-width: 0px;
+
+
+body {
+  --accent: #5FCF80;
+  --gold: gold;
+  --progress: 0%;
+  
+  // default(light)
+  --primary: ;
+  --secondary: #323B42;
+  --secondary-hover: #283036;
+
+  --copy-dark: #191c1f;
+  --copy-light: #ffffff;
+
+  --middle-bg: white;
+
+  --panel-bg: #F4F6F8;
+  --card-bg: var(--panel-bg);
+
+  --card-item-bg: white;
+  --card-item-copy: var(--copy-dark);
+  --progress-bar-bg: var(--panel-bg);
+  
+
+  --left-panel-header-bg: var(--secondary);
+  --left-panel-header-bg-hover: var(--secondary-hover);
+  --left-panel-header-color: white;
+
+  --left-panel-dropdown-bg: var(--left-panel-header-bg-hover);
+
+  --project-list-item-bg-hover: #e6e8ea;
+  --project-list-item-color-active: white;
+  --project-list-item-bg-active: var(--accent);
+
+  --right-panel-item-hover: #e6e8ea;
+
+
+  --middle-requirement-bg: var(--panel-bg);
+  --panel-bg-darker: #b4bbc0;
+
+  &.dark {
+
+  }
+}
