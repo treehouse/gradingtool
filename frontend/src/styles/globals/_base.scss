@@ -27,6 +27,7 @@ body {
     font-family: 'Poppins', sans-serif;
     color: var(--copy-dark);
     min-height: 100vh;
+    max-height: 100vh;
     transition: filter 1s ease;
     .desktop {
         display: none;

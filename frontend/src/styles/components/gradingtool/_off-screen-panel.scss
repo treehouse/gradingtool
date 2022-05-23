@@ -4,14 +4,15 @@ section.off-screen-panel {
     right: 0;
     height: 100vh;
     width: 0px;
-    pointer-events: none;
+    overflow: hidden;
     opacity: 0;
+    pointer-events: none;
     transition: width 0.4s ease, opacity .3s ease;
     box-shadow: 0px -1px 16px rgb(0 0 0 / 15%);
     &.show {
-        pointer-events: auto;
-        opacity: 1;
         width: 400px;
+        opacity: 1;
+        pointer-events: auto;
     }
     .off-screen-header {
         @include flex(row, nowrap, space-between, center);
