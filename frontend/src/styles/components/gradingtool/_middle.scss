@@ -27,8 +27,8 @@
         }
     }
     .view {
-        min-height: calc(100vh - 150px);
-        max-height: calc(100vh - 150px);
+        min-height: calc(100vh - 1000px);
+        max-height: calc(100vh - 100px);
         padding: 1rem 2rem;
         display: none;
         overflow-x: auto;
