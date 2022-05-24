@@ -1,0 +1,1 @@
+const api={techdegrees:""},leftPanel={init:{data:[],getData:()=>{}},update:()=>{}},middle={init:{},update:()=>{}},rightPanel={init:{},update:()=>{}};

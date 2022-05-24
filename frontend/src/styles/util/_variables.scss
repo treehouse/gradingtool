@@ -29,9 +29,12 @@ $dataanalysis: #D5609A;
 $ux: #9080FF;
 
 $needs-work: #ef8985;
-$meets: #72a4d4;
-$exceeds: #96e7a1;
+$success: #63a5c4;
+$success:#7eda98;
+$meets: $success;
+$exceeds: $success;
 $no-color: #E3E3E3;
+$gold: gold;
 
 $view-header-height: 100px;
 
@@ -79,6 +82,12 @@ body {
 
   --middle-requirement-bg: var(--panel-bg);
   --panel-bg-darker: #b4bbc0;
+  --requirement-item-shadow: #91a2a835;
+  --graded-item-bg: rgba(255, 255, 255, 0.397);
+  --redo-icon-bg-hover: #455058;
+
+  --star-gold: gold;
+  --star-default: #d7dde3;;
 
   &.dark {
 
