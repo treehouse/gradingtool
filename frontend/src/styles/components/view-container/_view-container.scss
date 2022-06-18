@@ -1,0 +1,11 @@
+.view-container {
+    .view-parent-item {
+        @include wrapper(1200px);
+    }
+    .views {
+        height: 100%;
+        max-height: calc(100vh - 100px);
+        overflow-y:auto;
+        
+    }
+}

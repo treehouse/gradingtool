@@ -1,0 +1,22 @@
+section.off-screen-panel {
+    @include theme-transition;
+    header {
+        @include flex(row, nowrap, space-between, center);
+        padding: 1rem 1rem .25rem;
+        .title-container {
+            p {
+                display: none;
+                &.active {
+                    display: block;
+                }
+            }
+        }
+    }
+    .util-item {
+        display: none;
+        padding: 1rem;
+        &.show {
+            display: block;
+        }
+    }
+}

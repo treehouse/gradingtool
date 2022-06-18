@@ -1,10 +1,3 @@
-.divider {
-  @include size(3px, 100%);
-  @include radius(25px);
-  @include bg(var(--progress-bar-bg));
-  margin: 1rem auto;
-}
-
 .shimmer {
   background-image: linear-gradient(
     90deg,
@@ -26,3 +19,27 @@
     background-position: 0 0;
   }
 }
+
+.close-btn {
+  @include simple-size(40px);
+  @include radius(5px);
+  @include center-flex;
+  @include bg(transparent);
+  display: flex!important;
+  transition: background .3s ease;
+  cursor: pointer;
+  &:hover {
+    @include bg(var(--close-btn-hover));
+  }
+}
+
+
+.divider {
+  @include size(5px, 100%);
+  @include bg(var(--divider-color));
+  @include radius(25px);
+  @include theme-transition;
+  margin: 1rem auto;
+}
+
+

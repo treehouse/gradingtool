@@ -1,0 +1,44 @@
+ul.td-project-list {
+    padding: 1rem;
+    li {
+        padding: .25rem .33rem;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        animation: fadeIn 1s ease forwards;
+        span {
+            @include textOverflow(1);
+            pointer-events: none;
+            transition: margin 0.3s ease-in-out;
+        }
+        &.inactive {
+            opacity: 0.2!important;
+        }
+        &:hover {
+            opacity: 1!important;;
+            span {
+                margin-left: .75rem;
+            }
+        }
+        &.active {
+            opacity: 1!important;
+        }
+        &.error {
+            animation: none;
+            opacity: 0;
+            pointer-events: none;
+            animation: errorHandleMessage .4s ease forwards;
+        }
+    }
+}
+
+@keyframes errorHandleMessage {
+    0% {
+        opacity: 0;
+        margin-top: 1rem;
+    }
+    100% {
+        opacity: 0.5;
+        margin-top: 0;
+    }
+}

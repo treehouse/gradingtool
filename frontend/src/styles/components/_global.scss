@@ -1,0 +1,33 @@
+.gradingtool {
+    @include flex(row, nowrap, flex-start, stretch);
+    width: 100vw;
+    section {
+        @include flex(column, nowrap, flex-start, stretch);
+        &.techdegree-panel {
+            @include strict-width($techdegree-panel-width);
+            @include theme-transition;
+        }
+        &.view-container {
+            @include size(100%, $view-container-width);
+            @include bg(var(--view-container-bg));
+            @include theme-transition;
+        }
+        &.utility-panel {
+            @include strict-width($utility-panel-width);
+            @include theme-transition;
+        }
+        &.off-screen-panel {
+            width: 0;
+            overflow: hidden;
+            border-left: 1px solid transparent;
+            transition: min-width .3s ease, max-width .3s ease, width .3s ease, border .5s ease, color .5s ease, background .5s ease;
+            &.show {
+                border-color: var(--off-screen-border-color);
+                @include strict-width(350px);
+            }
+        }
+    }
+    .panel {
+        @include bg(var(--panel-bg));
+    }
+}

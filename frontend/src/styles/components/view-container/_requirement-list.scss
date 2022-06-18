@@ -1,0 +1,106 @@
+.requirement-list {
+    @include theme-transition;
+    padding: 1rem;
+    p.no-data-message {
+        text-align: center;
+    }
+    ul.requirement {
+        @include theme-transition;
+        @include bg(var(--panel-bg));
+        @include radius(1rem);
+        padding: 1rem 2rem;
+        margin-bottom: 1.75rem;
+        animation: fadeInUp .5s ease forwards;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        .title-group {
+            @include flex(row, nowrap, flex-start, center);
+            span.badge {
+                @include theme-transition;
+                @include radius(50%);
+                @include simple-size(30px);
+                @include center-flex;
+                @include bg(var(--td-accent));
+                margin-right: 1rem;
+                color: var(--primary-bg);
+            }
+            p.requirement-title {
+                font-size: 1.3rem;
+            }
+        }
+        ul.sub-requirements {
+            margin-top: 1rem;
+            
+           li {
+            @include bg(var(--sub-req-bg));
+            @include radius(.5rem);
+            margin-left: 3rem;
+            padding: 1rem;
+            box-shadow: 0 3px 0 var(--req-item-shadow);
+            margin-bottom: 1rem;
+            &:last-child {
+                margin-bottom: 0;
+            }
+                p.sub-requirements-title {
+                margin-bottom: .5rem;
+                    opacity: 0.7;
+                }
+                textarea {
+                    @include size(0px, 100%);
+                    @include radius(.5rem);
+                    @include bg(var(--textarea-bg));
+                    @include theme-transition;
+                    font-family: 'Gotham Rounded', sans-serif;
+                    border: none;
+                    margin: .25rem 0;
+                    opacity: 0.5;
+                    &.show {
+                        height: 100px;
+                        padding: 1rem;
+                    }
+                    // transition: opacity .3s;
+                    &:focus {
+                        outline: 1px solid var(--td-accent);
+                        opacity: 1;
+                    }
+                }
+                .req-btn-group {
+                    @include flex(row, nowrap, flex-start, center);
+                    button {
+                        @include simple-size(40px);
+                        @include center-flex;
+                        @include bg(var(--req-btn-bg));
+                        @include radius(50%);
+                        cursor: pointer;
+                        color: var(--req-btn-color);
+                        border: 1px solid transparent;;
+                        margin-right: .33rem;
+                        transition: background .3s ease, color .3s ease, border .3s ease;
+                        &:last-child {
+                            margin-right: 0;
+                            opacity: 0;
+                            pointer-events: none;
+                            &.show {
+                                opacity: 1;
+                                pointer-events: auto;
+                            }
+                        }
+                        &:hover {
+                            @include bg(var(--req-btn-hover-bg));
+                            &:nth-child(1) {
+                                border-color: $passing-grade-color;
+                            }
+                            &:nth-child(2) {
+                                border-color: $question-grade-color;
+                            }
+                            &:nth-child(3) {
+                                border-color: $failing-grade-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }       
+}

@@ -4,204 +4,251 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <!-- fav -->
+    <!-- favicon -->
     <link rel="shortcut icon" href="./frontend/dist/images/favicon.png" type="image/x-icon">
+    <!-- animation library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- styles -->
     <link rel="stylesheet" href="./frontend/dist/styles/app.css">
     <!-- fontawesome library -->
     <script src="https://kit.fontawesome.com/6e358658ed.js" crossorigin="anonymous"></script>
-    
     <title>Treehouse | Grading Tool</title>
 </head>
-<body class="blur">
+<body class="dark">
 
     <!-- no fly zone, yo -->
     <div class="no-fly-zone mobile">
         <header>
             <i class="fa-solid fa-circle-exclamation"></i>
-            <h1> Hold up! 🙋🏼‍♂️</h1>
+            <h1> Hold up!</h1>
         </header>
         <div class="divider"></div>
         <p>Let's make sure you're not on your mobile device incase you need to do some debugging. That way you can give the best experience for the student. Try opening this page up in your browser.</p>
     </div>
 
+    <!-- gradingtool -->
     <main class="gradingtool desktop">
 
-        <!-- left -->
-        <section class="left-panel panel grid-item">
-
+        <!-- left panel -->
+        <section class="panel techdegree-panel">
             <!-- header -->
-            <div class="panel-header" id="left-panel-header">
-                <img id="td-logo" src="./frontend/dist/images/fewd.png" alt="">
-                <!-- <p>Frontend Web Development</p> -->
-                <i class="fa-solid fa-angle-down" id="header-dropdown-carret"></i>
-
-                <div class="dropdown-content hide" id="left-panel-dropdown">
-                    <ul>
-                        <!-- <li class="fewd-td"><p>Frontend Web Development</p> <i class="favorite fa-solid fa-star"></i></li>
-                        <li class="fsjs-td"><p>Full Stack JavaScript</p> <i class="fa-solid fa-star"></i></li>
-                        <li class="wd-td"><p>Web Development</p> <i class="fa-solid fa-star"></i></li>
-                        <li class="python-td"><p>Python</p> <i class="fa-solid fa-star"></i></li>
-                        <li class="dataanalysis-td"><p>Data Analysis</p> <i class="fa-solid fa-star"></i></li>
-                        <li class="ux-td"><p>UX</p> <i class="fa-solid fa-star"></i></li> -->
-                    </ul>
-                </div>
+            <header id="techdegreeHeader">
+                <img data-td-logo src="./frontend/dist/images/fewd.png" alt="">
+                <p data-td-name></p>
+                <i class="fa-solid fa-angle-down"></i>
+            </header>
+            <!-- td list -->
+            <div class="techdegree-dropdown" id="techdegreeDropdown">
+                <div class="loader"></div>
             </div>
-
-            <!-- project list  -->
-            <div class="project-list" id="project-list">
-                <!-- <ul class="left-panel-list">
-                    <li>My Personal Profile Page</li>
-                    <li>Mobile-first Responsive Layout</li>
-                    <li>An Online Registration Form</li>
-                    <li>Web Style Guide</li>
-                    <li>An Interactive Photo Gallery</li>
-                    <li>Game Show App</li>
-                    <li>WebApp Dashboard</li>
-                    <li>Use an API to Create an Employee Directory</li>
-                    <li>Capstone Portfolio</li>
-                </ul> -->
-            </div>
-
-            <!-- divider -->
-            <div class="divider"></div>
-
-            <!-- link list -->
-            <div class="link-list">
-                <!-- <div class="link-list-header">
-                    <p class="list-title">Your links</p>
-                    <i class="fa-solid fa-plus" title="feature currently not available 🙁"></i>
-                </div>
-                <ul class="left-panel-list">
-                    <li>
-                        <a href="https://validator.w3.org/#validate_by_input" target="_blank">
-                            <i class="fa-solid fa-link"></i>
-                            <div class="link-group">
-                                <p class="name" title="https://validator.w3.org/#validate_by_input">HTML Validator</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://jigsaw.w3.org/css-validator/#validate_by_input" target="_blank">
-                            <i class="fa-solid fa-link"></i>
-                            <div class="link-group">
-                                <p class="name" title="https://jigsaw.w3.org/css-validator/#validate_by_input">CSS Validator</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://jshint.com/" target="_blank">
-                            <i class="fa-solid fa-link"></i>
-                            <div class="link-group">
-                                <p class="name" title="https://jshint.com/">JavaScript Validator</p>
-                            </div>
-                        </a>
-                    </li>
-                </ul> -->
-            </div>
-            
-        </section>
-
-        <!-- middle -->
-        <section class="middle grid-item">
-            <!-- header -->
-            <div class="view-header">
-                <!-- <h1>My Personal Profile Page</h1> -->
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                </div>
-            </div>
-
-            <!-- intro -->
-            <div class="view intro-container show">
-                <p class="b600">Treehouse Grading Tool</p>
-                <p>This is an application designed to make grading a student's work easier, and also giving the student a very well structured, informative review. As this application contains Treehouse intellectual property, <span class="b600">please do not share this tool outside of the Treehouse Moderators channel within Slack.</span></p>
-                <br>
-                <p>To get started, choose a Techdegree from the list in the dropdown in the top-left of the grading tool. You can favorite a Techdegree by clicking the <i class="fa-solid fa-star"></i> next to the Techdegree name. This will load that Techdegree by default when you first open the grading tool. To get started grading a project, select a project from the left panel. Once one is selected you'll be able to review the requirements for that project and start grading.</p>
-            </div>
-            <!-- requirements -->
-            <div class="view view-requirements">
-                <!-- <ul class="requirement-container">
-                    <li class="parent-requirement">
-                        <p class="parent-title">Added a photo and background</p>
-                        <ul>
-                            
-
-                            <li class="sub-requirement">
-                                <div class="title-group">
-                                     <p class="title">New profile image added and the size is under 400KB.</p>
-                                </div>
-                                <div class="button-group">
-                                    <i class="fa-solid fa-xmark needs-work-icon"></i>
-                                    <i class="fa-solid fa-check meets-icon"></i>
-                                    <i class="fa-solid fa-check exceeds-icon"></i>
-                                    <i class="fa-solid fa-rotate-right"></i>
-                                </div>
-                            </li>
-                            <li class="sub-requirement exceeds-requirement">
-                                <div class="title-group">
-                                    <i title="this is an exceeds requirement" class="fa-solid fa-star"></i>
-                                     <p class="title">'profile-image' class is still attached to the profile 'img' tag.</p>
-                                </div>
-                                <div class="button-group">
-                                    <i class="fa-solid fa-xmark needs-work-icon"></i>
-                                    <i class="fa-solid fa-check meets-icon"></i>
-                                    <i class="fa-solid fa-check exceeds-icon"></i>
-                                    <i class="fa-solid fa-rotate-right"></i>
-                                </div>
-                            </li>
-
-
-                        </ul>
-                    </li>
-                </ul> -->
-            </div>
-
-            <!-- output -->
-            <div class="view view-output"></div>
-        </section>
-
-        <!-- right -->
-        <section class="right-panel panel grid-item">
-            <ul>
-                <li title="project files"><i class="fa-solid fa-folder"></i></li>
-                <li title="notes"><i class="fa-solid fa-note-sticky"></i></li>
-                <li title="light/dark theme"><i class="fa-solid fa-circle-half-stroke"></i></li>
-                <li title="settings"><i class="fa-solid fa-sliders"></i></li>
+            <!-- project list -->
+            <ul class="td-project-list" id="tdProjectList">
+                <!-- <li data-project-id="1" style="">My Personal Profile Page</li><li data-project-id="2">Mobile-first Responsive Layout</li><li data-project-id="3">An Online Registration Form</li><li data-project-id="4">Web Style Guide</li><li data-project-id="5">An Interactive Photo Gallery</li><li data-project-id="6">Game Show App</li><li data-project-id="7">WebApp Dashboard</li><li data-project-id="8">Use an API to Create an Employee Directory</li><li data-project-id="9">Capstone Portfolio</li> -->
             </ul>
         </section>
 
-        <section class="off-screen-panel panel grid-item show">
-            <div class="off-screen-header">
-                <p class="off-screen-header-title" id="off-screen-header-title">{ open panel name }</p>
-                <i class="fa-solid fa-xmark"></i>
-            </div>
 
-            <div class="off-screen-panel-section-container">
-
-                <div class="off-screen-panel-section project-files-container">projectfiles</div>
-
-                <div class="off-screen-panel-section project-notes-container show">
-                    <ul>
-                        <li>
-                            <div class="note-buttons">
-                                <button id="edit"><i class="fa-solid fa-pen-to-square"></i></button>
-                                <button id="delete"><i class="fa-solid fa-trash-can"></i></button>
-                            </div>
-                            <p class="note-title">Lorem, ipsum dolor.</p>
-                            <p class="note">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, exercitationem natus ducimus accusantium modi soluta repellendus rem minima dolorum omnis odio eos, enim voluptatibus voluptatem?</p>
-                        </li>
-                        <li></li>
-                    </ul>
+        <!-- middle -->
+        <section class="view-container">
+            <div class="view-header view-parent-item">
+                <h1 data-project-name></h1>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" data-progress-bar></div>
                 </div>
-
-                <div class="off-screen-panel-section settings-container">settings</div>
-
             </div>
-            
+
+            <div class="views view-parent-item">
+                <div class="view requirement-list" id="requirementList">
+                    <!-- <ul class="requirement">
+                        <li>
+                            <div class="title-group">
+                                <span class="badge">1</span>
+                                <p class="requirement-title">Added a photo and background</p>
+                            </div>
+                            <ul class="sub-requirements">
+                                <li>
+                                    <p class="sub-requirements-title">New profile image added and the size is under 400KB.</p>
+                                    <textarea></textarea>
+                                    <div class="req-btn-group">
+                                        <button><i class="fa-solid fa-check"></i></button>
+                                        <button><i class="fa-solid fa-question"></i></button>
+                                        <button><i class="fa-solid fa-xmark"></i></button>
+                                        <button><i class="fa-solid fa-arrow-rotate-right"></i></button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p class="sub-requirements-title">New profile image added and the size is under 400KB.</p>
+                                    <textarea></textarea>
+                                    <div class="req-btn-group">
+                                        <button><i class="fa-solid fa-check"></i></button>
+                                        <button><i class="fa-solid fa-question"></i></button>
+                                        <button><i class="fa-solid fa-xmark"></i></button>
+                                        <button><i class="fa-solid fa-arrow-rotate-right"></i></button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p class="sub-requirements-title">New profile image added and the size is under 400KB.</p>
+                                    <textarea></textarea>
+                                    <div class="req-btn-group">
+                                        <button><i class="fa-solid fa-check"></i></button>
+                                        <button><i class="fa-solid fa-question"></i></button>
+                                        <button><i class="fa-solid fa-xmark"></i></button>
+                                        <button><i class="fa-solid fa-arrow-rotate-right"></i></button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p class="sub-requirements-title">New profile image added and the size is under 400KB.</p>
+                                    <textarea></textarea>
+                                    <div class="req-btn-group">
+                                        <button><i class="fa-solid fa-check"></i></button>
+                                        <button><i class="fa-solid fa-question"></i></button>
+                                        <button><i class="fa-solid fa-xmark"></i></button>
+                                        <button><i class="fa-solid fa-arrow-rotate-right"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="requirement">
+                        <li>
+                            <div class="title-group">
+                                <span class="badge">2</span>
+                                <p class="requirement-title">Added a photo and background</p>
+                            </div>
+                            <ul class="sub-requirements">
+                                <li>
+                                    <p class="sub-requirements-title">New profile image added and the size is under 400KB.</p>
+                                    <textarea></textarea>
+                                    <div class="req-btn-group">
+                                        <button><i class="fa-solid fa-check"></i></button>
+                                        <button><i class="fa-solid fa-question"></i></button>
+                                        <button><i class="fa-solid fa-xmark"></i></button>
+                                        <button><i class="fa-solid fa-arrow-rotate-right"></i></button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p class="sub-requirements-title">New profile image added and the size is under 400KB.</p>
+                                    <textarea></textarea>
+                                    <div class="req-btn-group">
+                                        <button><i class="fa-solid fa-check"></i></button>
+                                        <button><i class="fa-solid fa-question"></i></button>
+                                        <button><i class="fa-solid fa-xmark"></i></button>
+                                        <button><i class="fa-solid fa-arrow-rotate-right"></i></button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p class="sub-requirements-title">New profile image added and the size is under 400KB.</p>
+                                    <textarea></textarea>
+                                    <div class="req-btn-group">
+                                        <button><i class="fa-solid fa-check"></i></button>
+                                        <button><i class="fa-solid fa-question"></i></button>
+                                        <button><i class="fa-solid fa-xmark"></i></button>
+                                        <button><i class="fa-solid fa-arrow-rotate-right"></i></button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p class="sub-requirements-title">New profile image added and the size is under 400KB.</p>
+                                    <textarea></textarea>
+                                    <div class="req-btn-group">
+                                        <button><i class="fa-solid fa-check"></i></button>
+                                        <button><i class="fa-solid fa-question"></i></button>
+                                        <button><i class="fa-solid fa-xmark"></i></button>
+                                        <button><i class="fa-solid fa-arrow-rotate-right"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="requirement">
+                        <li>
+                            <div class="title-group">
+                                <span class="badge">3</span>
+                                <p class="requirement-title">Added a photo and background</p>
+                            </div>
+                            <ul class="sub-requirements">
+                                <li>
+                                    <p class="sub-requirements-title">New profile image added and the size is under 400KB.</p>
+                                    <textarea></textarea>
+                                    <div class="req-btn-group">
+                                        <button><i class="fa-solid fa-check"></i></button>
+                                        <button><i class="fa-solid fa-question"></i></button>
+                                        <button><i class="fa-solid fa-xmark"></i></button>
+                                        <button><i class="fa-solid fa-arrow-rotate-right"></i></button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p class="sub-requirements-title">New profile image added and the size is under 400KB.</p>
+                                    <textarea></textarea>
+                                    <div class="req-btn-group">
+                                        <button><i class="fa-solid fa-check"></i></button>
+                                        <button><i class="fa-solid fa-question"></i></button>
+                                        <button><i class="fa-solid fa-xmark"></i></button>
+                                        <button><i class="fa-solid fa-arrow-rotate-right"></i></button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p class="sub-requirements-title">New profile image added and the size is under 400KB.</p>
+                                    <textarea></textarea>
+                                    <div class="req-btn-group">
+                                        <button><i class="fa-solid fa-check"></i></button>
+                                        <button><i class="fa-solid fa-question"></i></button>
+                                        <button><i class="fa-solid fa-xmark"></i></button>
+                                        <button><i class="fa-solid fa-arrow-rotate-right"></i></button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p class="sub-requirements-title">New profile image added and the size is under 400KB.</p>
+                                    <textarea></textarea>
+                                    <div class="req-btn-group">
+                                        <button><i class="fa-solid fa-check"></i></button>
+                                        <button><i class="fa-solid fa-question"></i></button>
+                                        <button><i class="fa-solid fa-xmark"></i></button>
+                                        <button><i class="fa-solid fa-arrow-rotate-right"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul> -->
+                </div>
+                <div class="view finished-output-list"></div>
+            </div>
         </section>
+
+
+        <!-- right panel -->
+        <section class="panel utility-panel">
+            <ul>
+                <li data-toggle-util><i class="fa-solid fa-folder"></i></li>
+                <li data-toggle-util><i class="fa-solid fa-comment"></i></li>
+                <li data-toggle-util><i class="fa-solid fa-toggle-on"></i></li>
+                <li data-toggle-util><i class="fa-solid fa-lock"></i></li>
+            </ul>
+        </section>
+
+
+        <!-- off-screen panel -->
+        <section class="off-screen-panel panel" id="off-screen-panel">
+            <header>
+                <div class="title-container">
+                    <p data-util-section-title>Project Files</p>
+                    <p data-util-section-title>Techdegree Notes</p>
+                    <p data-util-section-title>Themes</p>
+                    <p data-util-section-title>Admin</p>
+                </div>
+                <i id="close-util-panel-btn" class="fa-solid fa-xmark close-btn"></i>
+            </header>
+            <div data-util-section class="project-files-container util-item"></div>
+            <div data-util-section class="project-notes-container util-item"></div>
+            <div data-util-section class="theme-container util-item show">
+                <ul>
+                    <li><p>Choose your theme! 😎</p></li>
+                    <li id="light"><img src="./frontend/dist/images/lightmode.png" alt=""></li>
+                    <li id="dark" class="active"><img src="./frontend/dist/images/darkmode.png" alt=""></li>
+                </ul>
+            </div>
+            <div data-util-section class="admin-container util-item"></div>
+        </section>
+
 
     </main>
 

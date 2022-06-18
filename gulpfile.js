@@ -15,13 +15,13 @@ function styles() {
 
 function scripts() {
     return src('./frontend/src/scripts/app.js')
-        .pipe(scriptsMinify())
+        // .pipe(scriptsMinify())
         .pipe(dest('./frontend/dist/scripts'))
 }
 
 function images() {
     return src('./frontend/src/images/**/*')
-        .pipe(dest('./frontend/dist/images/'))
+        .pipe(dest('./frontend/dist/images'))
 }
 
 function browsersyncServe(cb) {
@@ -39,8 +39,7 @@ function watchTask() {
     watch([
         './frontend/src/styles/**/*.scss',
         './frontend/src/scripts/**/*.js',
-        './frontend/src/images/**/*'
-    ], 
+        './frontend/src/images/**/*'], 
         series(styles, scripts, images, browsersyncReload))
 }
 

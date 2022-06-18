@@ -20,10 +20,24 @@
   width: $width;
 }
 
-@mixin same-size($size) {
+@mixin simple-size($size) {
   @content;
   height: $size;
   width: $size;
+}
+
+@mixin strict-height($height) {
+  @content;
+  height: $height;
+  min-height: $height;
+  max-height: $height;
+}
+
+@mixin strict-width($width) {
+  @content;
+  width: $width;
+  min-width: $width;
+  max-width: $width;
 }
 
 @mixin responsive($min, $max, $gap) {
@@ -39,7 +53,7 @@
   margin: 0 auto;
 }
 
-@mixin text-overflow($lines) {
+@mixin textOverflow($lines) {
   @content;
   display: -webkit-box;
   text-overflow: ellipsis;
@@ -72,9 +86,14 @@
   backdrop-filter: blur($blur);
 }
 
-@mixin theme-transition() {
+@mixin boxshadow($color) {
+  @content; 
+  box-shadow: 0 3px 0 $color;
+}
+
+@mixin theme-transition {
   @content;
-  transition: background .6s ease, color .6s ease;
+  transition: background .5s ease, color .5s ease;
 }
 
 @mixin break($breakpoint) {

@@ -1,8 +1,0 @@
-.gradingtool {
-    grid-template-columns: $left-panel-width 1fr $right-panel-width $off-screen-panel-width;
-    grid-template-rows: 1fr;
-    width: 100%;
-    .panel {
-        @include bg(var(--panel-bg));
-    }
-}

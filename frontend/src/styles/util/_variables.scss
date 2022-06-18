@@ -15,10 +15,11 @@ $breakpoints: (
   "widescreen": 1440px
 ) !default;
 
+$techdegree-panel-width: 325px;
+$view-container-width: 100%;
+$utility-panel-width: 50px;
+$off-screen-panel-width: 350px;
 
-
-
-// global color palette
 
 // td colors
 $fewd: #5FCF80;
@@ -28,68 +29,71 @@ $python: #009AC4;
 $dataanalysis: #D5609A;
 $ux: #9080FF;
 
-$needs-work: #ef8985;
-$success: #63a5c4;
-$success:#7eda98;
-$meets: $success;
-$exceeds: $success;
-$no-color: #E3E3E3;
 $gold: gold;
-
-$view-header-height: 100px;
-
-$left-panel-width: 300px;
-$middle-width: 1fr;
-$right-panel-width: 50px;
-$off-screen-panel-width: 0px;
-
+$failing-grade-color: #ef8985;
+$passing-grade-color: #7eda98;
+$question-grade-color: rgb(171, 194, 203);
 
 body {
-  --accent: #5FCF80;
-  --gold: gold;
-  --progress: 25%;
-  
-  // default(light)
-  --primary: ;
-  --secondary: #323B42;
-  --secondary-hover: #283036;
+  // globals (dont change)
+  --td-header-color: white;
+  --td-accent: #5FCF80;
+  --req-progress: 25%;
 
-  --copy-dark: #191c1f;
-  --copy-light: #ffffff;
+  --close-btn-hover: rgba(0, 0, 0, 0.102);
 
-  --middle-bg: white;
+  --primary-color: rgb(74, 83, 98);
+  --primary-bg: #F4F6F8;
+
+  --divider-color: #F4F6F8;
 
   --panel-bg: #F4F6F8;
-  --card-bg: var(--panel-bg);
+  --view-container-bg: white;
+
+  --td-header-bg: #363644;
+  --td-header-bg-hover: #444453;
 
   --card-item-bg: white;
-  --card-item-copy: var(--copy-dark);
-  --progress-bar-bg: var(--panel-bg);
-  
+  --card-item-boxshadow-color: #91a2a835;
 
-  --left-panel-header-bg: var(--secondary);
-  --left-panel-header-bg-hover: var(--secondary-hover);
-  --left-panel-header-color: white;
+  --off-screen-border-color: rgb(222, 226, 235);
 
-  --left-panel-dropdown-bg: var(--left-panel-header-bg-hover);
+  --view-header-progress-bg: var(--panel-bg);
 
-  --project-list-item-bg-hover: #e6e8ea;
-  --project-list-item-color-active: white;
-  --project-list-item-bg-active: var(--accent);
-
-  --right-panel-item-hover: #e6e8ea;
-
-
-  --middle-requirement-bg: var(--panel-bg);
-  --panel-bg-darker: #b4bbc0;
-  --requirement-item-shadow: #91a2a835;
-  --graded-item-bg: rgba(255, 255, 255, 0.301);
-  --redo-icon-bg-hover: #455058;
-
-  --star-gold: gold;
-  --star-default: #d7dde3;;
+  --textarea-bg: var(--panel-bg);
+  --sub-req-bg: white;
+  --req-btn-bg: var(--panel-bg);
+  --req-item-shadow: #91a2a835;
+  --req-btn-color: #191b28;;;
+  --req-btn-hover-bg: rgb(218, 226, 228);
 
   &.dark {
 
+    --close-btn-hover: rgba(255, 255, 255, 0.163);
+
+    --primary-color: rgb(200, 204, 226);
+    --primary-bg: #2B2D40;
+
+    --divider-color:#2B2D40;
+
+    --panel-bg: #202231;
+    --view-container-bg: #2B2D40;
+
+    --td-header-bg: #1a1c29;
+    --td-header-bg-hover: #1a1c29;
+
+    --card-item-bg:#202231;
+    --card-item-boxshadow-color: #0000006f;
+
+    --off-screen-border-color: #0000006f;
+
+    --view-header-progress-bg: var(--panel-bg);
+
+    --textarea-bg: var(--panel-bg);
+    --sub-req-bg: var(--primary-bg);
+    --req-btn-bg: var(--panel-bg);
+    --req-btn-color: white;
+    --req-item-shadow: #191b28;;
+    --req-btn-hover-bg: #3e4258;
   }
 }
