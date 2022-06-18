@@ -67,6 +67,12 @@ body {
   --req-btn-color: #191b28;;;
   --req-btn-hover-bg: rgb(218, 226, 228);
 
+  --req-footer-btn-primary-bg: var(--td-accent);
+  --req-footer-btn-primary-color: white;
+  
+  --req-footer-btn-secondary-bg: #393b5550;
+  --req-footer-btn-secondary-color: white;
+
   &.dark {
 
     --close-btn-hover: rgba(255, 255, 255, 0.163);
@@ -95,5 +101,11 @@ body {
     --req-btn-color: white;
     --req-item-shadow: #191b28;;
     --req-btn-hover-bg: #3e4258;
+
+    --req-footer-btn-primary-bg: var(--td-accent);
+    --req-footer-btn-primary-color: #393b55;
+
+    --req-footer-btn-secondary-bg: rgba(255, 255, 255, 0.101);
+    --req-footer-btn-secondary-color: white;
   }
 }

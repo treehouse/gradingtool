@@ -193,24 +193,17 @@ const tdList = document.getElementById('tdProjectList');
 tdList.addEventListener('click', e => {
     let projects = document.querySelectorAll('[data-project]');
     projects.forEach(proj => {
-
-
-        
-
         if (e.target === proj) {
 
             for(i = 0; i < projects.length; i++) {
                 projects[i].classList = 'inactive';
             }
-
             proj.classList = 'active';
 
             let id = e.target.getAttribute('data-project-id');
-
             fetch(`https://grading-tool-api.herokuapp.com/api/projects/${id}`)
                 .then(response => response.json())
                 .then(data => loadProjectRequirements(data))
-            ;
         }
     })
 });
@@ -289,10 +282,28 @@ function loadProjectRequirements(data) {
                 
                 ulParent.appendChild(subRequirementParent);
             });
-        })
+        });
+        createReqFooter();
     }
 }
 
+function createReqFooter() {
+    const requirementList = document.getElementById('requirementList');
+    const reqFooter = document.createElement('div');
+    reqFooter.classList = 'req-footer';
+    const btnGroup = document.createElement('div');
+    btnGroup.classList = 'btn-group';
+    let finishBtn = document.createElement('button');
+    finishBtn.setAttribute('data-finish-review', '');
+    finishBtn.textContent = 'Finish Review';
+    let clearBtn = document.createElement('button');
+    clearBtn.setAttribute('data-clear-review', '');
+    clearBtn.textContent = 'Clear Review';
+    btnGroup.appendChild(finishBtn);
+    btnGroup.appendChild(clearBtn);
+    reqFooter.appendChild(btnGroup);
+    requirementList.appendChild(reqFooter)
+}
 
 
 
