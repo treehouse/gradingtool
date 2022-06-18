@@ -1,6 +1,6 @@
 .requirement-list {
     @include theme-transition;
-    padding: 1rem;
+    padding: 1rem 1rem 2rem;
     p.no-data-message {
         text-align: center;
     }
@@ -8,7 +8,7 @@
         @include theme-transition;
         @include bg(var(--panel-bg));
         @include radius(1rem);
-        padding: 1rem 2rem;
+        padding: 1rem 2rem 2rem;
         margin-bottom: 1.75rem;
         animation: fadeInUp .5s ease forwards;
         &:last-child {
@@ -29,19 +29,38 @@
                 font-size: 1.3rem;
             }
         }
-        ul.sub-requirements {
-            margin-top: 1rem;
-            
-           li {
-            @include bg(var(--sub-req-bg));
-            @include radius(.5rem);
-            margin-left: 3rem;
-            padding: 1rem;
-            box-shadow: 0 3px 0 var(--req-item-shadow);
-            margin-bottom: 1rem;
-            &:last-child {
-                margin-bottom: 0;
-            }
+            ul.sub-requirements {
+                margin-top: 1rem;
+                li {
+                @include bg(var(--sub-req-bg));
+                @include radius(.5rem);
+                position: relative;
+                margin-left: 3rem;
+                padding: 1rem;
+                box-shadow: 0 3px 0 var(--req-item-shadow);
+                margin-bottom: 1rem;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                &.exceeds-item {
+                    margin-top: 1.5rem;
+                    .exceedsicon {
+                        @include simple-size(50px);
+                        @include radius(50%);
+                        @include center-flex;
+                        @include bg(var(--panel-bg));
+                        @include theme-transition;
+                        font-size: 1.6rem;
+                        position: absolute;
+                        top: -21px;
+                        left: -24px;
+                        color: $gold;
+                        color: var(--td-accent);
+                    }
+                    p.sub-requirements-title {
+                        margin-top: 1.75rem;
+                    }
+                }
                 p.sub-requirements-title {
                 margin-bottom: .5rem;
                     opacity: 0.7;

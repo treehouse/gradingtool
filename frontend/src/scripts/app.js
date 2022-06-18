@@ -242,7 +242,15 @@ function loadProjectRequirements(data) {
 
             section.requirements.forEach(req => {
                 const li = document.createElement('li');
+                if (req.isExceeds) {
+                    const exceedsIcon = document.createElement('i');
+                    exceedsIcon.classList = "fa-solid fa-star exceedsicon";
+                    exceedsIcon.setAttribute('title', 'Exceeds requirement');
+                    li.classList.add('exceeds-item');
+                    li.appendChild(exceedsIcon);
+                }
                 const subReqTitle = document.createElement('p');
+                subReqTitle.classList = 'sub-requirements-title';
                 subReqTitle.textContent = req.description;
                 const textarea = document.createElement('textarea');
                 const btnGroup = document.createElement('div');
