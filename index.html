@@ -21,7 +21,7 @@
     <div class="no-fly-zone mobile">
         <header>
             <i class="fa-solid fa-circle-exclamation"></i>
-            <h1> Hold up!</h1>
+            <h1> Hold up! 🙋🏼‍♂️</h1>
         </header>
         <div class="divider"></div>
         <p>Let's make sure you're not on your mobile device incase you need to do some debugging. That way you can give the best experience for the student. Try opening this page up in your browser.</p>
@@ -114,15 +114,23 @@
                 </div>
             </div>
 
+            <!-- intro -->
+            <div class="view intro-container show">
+                <p class="b600">Treehouse Grading Tool</p>
+                <p>This is an application designed to make grading a student's work easier, and also giving the student a very well structured, informative review. As this application contains Treehouse intellectual property, <span class="b600">please do not share this tool outside of the Treehouse Moderators channel within Slack.</span></p>
+                <br>
+                <p>To get started, choose a Techdegree from the list in the dropdown in the top-left of the grading tool. You can favorite a Techdegree by clicking the <i class="fa-solid fa-star"></i> next to the Techdegree name. This will load that Techdegree by default when you first open the grading tool. To get started grading a project, select a project from the left panel. Once one is selected you'll be able to review the requirements for that project and start grading.</p>
+            </div>
             <!-- requirements -->
-            <div class="view view-requirements show">
-                <ul class="requirement-container">
+            <div class="view view-requirements">
+                <!-- <ul class="requirement-container">
                     <li class="parent-requirement">
                         <p class="parent-title">Added a photo and background</p>
                         <ul>
+                            
+
                             <li class="sub-requirement">
                                 <div class="title-group">
-                                    <i title="this is an exceeds requirement" class="fa-solid fa-star"></i>
                                      <p class="title">New profile image added and the size is under 400KB.</p>
                                 </div>
                                 <div class="button-group">
@@ -132,7 +140,7 @@
                                     <i class="fa-solid fa-rotate-right"></i>
                                 </div>
                             </li>
-                            <li class="sub-requirement">
+                            <li class="sub-requirement exceeds-requirement">
                                 <div class="title-group">
                                     <i title="this is an exceeds requirement" class="fa-solid fa-star"></i>
                                      <p class="title">'profile-image' class is still attached to the profile 'img' tag.</p>
@@ -144,58 +152,11 @@
                                     <i class="fa-solid fa-rotate-right"></i>
                                 </div>
                             </li>
-                            <li class="sub-requirement">
-                                <div class="title-group">
-                                    <i title="this is an exceeds requirement" class="fa-solid fa-star"></i>
-                                     <p class="title">New profile image has an updated alt text.</p>
-                                </div>
-                                <div class="button-group">
-                                    <i class="fa-solid fa-xmark needs-work-icon"></i>
-                                    <i class="fa-solid fa-check meets-icon"></i>
-                                    <i class="fa-solid fa-check exceeds-icon"></i>
-                                    <i class="fa-solid fa-rotate-right"></i>
-                                </div>
-                            </li>
-                            <li class="sub-requirement">
-                                <div class="title-group">
-                                    <i title="this is an exceeds requirement" class="fa-solid fa-star"></i>
-                                     <p class="title">New background image added and the size is under 1MB.</p>
-                                </div>
-                                <div class="button-group">
-                                    <i class="fa-solid fa-xmark needs-work-icon"></i>
-                                    <i class="fa-solid fa-check meets-icon"></i>
-                                    <i class="fa-solid fa-check exceeds-icon"></i>
-                                    <i class="fa-solid fa-rotate-right"></i>
-                                </div>
-                            </li>
-                            <li class="sub-requirement exceeds-requirement">
-                                <div class="title-group">
-                                    <i title="this is an exceeds requirement" class="fa-solid fa-star"></i>
-                                     <p class="title">At least one of the following CSS style properties has been changed on the profile picture: border / border-radius / transition / transformation.</p>
-                                </div>
-                                <div class="button-group">
-                                    <i class="fa-solid fa-xmark needs-work-icon"></i>
-                                    <i class="fa-solid fa-check meets-icon"></i>
-                                    <i class="fa-solid fa-check exceeds-icon"></i>
-                                    <i class="fa-solid fa-rotate-right"></i>
-                                </div>
-                            </li>
-                            <li class="sub-requirement exceeds-requirement">
-                                <div class="title-group">
-                                    <i title="this is an exceeds requirement" class="fa-solid fa-star"></i>
-                                     <p class="title">At least one additional image added to the project in addition to the profile and background images, for a total of 3 unique images.</p>
-                                </div>
-                                <div class="button-group">
-                                    <i class="fa-solid fa-xmark needs-work-icon"></i>
-                                    <i class="fa-solid fa-check meets-icon"></i>
-                                    <i class="fa-solid fa-check exceeds-icon"></i>
-                                    <i class="fa-solid fa-rotate-right"></i>
-                                </div>
-                            </li>
-                            
+
+
                         </ul>
                     </li>
-                </ul>
+                </ul> -->
             </div>
 
             <!-- output -->
@@ -212,16 +173,32 @@
             </ul>
         </section>
 
-        <section class="off-screen-panel panel grid-item">
+        <section class="off-screen-panel panel grid-item show">
             <div class="off-screen-header">
-                <p class="header-title">Project files</p>
+                <p class="off-screen-header-title" id="off-screen-header-title">{ open panel name }</p>
                 <i class="fa-solid fa-xmark"></i>
             </div>
 
             <div class="off-screen-panel-section-container">
-                <div class="off-screen-panel-section project-files-container"></div>
-                <div class="off-screen-panel-section notes-container"></div>
-                <div class="off-screen-panel-section settings-container"></div>
+
+                <div class="off-screen-panel-section project-files-container">projectfiles</div>
+
+                <div class="off-screen-panel-section project-notes-container show">
+                    <ul>
+                        <li>
+                            <div class="note-buttons">
+                                <button id="edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button id="delete"><i class="fa-solid fa-trash-can"></i></button>
+                            </div>
+                            <p class="note-title">Lorem, ipsum dolor.</p>
+                            <p class="note">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, exercitationem natus ducimus accusantium modi soluta repellendus rem minima dolorum omnis odio eos, enim voluptatibus voluptatem?</p>
+                        </li>
+                        <li></li>
+                    </ul>
+                </div>
+
+                <div class="off-screen-panel-section settings-container">settings</div>
+
             </div>
             
         </section>

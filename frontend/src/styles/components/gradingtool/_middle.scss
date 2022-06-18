@@ -37,6 +37,12 @@
             display: flex;
         }
     }
+    .intro-container {
+        @include wrapper(900px);
+        i {
+            color: var(--gold);
+        }
+    }
     .requirement-container {
         li.parent-requirement {
             @include bg(var(--panel-bg));
@@ -128,8 +134,8 @@
                     }
                 }
                 &.graded {
-                    box-shadow: 0 0 0 rgba(black, 0);
                     @include bg(var(--graded-item-bg));
+                    box-shadow: 0 0 0 rgba(black, 0);
                     .button-group {
                         i.needs-work-icon,
                         i.meets-icon,
@@ -163,6 +169,34 @@
                             @include bg($exceeds);
                             display: flex;
                             color: white;
+                        }
+                    }
+                }
+                &.graded.exceeds-requirement {
+                    @include bg(var(--graded-item-bg));
+                    .button-group {
+                        i.needs-work-icon,
+                        i.meets-icon,
+                        i.exceeds-icon {
+                            display: none;
+                        }
+                        i.fa-rotate-right {
+                            opacity: 1;
+                            pointer-events: auto;
+                        }
+                    }
+                    &.passing {
+                        i.exceeds-icon {
+                            @include bg($meets);
+                            display: flex;
+                            color: white;
+                        }
+                    }
+                    &.needs-work {
+                        i.needs-work-icon {
+                            @include bg($needs-work);
+                            color: white;
+                            display: flex;
                         }
                     }
                 }

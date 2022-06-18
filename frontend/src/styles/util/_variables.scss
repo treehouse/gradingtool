@@ -47,7 +47,7 @@ $off-screen-panel-width: 0px;
 body {
   --accent: #5FCF80;
   --gold: gold;
-  --progress: 0%;
+  --progress: 25%;
   
   // default(light)
   --primary: ;
@@ -83,7 +83,7 @@ body {
   --middle-requirement-bg: var(--panel-bg);
   --panel-bg-darker: #b4bbc0;
   --requirement-item-shadow: #91a2a835;
-  --graded-item-bg: rgba(255, 255, 255, 0.397);
+  --graded-item-bg: rgba(255, 255, 255, 0.301);
   --redo-icon-bg-hover: #455058;
 
   --star-gold: gold;
