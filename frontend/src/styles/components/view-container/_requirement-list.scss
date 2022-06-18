@@ -22,6 +22,8 @@
                 @include simple-size(30px);
                 @include center-flex;
                 @include bg(var(--td-accent));
+                min-height: 30px;
+                min-width: 30px;
                 margin-right: 1rem;
                 color: var(--primary-bg);
             }
@@ -38,7 +40,7 @@
                 margin-left: 3rem;
                 padding: 1rem;
                 box-shadow: 0 3px 0 var(--req-item-shadow);
-                margin-bottom: 1rem;
+                margin-bottom: 1.5rem;
                 &:last-child {
                     margin-bottom: 0;
                 }
@@ -50,7 +52,7 @@
                         @include center-flex;
                         @include bg(var(--panel-bg));
                         @include theme-transition;
-                        font-size: 1.6rem;
+                        font-size: 1.4rem;
                         position: absolute;
                         top: -21px;
                         left: -24px;
