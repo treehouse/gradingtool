@@ -192,7 +192,7 @@ tdList.addEventListener('click', e => {
     let projects = document.querySelectorAll('[data-project]');
     projects.forEach(proj => {
         if (e.target === proj) {
-
+            resetProgressBar();
             for(i = 0; i < projects.length; i++) {
                 projects[i].classList = 'inactive';
             }
@@ -383,6 +383,11 @@ function updateProgressBar() {
     let progress = gradedReqs.length / reqs.length * 100;
 
     progressBar.style.setProperty('--req-progress', `${progress}%`)
+}
+
+function resetProgressBar() {
+    const progressBar = document.querySelector('[data-progress-bar]');
+    progressBar.style.setProperty('--req-progress', '0%');
 }
 
 function createReqFooter() {
