@@ -1,5 +1,4 @@
 // TEMPORARY - NEEDS API CONNECTION
-
 const imgs = [
     './frontend/dist/images/fewd.png',
     './frontend/dist/images/fsjs.png',
@@ -7,11 +6,10 @@ const imgs = [
     './frontend/dist/images/python.png',
     './frontend/dist/images/dataanalysis.png',
     './frontend/dist/images/ux.png',
-]
-
+];
 const colors = [
     '#5FCF80', '#3289F5', '#00AB9E', '#009AC4', '#D5609A', '#9080FF'
-]
+];
 
 
 /**
@@ -210,7 +208,7 @@ tdList.addEventListener('click', e => {
 
 // grading requirements
 const requirementList = document.getElementById('requirementList');
-    requirementList.addEventListener('click', e => {
+requirementList.addEventListener('click', e => {
     let btns = document.querySelectorAll('button.grading-btn');
     btns.forEach(btn => {
         if (e.target === btn) {
@@ -249,11 +247,24 @@ function checkBtn(e) {
     let questionBtns = document.querySelectorAll('button.question');
     let errorBtns = document.querySelectorAll('button.error');
 
+    let currentRedoBtn = parent.querySelector('.redo');
+    currentRedoBtn.classList.add('show');
+    currentRedoBtn.addEventListener('click', () => {
+        currentRedoBtn.classList.remove('show');
+        currentRedoBtn.parentNode.parentNode.classList.remove('graded');
+        currentRedoBtn.parentNode.querySelectorAll('button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        updateProgressBar();
+    })
+
     if (parent.classList.contains('exceeds-item')) {
         parent.classList = 'exceeds-item graded';
     } else {
         parent.classList = 'graded';
     }
+
+    if (e.target)
 
     correctBtns.forEach(btn => {
         if (e.target === btn) {
@@ -341,8 +352,9 @@ function loadProjectRequirements(data) {
                 errorBtn.appendChild(errorIcon);
 
                 const redoBtn = document.createElement('button');
+                redoBtn.classList = 'redo';
                 const redoIcon = document.createElement('i');
-                i.classList = 'fa-solid fa-arrow-rotate-right';
+                redoIcon.classList = 'fa-solid fa-arrow-rotate-right';
                 redoBtn.appendChild(redoIcon);
 
                 btnGroup.appendChild(correctBtn);

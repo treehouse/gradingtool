@@ -104,7 +104,7 @@
             i {
               pointer-events: none;
             }
-            &:last-child {
+            &.redo {
               margin-right: 0;
               opacity: 0;
               pointer-events: none;
