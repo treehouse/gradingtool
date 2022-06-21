@@ -230,8 +230,14 @@ function handleGrading(e) {
     });
     if (parent.classList.contains('exceeds-item')) {
         checkBtn(e);
-        currentTextarea.classList.remove('show');
-        currentTextarea.value = '';
+        if (e.target.classList.contains('correct')) {
+            currentTextarea.classList.remove('show');
+            currentTextarea.value = '';
+        } else 
+        if (e.target.classList.contains('error') || e.target.classList.contains('question')) {
+            currentTextarea.classList.add('show');
+        }
+        
     } else
     if (e.target.classList.contains('correct')) {
         checkBtn(e);
@@ -415,6 +421,10 @@ function createReqFooter() {
     btnGroup.appendChild(clearBtn);
     reqFooter.appendChild(btnGroup);
     requirementList.appendChild(reqFooter)
+}
+
+function showView(view) {
+    document.querySelectorAll('.view').forEach(view => { view.style.display = 'none'; })
 }
 
 
