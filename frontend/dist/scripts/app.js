@@ -210,10 +210,8 @@ tdList.addEventListener('click', e => {
 
 // grading requirements
 const requirementList = document.getElementById('requirementList');
-requirementList.addEventListener('click', e => {
-    let btns = document.querySelectorAll('button.grading-btn')
-    
-
+    requirementList.addEventListener('click', e => {
+    let btns = document.querySelectorAll('button.grading-btn');
     btns.forEach(btn => {
         if (e.target === btn) {
             handleGrading(e);
@@ -272,7 +270,7 @@ function checkBtn(e) {
             parent.classList.add('error');
         }
     })
-
+    updateProgressBar()
 }
 
 function loadProjectRequirements(data) {
@@ -309,6 +307,7 @@ function loadProjectRequirements(data) {
 
             section.requirements.forEach(req => {
                 const li = document.createElement('li');
+                li.setAttribute('data-requirement', '');
                 if (req.isExceeds) {
                     const exceedsIcon = document.createElement('i');
                     exceedsIcon.classList = "fa-solid fa-star exceedsicon";
@@ -363,6 +362,15 @@ function loadProjectRequirements(data) {
         });
         createReqFooter();
     }
+}
+
+function updateProgressBar() {
+    let reqs = document.querySelectorAll('[data-requirement]');
+    let gradedReqs = document.querySelectorAll('.graded');
+    const progressBar = document.querySelector('[data-progress-bar]');
+    let progress = gradedReqs.length / reqs.length * 100;
+
+    progressBar.style.setProperty('--req-progress', `${progress}%`)
 }
 
 function createReqFooter() {

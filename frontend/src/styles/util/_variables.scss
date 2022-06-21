@@ -20,14 +20,13 @@ $view-container-width: 100%;
 $utility-panel-width: 50px;
 $off-screen-panel-width: 350px;
 
-
 // td colors
-$fewd: #5FCF80;
-$fsjs: #3289F5;
-$wd: #00AB9E;
-$python: #009AC4;
-$dataanalysis: #D5609A;
-$ux: #9080FF;
+$fewd: #5fcf80;
+$fsjs: #3289f5;
+$wd: #00ab9e;
+$python: #009ac4;
+$dataanalysis: #d5609a;
+$ux: #9080ff;
 
 $gold: gold;
 $failing-grade-color: #ef8985;
@@ -37,17 +36,17 @@ $question-grade-color: rgb(171, 194, 203);
 body {
   // globals (dont change)
   --td-header-color: white;
-  --td-accent: #5FCF80;
-  --req-progress: 25%;
+  --td-accent: #5fcf80;
+  --req-progress: 0%;
 
   --close-btn-hover: rgba(0, 0, 0, 0.102);
 
   --primary-color: rgb(74, 83, 98);
-  --primary-bg: #F4F6F8;
+  --primary-bg: #f4f6f8;
 
-  --divider-color: #F4F6F8;
+  --divider-color: #f4f6f8;
 
-  --panel-bg: #F4F6F8;
+  --panel-bg: #f4f6f8;
   --view-container-bg: white;
 
   --td-header-bg: #363644;
@@ -64,31 +63,30 @@ body {
   --sub-req-bg: white;
   --req-btn-bg: var(--panel-bg);
   --req-item-shadow: #91a2a835;
-  --req-btn-color: #191b28;;;
+  --req-btn-color: #191b28;
   --req-btn-hover-bg: rgb(218, 226, 228);
 
   --req-footer-btn-primary-bg: var(--td-accent);
   --req-footer-btn-primary-color: white;
-  
+
   --req-footer-btn-secondary-bg: #393b5550;
   --req-footer-btn-secondary-color: white;
 
   &.dark {
-
     --close-btn-hover: rgba(255, 255, 255, 0.163);
 
     --primary-color: rgb(200, 204, 226);
-    --primary-bg: #2B2D40;
+    --primary-bg: #2b2d40;
 
-    --divider-color:#2B2D40;
+    --divider-color: #2b2d40;
 
     --panel-bg: #202231;
-    --view-container-bg: #2B2D40;
+    --view-container-bg: #2b2d40;
 
     --td-header-bg: #1a1c29;
     --td-header-bg-hover: #1a1c29;
 
-    --card-item-bg:#202231;
+    --card-item-bg: #202231;
     --card-item-boxshadow-color: #0000006f;
 
     --off-screen-border-color: #0000006f;
@@ -99,7 +97,7 @@ body {
     --sub-req-bg: var(--primary-bg);
     --req-btn-bg: var(--panel-bg);
     --req-btn-color: white;
-    --req-item-shadow: #191b28;;
+    --req-item-shadow: #191b28;
     --req-btn-hover-bg: #3e4258;
 
     --req-footer-btn-primary-bg: var(--td-accent);
