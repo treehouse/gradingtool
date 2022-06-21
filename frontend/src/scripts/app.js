@@ -221,6 +221,7 @@ requirementList.addEventListener('click', e => {
 function handleGrading(e) {
     let parent = e.target.parentNode.parentNode;
     let btns = parent.querySelectorAll('button');
+    let currentTextarea = e.target.parentNode.parentNode.querySelector('textarea');
     btns.forEach(btn => {
         btn.classList.remove('active');
         if (e.target === btn) {
@@ -229,15 +230,21 @@ function handleGrading(e) {
     });
     if (parent.classList.contains('exceeds-item')) {
         checkBtn(e);
+        currentTextarea.classList.remove('show');
+        currentTextarea.value = '';
     } else
     if (e.target.classList.contains('correct')) {
         checkBtn(e);
+        currentTextarea.classList.remove('show');
+        currentTextarea.value = '';
     } else
     if (e.target.classList.contains('question')) {
         checkBtn(e);
+        currentTextarea.classList.add('show');
     } else
     if (e.target.classList.contains('error')) {
         checkBtn(e);
+        currentTextarea.classList.add('show');
     }
 }
 
@@ -249,11 +256,14 @@ function checkBtn(e) {
 
     let currentRedoBtn = parent.querySelector('.redo');
     currentRedoBtn.classList.add('show');
+    let currentTextarea = e.target.parentNode.parentNode.querySelector('textarea');
     currentRedoBtn.addEventListener('click', () => {
         currentRedoBtn.classList.remove('show');
         currentRedoBtn.parentNode.parentNode.classList.remove('graded');
         currentRedoBtn.parentNode.querySelectorAll('button').forEach(btn => {
             btn.classList.remove('active');
+            currentTextarea.classList.remove('show');
+            currentTextarea.value = '';
         });
         updateProgressBar();
     })
@@ -263,8 +273,6 @@ function checkBtn(e) {
     } else {
         parent.classList = 'graded';
     }
-
-    if (e.target)
 
     correctBtns.forEach(btn => {
         if (e.target === btn) {
@@ -330,6 +338,7 @@ function loadProjectRequirements(data) {
                 subReqTitle.classList = 'sub-requirements-title';
                 subReqTitle.textContent = req.description;
                 const textarea = document.createElement('textarea');
+                textarea.setAttribute('placeholder', 'Optional - write a helpful message about your grade selection.')
                 const btnGroup = document.createElement('div');
                 btnGroup.classList.add('req-btn-group');
 

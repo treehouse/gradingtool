@@ -75,17 +75,23 @@
           @include radius(0.5rem);
           @include bg(var(--textarea-bg));
           @include theme-transition;
+          color: var(--primary-color);
+          transition: height 0.5s ease;
           font-family: "Gotham Rounded", sans-serif;
           border: none;
           margin: 0.25rem 0;
           opacity: 0.5;
+          &::placeholder {
+            color: var(--primary-color);
+            opacity: 0.5;
+          }
           &.show {
             height: 100px;
             padding: 1rem;
           }
           // transition: opacity .3s;
           &:focus {
-            outline: 1px solid var(--td-accent);
+            outline: 1px solid var(--panel-bg);
             opacity: 1;
           }
         }
