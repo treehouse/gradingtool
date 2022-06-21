@@ -208,6 +208,73 @@ tdList.addEventListener('click', e => {
     })
 });
 
+// grading requirements
+const requirementList = document.getElementById('requirementList');
+requirementList.addEventListener('click', e => {
+    let btns = document.querySelectorAll('button.grading-btn')
+    
+
+    btns.forEach(btn => {
+        if (e.target === btn) {
+            handleGrading(e);
+            btn.classList.add('active');
+        }
+    });
+});
+
+function handleGrading(e) {
+    let parent = e.target.parentNode.parentNode;
+    let btns = parent.querySelectorAll('button');
+    btns.forEach(btn => {
+        btn.classList.remove('active');
+        if (e.target === btn) {
+            btn.classList.add('active');
+        }
+    });
+    if (parent.classList.contains('exceeds-item')) {
+        checkBtn(e);
+    } else
+    if (e.target.classList.contains('correct')) {
+        checkBtn(e);
+    } else
+    if (e.target.classList.contains('question')) {
+        checkBtn(e);
+    } else
+    if (e.target.classList.contains('error')) {
+        checkBtn(e);
+    }
+}
+
+function checkBtn(e) {
+    let parent = e.target.parentNode.parentNode;
+    let correctBtns = document.querySelectorAll('button.correct');
+    let questionBtns = document.querySelectorAll('button.question');
+    let errorBtns = document.querySelectorAll('button.error');
+
+    if (parent.classList.contains('exceeds-item')) {
+        parent.classList = 'exceeds-item graded';
+    } else {
+        parent.classList = 'graded';
+    }
+
+    correctBtns.forEach(btn => {
+        if (e.target === btn) {
+            parent.classList.add('correct');
+        }
+    });
+    questionBtns.forEach(btn => {
+        if (e.target === btn) {
+            parent.classList.add('question')
+        }
+    });
+    errorBtns.forEach(btn => {
+        if (e.target === btn) {
+            parent.classList.add('error');
+        }
+    })
+
+}
+
 function loadProjectRequirements(data) {
     // project name in view header
     document.querySelector('[data-project-name]').textContent = data.title;
@@ -257,16 +324,19 @@ function loadProjectRequirements(data) {
                 btnGroup.classList.add('req-btn-group');
 
                 const correctBtn = document.createElement('button');  
+                correctBtn.classList = 'correct grading-btn';
                 const correctIcon = document.createElement('i');
                 correctIcon.classList = 'fa-solid fa-check';
                 correctBtn.appendChild(correctIcon);
 
-                const questionBtn = document.createElement('button');    
+                const questionBtn = document.createElement('button');   
+                questionBtn.classList = 'question grading-btn'; 
                 const questionIcon = document.createElement('i');
                 questionIcon.classList = 'fa-solid fa-question';
                 questionBtn.appendChild(questionIcon)
 
                 const errorBtn = document.createElement('button');
+                errorBtn.classList = 'error grading-btn';
                 const errorIcon = document.createElement('i');
                 errorIcon.classList = 'fa-solid fa-xmark';
                 errorBtn.appendChild(errorIcon);
@@ -312,6 +382,7 @@ function createReqFooter() {
     reqFooter.appendChild(btnGroup);
     requirementList.appendChild(reqFooter)
 }
+
 
 
 
