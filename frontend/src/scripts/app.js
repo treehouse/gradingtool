@@ -7,9 +7,6 @@ const imgs = [
     './frontend/dist/images/dataanalysis.png',
     './frontend/dist/images/ux.png',
 ];
-const colors = [
-    '#5FCF80', '#3289F5', '#00AB9E', '#009AC4', '#D5609A', '#9080FF'
-];
 
 
 /**
@@ -141,8 +138,7 @@ function loadProjectList(id) {
         
     function populate(data, id) {
         // update accent color
-        // document.body.style.setProperty('--td-accent', data.color);
-        document.body.style.setProperty('--td-accent', colors[id -1]);
+        document.body.style.setProperty('--td-accent', data.color);
         // update logo (HARDCODED)
         document.querySelector('[data-td-logo]').src = imgs[id -1];
         // update td name in left panel
@@ -165,9 +161,13 @@ function loadProjectList(id) {
                 li.setAttribute('data-project-id', proj.id);
                 li.setAttribute('data-project', '')
                 li.style.animationDelay = `${animationDelayTimer}ms`;
-                let span = document.createElement('span');
-                span.textContent = proj.title;
-                li.appendChild(span);
+                let spanNum = document.createElement('span');
+                spanNum.classList = 'proj-num';
+                spanNum.textContent = `P${proj.id}`
+                let spanName = document.createElement('span');
+                spanName.textContent = `- ${proj.title}`;
+                li.appendChild(spanNum);
+                li.appendChild(spanName);
                 animationDelayTimer += 100;
                 projList.appendChild(li);
             })
@@ -186,6 +186,10 @@ function loadProjectList(id) {
  * vars
  * funcs
  */
+
+// views
+const reqView = document.querySelector('.view.requirement-list');
+const outputView = document.querySelector('.view.finished-output-list');
 
 const tdList = document.getElementById('tdProjectList');
 tdList.addEventListener('click', e => {
@@ -423,11 +427,26 @@ function createReqFooter() {
     requirementList.appendChild(reqFooter)
 }
 
-function showView(view) {
-    document.querySelectorAll('.view').forEach(view => { view.style.display = 'none'; })
+
+
+
+
+
+
+
+/**
+ * 
+ * final output window
+ * vars
+ * funcs
+ * 
+ */
+
+ function showView(view) {
+    view.style.display = 'block';
 }
 
-
+showView(reqView);
 
 
 
