@@ -56,8 +56,8 @@
             @include theme-transition;
             font-size: 1rem;
             position: absolute;
-            top: -17px;
-            left: -18px;
+            top: -13px;
+            left: -11px;
             color: $gold;
             color: var(--td-accent);
             color: $gold;
@@ -76,7 +76,7 @@
           @include bg(var(--textarea-bg));
           @include theme-transition;
           color: var(--primary-color);
-          transition: height 0.5s ease;
+          transition: height 0.5s ease, padding 0.5s ease;
           font-family: "Gotham Rounded", sans-serif;
           border: none;
           margin: 0.25rem 0;

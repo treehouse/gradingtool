@@ -46,13 +46,14 @@ body {
 
   --divider-color: #f4f6f8;
 
-  --panel-bg: #f4f6f8;
+  --panel-bg: #e7eaee;
   --view-container-bg: white;
+  --view-container-bg: var(--primary-bg);
 
   --td-header-bg: #363644;
   --td-header-bg-hover: #444453;
 
-  --card-item-bg: white;
+  // --card-item-bg: white;
   --card-item-boxshadow-color: #91a2a835;
 
   --off-screen-border-color: rgb(222, 226, 235);
@@ -60,7 +61,7 @@ body {
   --view-header-progress-bg: var(--panel-bg);
 
   --textarea-bg: var(--panel-bg);
-  --sub-req-bg: white;
+  --sub-req-bg: var(--primary-bg);
   --req-btn-bg: var(--panel-bg);
   --req-item-shadow: #91a2a835;
   --req-btn-color: #191b28;
@@ -76,12 +77,13 @@ body {
     --close-btn-hover: rgba(255, 255, 255, 0.163);
 
     --primary-color: rgb(200, 204, 226);
-    --primary-bg: #2b2d40;
+    --primary-bg: #2d334a;
 
     --divider-color: #2b2d40;
 
     --panel-bg: #202231;
     --view-container-bg: #2b2d40;
+    --view-container-bg: var(--primary-bg);
 
     --td-header-bg: #1a1c29;
     --td-header-bg-hover: #1a1c29;
