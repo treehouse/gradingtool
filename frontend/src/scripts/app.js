@@ -156,16 +156,16 @@ function loadProjectList(id) {
         } else {
             toggleDropdown();
             requirementList.innerHTML = '';
-            data.projects.forEach(proj => {
+            data.projects.forEach((proj, index) => {
                 let li = document.createElement('li');
                 li.setAttribute('data-project-id', proj.id);
                 li.setAttribute('data-project', '')
                 li.style.animationDelay = `${animationDelayTimer}ms`;
                 let spanNum = document.createElement('span');
                 spanNum.classList = 'proj-num';
-                spanNum.textContent = `P${proj.id}`
+                spanNum.textContent = index + 1;
                 let spanName = document.createElement('span');
-                spanName.textContent = `- ${proj.title}`;
+                spanName.textContent = proj.title;
                 li.appendChild(spanNum);
                 li.appendChild(spanName);
                 animationDelayTimer += 100;
