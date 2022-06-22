@@ -1,26 +1,27 @@
 .techdegree-panel {
-    header {
-        @include theme-transition;
-        @include bg(var(--td-header-bg));
-        @include flex(row, nowrap, flex-start, center);
-        z-index: 100;
-        color: var(--td-header-color);
-        padding: .5rem 1rem;
-        cursor: pointer;
-        &:hover {
-            @include bg(var(--td-header-bg-hover));
-        }
-        img {
-            max-width: 50px;
-            margin-right: 1rem;
-        }
-        p {
-            margin: auto auto auto .25rem;
-            font-size: .9rem;
-        }
-        i {
-            margin-left: 1rem;
-            transition: transform .3s .3s ease-in-out;
-        }
+  header {
+    @include theme-transition;
+    @include bg(var(--td-header-bg));
+    @include flex(row, nowrap, flex-start, center);
+    z-index: 100;
+    color: var(--td-header-color);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    &:hover {
+      @include bg(var(--td-header-bg-hover));
     }
+    img {
+      max-width: 50px;
+      margin-right: 1rem;
+      filter: brightness(100);
+    }
+    p {
+      margin: auto auto auto 0.25rem;
+      font-size: 0.9rem;
+    }
+    i {
+      margin-left: 1rem;
+      transition: transform 0.3s 0.3s ease-in-out;
+    }
+  }
 }

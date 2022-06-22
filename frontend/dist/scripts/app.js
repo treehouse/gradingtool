@@ -38,7 +38,7 @@ loaders.forEach((loader => {
 
 const tdName = document.querySelectorAll('[data-td-name]');
 tdName.forEach(name => {
-    name.textContent = 'Frontend Web Development'
+    name.textContent = 'Treehouse Grading Tool'
 });
 const lightTheme = document.getElementById('light');
 const darkTheme = document.getElementById('dark');
@@ -69,9 +69,11 @@ const techdegreeDropdown = document.getElementById('techdegreeDropdown');
 const techdegreeDropdownArrow = techdegreeHeader.querySelector('i');
 const dropdownLoader = techdegreeDropdown.querySelector('.loader');
 
-if (!localStorage.favoritedTd) {
-    toggleDropdown();
-}
+// if (!localStorage.favoritedTd) {
+//     toggleDropdown();
+// }
+
+toggleDropdown();
 
 
 fetch('https://grading-tool-api.herokuapp.com/api/techdegrees')
@@ -141,6 +143,7 @@ function loadProjectList(id) {
         document.body.style.setProperty('--td-accent', data.color);
         // update logo (HARDCODED)
         document.querySelector('[data-td-logo]').src = imgs[id -1];
+        document.querySelector('[data-td-logo]').style.filter = 'brightness(1)';
         // update td name in left panel
         document.querySelector('[data-td-name]').textContent = data.name;
         // update project list
@@ -154,7 +157,7 @@ function loadProjectList(id) {
             document.querySelector('[data-project-name]').textContent = '';
             requirementList.innerHTML = '<p class="no-data-message">There is no data for this Techdegree.</p>'
         } else {
-            toggleDropdown();
+            // toggleDropdown(); 
             requirementList.innerHTML = '';
             data.projects.forEach((proj, index) => {
                 let li = document.createElement('li');
