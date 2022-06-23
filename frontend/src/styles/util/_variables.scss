@@ -31,7 +31,7 @@ $ux: #9080ff;
 $gold: gold;
 $failing-grade-color: #ef8985;
 $passing-grade-color: #7eda98;
-$question-grade-color: rgb(171, 194, 203);
+$question-grade-color: rgb(191, 200, 214);
 
 body {
   // globals (dont change)
@@ -60,6 +60,7 @@ body {
 
   --view-header-progress-bg: var(--panel-bg);
 
+  --req-number: rgb(74, 83, 98);
   --textarea-bg: var(--panel-bg);
   --sub-req-bg: var(--primary-bg);
   --req-btn-bg: var(--panel-bg);
@@ -97,6 +98,7 @@ body {
 
     --view-header-progress-bg: var(--panel-bg);
 
+    --req-number: rgb(191, 200, 214);
     --textarea-bg: var(--panel-bg);
     --sub-req-bg: var(--primary-bg);
     --req-btn-bg: var(--panel-bg);

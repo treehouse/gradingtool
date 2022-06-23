@@ -190,9 +190,6 @@ function loadProjectList(id) {
  * funcs
  */
 
-// views
-const reqView = document.querySelector('.view.requirement-list');
-const outputView = document.querySelector('.view.finished-output-list');
 
 const tdList = document.getElementById('tdProjectList');
 tdList.addEventListener('click', e => {
@@ -427,7 +424,8 @@ function createReqFooter() {
     btnGroup.appendChild(finishBtn);
     btnGroup.appendChild(clearBtn);
     reqFooter.appendChild(btnGroup);
-    requirementList.appendChild(reqFooter)
+    requirementList.appendChild(reqFooter);
+
 }
 
 
@@ -445,11 +443,26 @@ function createReqFooter() {
  * 
  */
 
+// views
+
+const reqView = document.querySelector('.view.requirement-list');
+const outputView = document.querySelector('.view.finished-output-list');
+
  function showView(view) {
     view.style.display = 'block';
 }
 
+// const finishReviewBtn = document.querySelector('[data-finish-review]');
+// const backToReviewBtn = document.querySelector('');
+// const clearReviewBtn = document.querySelector('');
+
 showView(reqView);
+
+
+
+// document.querySelector('[data-finish-review]').addEventListener('click', () => {
+//     alert();
+// })
 
 
 

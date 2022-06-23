@@ -21,7 +21,7 @@
         @include radius(50%);
         @include simple-size(30px);
         @include center-flex;
-        @include bg(var(--td-accent));
+        @include bg(var(--req-number));
         min-height: 30px;
         min-width: 30px;
         margin-right: 1rem;
