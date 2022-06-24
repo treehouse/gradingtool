@@ -103,9 +103,7 @@ function toggleDropdown() {
         techdegreeDropdown.removeAttribute('active');
         techdegreeDropdown.style.animation = 'bounceOutUp 1s ease-in-out forwards'
         techdegreeDropdownArrow.style.transform = 'rotate(0deg)'
-        setTimeout(() => {
-            techdegreeDropdown.style.display = 'none';
-        }, 600)
+        techdegreeDropdown.style.display = 'none';
     } else {
         techdegreeDropdown.setAttribute('active', '');
         techdegreeDropdown.style.display = 'block';
@@ -115,23 +113,21 @@ function toggleDropdown() {
 }
 
 function loadTechdegrees(data) {
-    setTimeout(() => {
-        dropdownLoader.style.display = 'none';
-        const ul = document.createElement('ul');
-        document.getElementById('techdegreeDropdown').appendChild(ul);
-        data.forEach(td => {
-            let li = document.createElement('li');
-            li.setAttribute('data-dropdown-td-name', '');
-            let span = document.createElement('span');
-            span.setAttribute('data-td-list-item-id', td.id);
-            span.textContent = td.name;
-            let icon = document.createElement('i');
-            icon.classList = 'fa-solid fa-star';
-            li.appendChild(span);
-            li.appendChild(icon);
-            ul.appendChild(li);
-        })
-    }, 1000)
+    dropdownLoader.style.display = 'none';
+    const ul = document.createElement('ul');
+    document.getElementById('techdegreeDropdown').appendChild(ul);
+    data.forEach(td => {
+        let li = document.createElement('li');
+        li.setAttribute('data-dropdown-td-name', '');
+        let span = document.createElement('span');
+        span.setAttribute('data-td-list-item-id', td.id);
+        span.textContent = td.name;
+        let icon = document.createElement('i');
+        icon.classList = 'fa-solid fa-star';
+        li.appendChild(span);
+        li.appendChild(icon);
+        ul.appendChild(li);
+    })
 }
 
 function loadProjectList(id) {
@@ -273,6 +269,9 @@ function checkBtn(e) {
     currentRedoBtn.addEventListener('click', () => {
         currentRedoBtn.classList.remove('show');
         currentRedoBtn.parentNode.parentNode.classList.remove('graded');
+        currentRedoBtn.parentNode.parentNode.classList.remove('error');
+        currentRedoBtn.parentNode.parentNode.classList.remove('correct');
+        currentRedoBtn.parentNode.parentNode.classList.remove('question');
         currentRedoBtn.parentNode.querySelectorAll('button').forEach(btn => {
             btn.classList.remove('active');
             currentTextarea.classList.remove('show');
@@ -435,17 +434,19 @@ const reqFooter = document.querySelector('.req-footer');
 const reqView = document.querySelector('.view.requirement-list');
 const outputView = document.querySelector('.view.finished-output-list');
 const finishReview = document.querySelector('[data-finish-review]');
-const clearReview = document.querySelector('[data-clear-review]');
 const backToReview = document.querySelector('[data-back-btn]');
 
+// default to show reqView
 reqView.style.display = 'block';
 
+// show ReqView
 function showReqView() {
     reqView.style.display = 'block';
     reqFooter.style.display = 'block';
     outputView.style.display = 'none';
 }
 
+// show OutputView
 function showOutputView() {
     reqView.style.display = 'none';
     reqFooter.style.display = 'none';
@@ -453,22 +454,16 @@ function showOutputView() {
     document.querySelector('[data-project-name]').textContent += ' (final output)';
 }
 
+// hide all views
 function hideViews() {
     reqView.style.display = 'none';
     reqFooter.style.display = 'none';
     outputView.style.display = 'none';
 }
 
-
-
+// finish and and back buttons
 finishReview.addEventListener('click', showOutputView);
 backToReview.addEventListener('click', showReqView);
-
-
-
-// document.querySelector('[data-finish-review]').addEventListener('click', () => {
-//     alert();
-// })
 
 
 
