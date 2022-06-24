@@ -103,7 +103,9 @@ function toggleDropdown() {
         techdegreeDropdown.removeAttribute('active');
         techdegreeDropdown.style.animation = 'bounceOutUp 1s ease-in-out forwards'
         techdegreeDropdownArrow.style.transform = 'rotate(0deg)'
-        techdegreeDropdown.style.display = 'none';
+        setTimeout(() => {
+            techdegreeDropdown.style.display = 'none';
+        }, 600)
     } else {
         techdegreeDropdown.setAttribute('active', '');
         techdegreeDropdown.style.display = 'block';
