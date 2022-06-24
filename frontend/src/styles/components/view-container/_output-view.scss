@@ -1,0 +1,16 @@
+.view.finished-output-list {
+  padding: 1rem;
+  .output-header {
+    @include flex(row, nowrap, space-between, center);
+    button {
+      @include bg(transparent);
+      color: var(--primary-color);
+      border: none;
+      font-size: 1.33rem;
+      cursor: pointer;
+      i {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}

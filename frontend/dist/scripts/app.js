@@ -91,7 +91,7 @@ techdegreeDropdown.addEventListener('click', e => {
             let span = td.querySelector('span');
             let id = span.getAttribute('data-td-list-item-id');
             loadProjectList(id);
-            reqFooter.style.display = 'none';
+            hideViews();
             document.querySelector('[data-project-name]').textContent = '';
         }
     })
@@ -141,6 +141,7 @@ function loadProjectList(id) {
         .then(data => populate(data, id))
         
     function populate(data, id) {
+        resetProgressBar();
         // update accent color
         document.body.style.setProperty('--td-accent', data.color);
         // update logo (HARDCODED)
@@ -435,6 +436,7 @@ const reqView = document.querySelector('.view.requirement-list');
 const outputView = document.querySelector('.view.finished-output-list');
 const finishReview = document.querySelector('[data-finish-review]');
 const clearReview = document.querySelector('[data-clear-review]');
+const backToReview = document.querySelector('[data-back-btn]');
 
 reqView.style.display = 'block';
 
@@ -451,8 +453,16 @@ function showOutputView() {
     document.querySelector('[data-project-name]').textContent += ' (final output)';
 }
 
-finishReview.addEventListener('click', showOutputView)
+function hideViews() {
+    reqView.style.display = 'none';
+    reqFooter.style.display = 'none';
+    outputView.style.display = 'none';
+}
 
+
+
+finishReview.addEventListener('click', showOutputView);
+backToReview.addEventListener('click', showReqView);
 
 
 
