@@ -171,3 +171,14 @@
     border-color: $failing-grade-color;
   }
 }
+
+.requirement-list
+  ul.requirement
+  ul.sub-requirements
+  li.exceeds-item
+  .req-btn-group
+  button.active {
+  &.correct {
+    border-color: $gold;
+  }
+}

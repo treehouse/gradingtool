@@ -1,31 +1,37 @@
 .req-footer {
-    margin: 1rem 0;
-    .btn-group {
-        @include flex(row, nowrap, flex-start, center);
-        button {
-            @include radius(5px);
-            font-family: 'Gotham Rounded', sans-serif;
-            font-size: .9rem;
-            font-weight: 400;
-            cursor: pointer;
-            padding: .75rem 1rem;
-            border: none;
-            margin-right: .5rem;
-            transition: color .3s ease, background .3s ease, transform .3s ease-in-out;
-            &:last-child {
-                margin-right: 0;
-            }
-            &:nth-child(1) {
-                @include bg(var(--req-footer-btn-primary-bg));
-                color: var(--req-footer-btn-primary-color);
-            }
-            &:nth-child(2) {
-                @include bg(var(--req-footer-btn-secondary-bg));
-                color: var(--req-footer-btn-secondary-color)
-            }
-            &:hover {
-                transform: scale(1.05);
-            }
-        }
+  margin: 0 0 2rem;
+  padding: 0 1rem;
+  &.disabled {
+    display: none;
+  }
+  .btn-group {
+    @include flex(row, nowrap, flex-start, center);
+    button {
+      @include radius(5px);
+      font-family: "Gotham Rounded", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      cursor: pointer;
+      padding: 0.75rem 1rem;
+      border: none;
+      margin-right: 0.5rem;
+      transition: color 0.3s ease, background 0.3s ease,
+        transform 0.3s ease-in-out;
+      &:last-child {
+        margin-right: 0;
+      }
+      &:nth-child(1) {
+        @include bg(var(--req-footer-btn-primary-bg));
+        color: var(--req-footer-btn-primary-color);
+        color: white;
+      }
+      &:nth-child(2) {
+        @include bg(var(--req-footer-btn-secondary-bg));
+        color: var(--req-footer-btn-secondary-color);
+      }
+      &:hover {
+        transform: scale(1.05);
+      }
     }
+  }
 }

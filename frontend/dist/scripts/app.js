@@ -91,6 +91,8 @@ techdegreeDropdown.addEventListener('click', e => {
             let span = td.querySelector('span');
             let id = span.getAttribute('data-td-list-item-id');
             loadProjectList(id);
+            reqFooter.style.display = 'none';
+            document.querySelector('[data-project-name]').textContent = '';
         }
     })
 })
@@ -303,6 +305,7 @@ function checkBtn(e) {
 }
 
 function loadProjectRequirements(data) {
+    showReqView();
     // project name in view header
     document.querySelector('[data-project-name]').textContent = data.title;
     const requirementList = document.getElementById('requirementList');
@@ -390,8 +393,9 @@ function loadProjectRequirements(data) {
                 
                 ulParent.appendChild(subRequirementParent);
             });
+            reqFooter.classList.remove('disabled');
         });
-        createReqFooter();
+        // createReqFooter();
     }
 }
 
@@ -407,25 +411,6 @@ function updateProgressBar() {
 function resetProgressBar() {
     const progressBar = document.querySelector('[data-progress-bar]');
     progressBar.style.setProperty('--req-progress', '0%');
-}
-
-function createReqFooter() {
-    const requirementList = document.getElementById('requirementList');
-    const reqFooter = document.createElement('div');
-    reqFooter.classList = 'req-footer';
-    const btnGroup = document.createElement('div');
-    btnGroup.classList = 'btn-group';
-    let finishBtn = document.createElement('button');
-    finishBtn.setAttribute('data-finish-review', '');
-    finishBtn.textContent = 'Finish Review';
-    let clearBtn = document.createElement('button');
-    clearBtn.setAttribute('data-clear-review', '');
-    clearBtn.textContent = 'Clear Review';
-    btnGroup.appendChild(finishBtn);
-    btnGroup.appendChild(clearBtn);
-    reqFooter.appendChild(btnGroup);
-    requirementList.appendChild(reqFooter);
-
 }
 
 
@@ -445,18 +430,29 @@ function createReqFooter() {
 
 // views
 
+const reqFooter = document.querySelector('.req-footer');
 const reqView = document.querySelector('.view.requirement-list');
 const outputView = document.querySelector('.view.finished-output-list');
+const finishReview = document.querySelector('[data-finish-review]');
+const clearReview = document.querySelector('[data-clear-review]');
 
- function showView(view) {
-    view.style.display = 'block';
+reqView.style.display = 'block';
+
+function showReqView() {
+    reqView.style.display = 'block';
+    reqFooter.style.display = 'block';
+    outputView.style.display = 'none';
 }
 
-// const finishReviewBtn = document.querySelector('[data-finish-review]');
-// const backToReviewBtn = document.querySelector('');
-// const clearReviewBtn = document.querySelector('');
+function showOutputView() {
+    reqView.style.display = 'none';
+    reqFooter.style.display = 'none';
+    outputView.style.display = 'block';
+    document.querySelector('[data-project-name]').textContent += ' (final output)';
+}
 
-showView(reqView);
+finishReview.addEventListener('click', showOutputView)
+
 
 
 
