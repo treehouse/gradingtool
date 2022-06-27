@@ -7,13 +7,18 @@
     height: 100%;
     max-height: calc(100vh - 100px);
     overflow-y: auto;
+    position: relative;
+    &.disabled {
+      pointer-events: none;
+      overflow: hidden;
+    }
     .loader-container {
       @include bg(#1a1c29);
       @include radius(1rem);
       @include absolute-center;
       @include center-flex();
       @include size(100px, 200px);
-      position: fixed !important;
+      position: absolute !important;
       box-shadow: 0 4px 4px rgba(black, 0.15);
       padding: 2rem;
       display: none;

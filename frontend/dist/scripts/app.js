@@ -145,6 +145,7 @@ function loadProjectList(id) {
     function populate(data, id) {
         if (document.querySelector('.td-project-list .loader')) {
             document.querySelector('.td-project-list .loader').style.display = 'none';
+            views.classList.add('disabled');
         }
         resetProgressBar();
         // update accent color
@@ -198,10 +199,13 @@ function loadProjectList(id) {
 
 
 const tdList = document.getElementById('tdProjectList');
+const views = document.querySelector('.views');
 tdList.addEventListener('click', e => {
     let projects = document.querySelectorAll('[data-project]');
     if (document.querySelector('.views .loader')) {
         document.querySelector('.views .loader').parentNode.style.display = 'flex';
+        views.scrollTop = '0';
+        views.classList.add('disabled');
     }
     projects.forEach(proj => {
         if (e.target === proj) {
@@ -318,6 +322,7 @@ function loadProjectRequirements(data) {
     showReqView();
     if (document.querySelector('.views .loader')) {
         document.querySelector('.views .loader').parentNode.style.display = 'none';
+        views.classList.remove('disabled');
     }
     // project name in view header
     document.querySelector('[data-project-name]').textContent = data.title;
