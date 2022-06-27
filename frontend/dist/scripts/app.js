@@ -16,6 +16,7 @@ const imgs = [
 const loaderDots = 3;
 const loaders = document.querySelectorAll('.loader');
 loaders.forEach((loader => {
+    loader.parentNode.style.position = 'relative';
     loader.setAttribute('data-loader', '');
     let p = document.createElement('p');
     p.textContent = 'loading..';
@@ -90,6 +91,9 @@ techdegreeDropdown.addEventListener('click', e => {
         if (e.target == td) {
             let span = td.querySelector('span');
             let id = span.getAttribute('data-td-list-item-id');
+            if (document.querySelector('.td-project-list .loader')) {
+                document.querySelector('.td-project-list .loader').style.display = 'block';
+            }
             loadProjectList(id);
             hideViews();
             document.querySelector('[data-project-name]').textContent = '';
@@ -139,6 +143,9 @@ function loadProjectList(id) {
         .then(data => populate(data, id))
         
     function populate(data, id) {
+        if (document.querySelector('.td-project-list .loader')) {
+            document.querySelector('.td-project-list .loader').style.display = 'none';
+        }
         resetProgressBar();
         // update accent color
         document.body.style.setProperty('--td-accent', data.color);
@@ -182,8 +189,6 @@ function loadProjectList(id) {
 
 
 
-
-
 /**
  * 
  * views (requirements)
@@ -195,6 +200,9 @@ function loadProjectList(id) {
 const tdList = document.getElementById('tdProjectList');
 tdList.addEventListener('click', e => {
     let projects = document.querySelectorAll('[data-project]');
+    if (document.querySelector('.views .loader')) {
+        document.querySelector('.views .loader').parentNode.style.display = 'flex';
+    }
     projects.forEach(proj => {
         if (e.target === proj) {
             resetProgressBar();
@@ -308,6 +316,9 @@ function checkBtn(e) {
 
 function loadProjectRequirements(data) {
     showReqView();
+    if (document.querySelector('.views .loader')) {
+        document.querySelector('.views .loader').parentNode.style.display = 'none';
+    }
     // project name in view header
     document.querySelector('[data-project-name]').textContent = data.title;
     const requirementList = document.getElementById('requirementList');

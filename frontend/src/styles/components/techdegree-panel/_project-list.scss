@@ -1,5 +1,11 @@
 ul.td-project-list {
+  @include loader(1vmin, 1rem);
+  position: relative;
   padding: 1rem;
+  .loader {
+    margin-top: 2rem;
+    display: none;
+  }
   li {
     @include flex(row, nowrap, flex-start, center);
     padding: 0.25rem 0.33rem;
