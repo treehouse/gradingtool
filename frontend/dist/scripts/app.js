@@ -546,3 +546,16 @@ function handleActiveUtility(index) {
     utilityIcon[index].classList.add('active');
     utilitySectionTitles[index].classList.add('active');
 }
+
+
+
+
+
+
+/**
+ * 
+ * final output view
+ * 
+ * 
+ */
+

@@ -64,13 +64,6 @@
                 </div>
                 <div class="view requirement-list" id="requirementList">
                     <!-- dynamic content -->
-
-                    <!-- <div class="req-footer">
-                        <div class="btn-group">
-                            <button>Finish Review</button>
-                            <button>Clear Review</button>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="req-footer disabled">
                     <div class="btn-group">
@@ -83,6 +76,16 @@
                             <i class="fa-solid fa-circle-chevron-left"></i>
                             Back to review
                         </button>
+                    </div>
+                    <div class="review-container">
+                        <div class="review-header">
+                            <div class="btn-group">
+                                <button class="active" title="toggle correctly graded requirements" data-show-correct=""><i class="fa-solid fa-check"></i></button>
+                                <button class="active" title="toggle questionable graded requirements" data-show-question=""><i class="fa-solid fa-question"></i></button>
+                                <button class="active" title="toggle incorrect graded requirements" data-show-wrong=""><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                            <p class="header-description">Showing all requirement grades</p>
+                        </div>
                     </div>
                 </div>
             </div>

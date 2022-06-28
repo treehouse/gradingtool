@@ -74,6 +74,8 @@ body {
   --req-footer-btn-secondary-bg: #393b5550;
   --req-footer-btn-secondary-color: white;
 
+  --review-output-toggle-btn: #373d55;
+
   &.dark {
     --close-btn-hover: rgba(255, 255, 255, 0.163);
 
@@ -111,5 +113,7 @@ body {
 
     --req-footer-btn-secondary-bg: rgba(255, 255, 255, 0.101);
     --req-footer-btn-secondary-color: white;
+
+    --review-output-toggle-btn: rgb(200, 204, 226);
   }
 }
