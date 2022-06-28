@@ -1,6 +1,7 @@
 .view.finished-output-list {
   padding: 1rem;
   animation: fadeInUp 0.5s ease forwards;
+  height: calc(100vh - 225px);
   .output-header {
     @include flex(row, nowrap, space-between, center);
     button {
@@ -15,10 +16,13 @@
     }
   }
   .review-container {
+    @include flex(column, nowrap, flex-start, stretch);
     margin-top: 2rem;
     @include bg(var(--panel-bg));
     padding: 2rem;
     @include radius(10px);
+    max-height: 100%;
+    overflow: hidden;
     .review-header {
       .btn-group {
         @include flex(row, nowrap, center, center);
@@ -48,6 +52,29 @@
         text-align: center;
         margin-top: 1rem;
         font-size: 0.8rem;
+      }
+    }
+    .review-output {
+      margin-top: 1.5rem;
+      overflow-y: auto;
+    }
+    .review-footer {
+      margin-top: 1.5rem;
+      button {
+        @include bg(var(--td-accent));
+        color: white;
+        @include radius(5px);
+        font-family: "Gotham Rounded", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 400;
+        cursor: pointer;
+        padding: 0.75rem 1rem;
+        border: none;
+        transition: transform 0.3s ease-in-out, background 0.3s ease,
+          color 0.3s ease;
+        &:hover {
+          transform: scale(1.05);
+        }
       }
     }
   }
