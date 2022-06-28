@@ -57,6 +57,24 @@
     .review-output {
       margin-top: 1.5rem;
       overflow-y: auto;
+      ul {
+        margin: 2.5rem;
+        li {
+          margin: 0.25rem auto;
+          i {
+            margin-right: 0.33rem;
+            &.fa-check {
+              color: $passing-grade-color;
+            }
+            &.fa-question {
+              color: $question-grade-color;
+            }
+            &.fa-xmark {
+              color: $failing-grade-color;
+            }
+          }
+        }
+      }
     }
     .review-footer {
       margin-top: 1.5rem;
