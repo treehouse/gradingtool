@@ -454,6 +454,11 @@ const outputView = document.querySelector('.view.finished-output-list');
 const finishReview = document.querySelector('[data-finish-review]');
 const backToReview = document.querySelector('[data-back-btn]');
 
+const correctItemsList = document.querySelector('.correct-items-container');
+const questionItemsList = document.querySelector('.questioned-items-container');
+const incorrectItemsList = document.querySelector('.incorrect-items-container');
+
+
 // default to show reqView
 reqView.style.display = 'block';
 
@@ -462,6 +467,18 @@ function showReqView() {
     reqView.style.display = 'block';
     reqFooter.style.display = 'block';
     outputView.style.display = 'none';
+    clearGradedData();
+}
+
+function clearGradedData() {
+    gradedData.correctItems.meets = [];
+    gradedData.correctItems.exceeds = [];
+    gradedData.questionableItems = [];
+    gradedData.incorrectItems = [];
+
+    correctItemsList.innerHTML = '';
+    questionItemsList.innerHTML = '';
+    incorrectItemsList.innerHTML = '';
 }
 
 // show OutputView
@@ -479,10 +496,120 @@ function hideViews() {
     outputView.style.display = 'none';
 }
 
-// finish and and back buttons
-finishReview.addEventListener('click', showOutputView);
-backToReview.addEventListener('click', showReqView);
 
+let gradedData = {
+    correctItems: {
+        meets: [],
+        exceeds: [],
+    },
+    questionableItems: [],
+    incorrectItems: [],
+}
+
+function buildReview() {
+    let correct = document.querySelectorAll('.graded.correct');
+    let questioned = document.querySelectorAll('.graded.question');
+    let incorrect = document.querySelectorAll('.graded.error');
+
+
+    correct.forEach(item => {
+        if (item.classList.contains('exceeds-item')) {
+            gradedData.correctItems.exceeds.push(item)
+        } else {
+            gradedData.correctItems.meets.push(item)
+        }
+    });
+
+    questioned.forEach(item => {
+        let customText = item.querySelector('textarea').value;
+        gradedData.questionableItems.push({ req: item, text: customText });
+    });
+
+    incorrect.forEach(item => {
+        let customText = item.querySelector('textarea').value;
+        gradedData.incorrectItems.push({ req: item, text: customText });
+    });
+
+    
+
+    // building correct items
+    gradedData.correctItems.meets.forEach(item => {
+        let li = document.createElement('li');
+        li.classList.add('correct');
+        let icon = document.createElement('i');
+        icon.classList = 'fa-solid fa-check';
+        li.appendChild(icon);
+        let req = document.createElement('span');
+        req.textContent = item.textContent;
+        li.appendChild(req);
+        correctItemsList.appendChild(li);
+    });
+    gradedData.correctItems.exceeds.forEach(item => {
+        let li = document.createElement('li');
+        li.classList = 'correct exceeds'
+        let icon1 = document.createElement('i');
+        let icon2 = document.createElement('i');
+        icon1.classList = 'fa-solid fa-check';
+        icon2.classList = 'fa-solid fa-check';
+        li.appendChild(icon1);
+        li.appendChild(icon2);
+        let req = document.createElement('span');
+        req.textContent = item.textContent;
+        li.appendChild(req);
+        correctItemsList.appendChild(li);
+    });
+
+    // building questionable items
+    gradedData.questionableItems.forEach(item => {
+        let li = document.createElement('li');
+        li.classList = 'questioned';
+        let icon = document.createElement('i');
+        icon.classList = 'fa-solid fa-question';
+        li.appendChild(icon);
+        let req = document.createElement('span');
+        req.textContent = item.req.textContent;
+        li.appendChild(req);
+        let lineBreak = document.createElement('br');
+        li.appendChild(lineBreak);
+        if (item.text !== '') {
+            let customText = document.createElement('p');
+            customText.textContent = item.text;
+            li.appendChild(customText);
+        }
+        questionItemsList.appendChild(li);
+    })
+
+    // building incorrect items
+    gradedData.incorrectItems.forEach(item => {
+        let li = document.createElement('li');
+        li.classList = 'incorrect';
+        let icon = document.createElement('i');
+        icon.classList = 'fa-solid fa-xmark';
+        li.appendChild(icon);
+        let req = document.createElement('span');
+        req.textContent = item.req.textContent;
+        li.appendChild(req);
+        let lineBreak = document.createElement('br');
+        li.appendChild(lineBreak);
+        if (item.text !== '') {
+            let customText = document.createElement('p');
+            customText.textContent = item.text;
+            li.appendChild(customText);
+        }
+        incorrectItemsList.appendChild(li);
+    })
+
+
+
+}
+
+// finish and and back buttons
+finishReview.addEventListener('click', () => {
+    showOutputView();
+    buildReview();
+});
+
+backToReview.addEventListener('click', showReqView);
 
 
 
