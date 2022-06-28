@@ -38,10 +38,14 @@
           cursor: pointer;
           opacity: 0.4;
           transition: color 0.3s ease, border 0.3s ease, opacity 0.3s ease;
+          i {
+            pointer-events: none;
+          }
           &:hover {
             opacity: 0.6;
           }
           &.active {
+            @include bg(var(--primary-bg));
             color: var(--td-accent);
             border-color: var(--td-accent);
             opacity: 1;
@@ -73,6 +77,7 @@
         li {
           margin: 0.25rem auto;
           i {
+            display: inline;
             margin-right: 0.33rem;
             &.fa-check {
               color: $passing-grade-color;
@@ -82,6 +87,10 @@
             }
             &.fa-xmark {
               color: $failing-grade-color;
+            }
+            &.fa-star {
+              color: $gold;
+              filter: drop-shadow(0 1px 1px var(--td-header-bg));
             }
           }
           p {

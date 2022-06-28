@@ -61,6 +61,9 @@
             color: $gold;
             color: var(--td-accent);
             color: $gold;
+            &::before {
+              filter: drop-shadow(0 1px 1px var(--td-header-bg));
+            }
           }
           p.sub-requirements-title {
             margin-top: 0.75rem;

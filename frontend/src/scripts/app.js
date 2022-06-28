@@ -559,3 +559,53 @@ function handleActiveUtility(index) {
  * 
  */
 
+
+const reviewHeader = document.getElementById('review-header');
+const reviewHeader_toggle_correct = document.querySelector('[data-show-correct]');
+const reviewHeader_toggle_question = document.querySelector('[data-show-question]');
+const reviewHeader_toggle_wrong = document.querySelector('[data-show-wrong]');
+
+reviewHeader.addEventListener('click', e => {
+   
+    handleReviewToggles(e);
+});
+
+function handleReviewToggles(e) {
+
+    const correctItemsParent = document.querySelector('.correct-items-container');
+    const correctItems = document.querySelectorAll('.review-output li.correct');
+
+    const questionedItemsParent = document.querySelector('.questioned-items-container');
+    const questionedItems = document.querySelectorAll('.review-output li.questioned');
+
+    const incorrectItemsParent = document.querySelector('.incorrect-items-container');
+    const incorrectItems = document.querySelectorAll('.review-output li.incorrect');
+
+    if (e.target === reviewHeader_toggle_correct) {
+        e.target.classList.toggle('active');
+        if (!e.target.classList.contains('active')) {
+            correctItemsParent.style.display = 'none';
+            correctItemsParent.style.animationDelay = '0s';
+        } else {
+            correctItemsParent.style.display = 'block';
+        }
+    }
+    if (e.target === reviewHeader_toggle_question) {
+        e.target.classList.toggle('active');
+        if (!e.target.classList.contains('active')) {
+            questionedItemsParent.style.display = 'none';
+            questionedItemsParent.style.animationDelay = '0s';
+        } else {
+            questionedItemsParent.style.display = 'block';
+        }
+    }
+    if (e.target === reviewHeader_toggle_wrong) {
+        e.target.classList.toggle('active');
+        if (!e.target.classList.contains('active')) {
+            incorrectItemsParent.style.display = 'none';
+            incorrectItemsParent.style.animationDelay = '0s';
+        } else {
+            incorrectItemsParent.style.display = 'block';
+        }
+    }
+}

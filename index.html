@@ -14,7 +14,7 @@
     <script src="https://kit.fontawesome.com/6e358658ed.js" crossorigin="anonymous"></script>
     <title>Treehouse | Grading Tool</title>
 </head>
-<body class="">
+<body class="dark">
 
     <!-- no fly zone, yo -->
     <div class="no-fly-zone mobile">
@@ -78,7 +78,7 @@
                         </button>
                     </div>
                     <div class="review-container">
-                        <div class="review-header">
+                        <div class="review-header" id="review-header">
                             <div class="btn-group">
                                 <button class="active" title="toggle correctly graded requirements" data-show-correct=""><i class="fa-solid fa-check"></i></button>
                                 <button class="active" title="toggle questionable graded requirements" data-show-question=""><i class="fa-solid fa-question"></i></button>
@@ -87,7 +87,7 @@
                             <p class="header-description">Showing all requirement grades</p>
                         </div>
                         <div class="review-output">
-                            <ul>
+                            <ul class="correct-items-container">
                                 <!-- dynamic -->
                                 <li class="correct">
                                     <i class="fa-solid fa-check"></i>
@@ -111,22 +111,26 @@
                                 </li>
                                 <li class="correct">
                                     <i class="fa-solid fa-check"></i>
+                                    <i class="fa-solid fa-star"></i>
                                     <span>File names do not contain spaces.</span>
                                 </li>
                                 <li class="correct">
                                     <i class="fa-solid fa-check"></i>
+                                    <i class="fa-solid fa-star"></i>
                                     <span>Project includes index.html, a second html file, styles.css, a new profile image and a new background image.</span>
                                 </li>
                                 <li class="correct">
                                     <i class="fa-solid fa-check"></i>
+                                    <i class="fa-solid fa-star"></i>
                                     <span>Project must contain only one stylesheet</span>
                                 </li>
                                 <li class="correct">
                                     <i class="fa-solid fa-check"></i>
+                                    <i class="fa-solid fa-star"></i>
                                     <span>File names do not contain spaces.</span>
                                 </li>
                             </ul>
-                            <ul>
+                            <ul class="questioned-items-container">
                                 <li class="questioned">
                                     <i class="fa-solid fa-question"></i>
                                     <span>
@@ -152,7 +156,7 @@
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim minima perferendis ut accusamus omnis laudantium consequuntur facilis qui vel deserunt.</p>
                                 </li>
                             </ul>
-                            <ul>
+                            <ul class="incorrect-items-container">
                                 <li class="incorrect">
                                     <i class="fa-solid fa-xmark"></i>
                                     <span>
