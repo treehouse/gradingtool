@@ -889,6 +889,6 @@ initNewNoteBtn.addEventListener('click', () => {
     newNoteForm.classList.add('show');
 });
 
-newNoteForm.addEventListener('submit' e => {
+newNoteForm.addEventListener('submit', e => {
     e.preventDefault();
 })
