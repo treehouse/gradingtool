@@ -887,4 +887,8 @@ const newNoteForm = document.querySelector('form.new-note-form');
 
 initNewNoteBtn.addEventListener('click', () => {
     newNoteForm.classList.add('show');
+});
+
+newNoteForm.addEventListener('submit' e => {
+    e.preventDefault();
 })
