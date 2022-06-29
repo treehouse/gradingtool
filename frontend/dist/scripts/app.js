@@ -821,11 +821,8 @@ function copySlackMessage() {
                     setTimeout(() => {
                         copyBtn.textContent = 'Self Destructing in 1...'
                         setTimeout(() => {
-                            copyBtn.textContent = 'BOOM 💥'
-                            setTimeout(() => {
-                                location.reload();
-                            }, 1000)
-                        }, 1000)
+                            location.reload();
+                        }, 2000)
                     }, 1000)
                 }, 1000)
             }, 1000)
