@@ -1,0 +1,13 @@
+.project-notes-container {
+  details {
+    @include bg(var(--primary-bg));
+    @include radius(5px);
+    cursor: pointer;
+    padding: 1rem;
+    summary {
+    }
+    span {
+      font-weight: 300;
+    }
+  }
+}

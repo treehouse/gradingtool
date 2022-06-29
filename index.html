@@ -130,8 +130,23 @@
                 </div>
                 <i id="close-util-panel-btn" class="fa-solid fa-xmark close-btn"></i>
             </header>
+            <!-- project files -->
             <div data-util-section class="project-files-container util-item"></div>
-            <div data-util-section class="project-notes-container util-item"></div>
+
+            <!-- project notes -->
+            <div data-util-section class="project-notes-container util-item">
+                <details>
+                    <summary>Information about notes</summary>
+                    <br>
+                    Welcome to Notes!
+                    <br><br>
+                    <span>These are helpful snippets that are project specific. Please be aware that your notes are visible to everyone. This also means if you delete a note, it will be deleted for everyone. So be mindful when adding/deleting notes.</span>
+                    <br><br>
+                    <span>Also remember to keep this section maintained by deleting old notes from time-to-time.</span>
+                </details>
+            </div>
+
+            <!-- theme container -->
             <div data-util-section class="theme-container util-item show">
                 <ul>
                     <li><p>Choose your theme! 😎</p></li>
@@ -139,6 +154,8 @@
                     <li id="dark" class="active"><img src="./frontend/dist/images/darkmode.png" alt=""></li>
                 </ul>
             </div>
+
+            <!-- admin container -->
             <div data-util-section class="admin-container util-item">
                 <form action="">
                     <fieldset>
