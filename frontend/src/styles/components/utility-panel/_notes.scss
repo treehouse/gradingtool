@@ -8,6 +8,19 @@
     }
     span {
       font-weight: 300;
+      font-size: 0.9rem;
     }
+  }
+  button.add-new-note {
+    font-family: "Gotham Rounded", sans-serif;
+    cursor: pointer;
+    padding: 1rem;
+    width: 100%;
+    @include bg(var(--td-accent));
+    color: white;
+    border: none;
+    @include radius(5px);
+    text-align: center;
+    margin: 1rem auto;
   }
 }
