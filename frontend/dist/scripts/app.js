@@ -859,6 +859,10 @@ function copySlackMessage() {
 const accessBtn = document.querySelector('[data-login-access-btn]');
 const adminForm = document.querySelector('.admin-container form');
 
+accessBtn.addEventListener('animationend', () => {
+    accessBtn.style.animation = 'none';
+})
+
 adminForm.addEventListener('submit', e => {
     const errorMsg = document.querySelector('.admin-error-message');
     errorMsg.classList.add('show');

@@ -13,6 +13,7 @@
   }
   button.add-new-note {
     font-family: "Gotham Rounded", sans-serif;
+    @include theme-transition;
     cursor: pointer;
     padding: 1rem;
     width: 100%;
