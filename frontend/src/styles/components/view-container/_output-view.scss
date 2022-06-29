@@ -75,7 +75,12 @@
           animation-delay: 1s;
         }
         li {
-          margin: 0.25rem auto 0.75rem;
+          @include flex(row, nowrap, flex-start, center);
+          margin: 0.25rem auto 0.25rem;
+          &.questioned,
+          &.incorrect {
+            align-items: flex-start;
+          }
           i {
             display: inline;
             margin-right: 0.33rem;
@@ -96,6 +101,13 @@
           p {
             padding: 0.5rem 0 0.5rem 1.5rem;
             font-weight: 300;
+          }
+          span {
+            @include textOverflow(1);
+          }
+          .icon-container {
+            @include flex(row, nowrap, flex-end, center);
+            margin-right: 0.5rem;
           }
         }
       }

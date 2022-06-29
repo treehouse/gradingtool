@@ -536,9 +536,12 @@ function buildReview() {
     gradedData.correctItems.meets.forEach(item => {
         let li = document.createElement('li');
         li.classList.add('correct');
+        let div = document.createElement('div');
+        div.className = 'icon-container';
         let icon = document.createElement('i');
         icon.classList = 'fa-solid fa-check';
-        li.appendChild(icon);
+        div.appendChild(icon);
+        li.appendChild(div);
         let req = document.createElement('span');
         req.textContent = item.textContent;
         li.appendChild(req);
@@ -546,13 +549,16 @@ function buildReview() {
     });
     gradedData.correctItems.exceeds.forEach(item => {
         let li = document.createElement('li');
-        li.classList = 'correct exceeds'
+        li.classList = 'correct exceeds';
+        let div = document.createElement('div');
+        div.classList.add('icon-container');
         let icon1 = document.createElement('i');
         let icon2 = document.createElement('i');
         icon1.classList = 'fa-solid fa-check';
         icon2.classList = 'fa-solid fa-check';
-        li.appendChild(icon1);
-        li.appendChild(icon2);
+        div.appendChild(icon1);
+        div.appendChild(icon2);
+        li.appendChild(div);
         let req = document.createElement('span');
         req.textContent = item.textContent;
         li.appendChild(req);
@@ -563,19 +569,23 @@ function buildReview() {
     gradedData.questionableItems.forEach(item => {
         let li = document.createElement('li');
         li.classList = 'questioned';
+        const div1 = document.createElement('div');
+        div1.classList.add('icon-container');
         let icon = document.createElement('i');
         icon.classList = 'fa-solid fa-question';
-        li.appendChild(icon);
+        div1.appendChild(icon);
+        li.appendChild(div1);
+        const div2 = document.createElement('div2');
+        div2.classList.add('req-content');
         let req = document.createElement('span');
         req.textContent = item.req.textContent;
-        li.appendChild(req);
-        let lineBreak = document.createElement('br');
-        li.appendChild(lineBreak);
+        div2.appendChild(req);
         if (item.text !== '') {
             let customText = document.createElement('p');
             customText.textContent = item.text;
-            li.appendChild(customText);
+            div2.appendChild(customText);
         }
+        li.appendChild(div2);
         questionItemsList.appendChild(li);
     })
 
@@ -583,19 +593,23 @@ function buildReview() {
     gradedData.incorrectItems.forEach(item => {
         let li = document.createElement('li');
         li.classList = 'incorrect';
+        const div1 = document.createElement('div');
+        div1.classList.add('icon-container');
         let icon = document.createElement('i');
         icon.classList = 'fa-solid fa-xmark';
-        li.appendChild(icon);
+        div1.appendChild(icon);
+        li.appendChild(div1);
+        const div2 = document.createElement('div2');
+        div2.classList.add('req-content');
         let req = document.createElement('span');
         req.textContent = item.req.textContent;
-        li.appendChild(req);
-        let lineBreak = document.createElement('br');
-        li.appendChild(lineBreak);
+        div2.appendChild(req);
         if (item.text !== '') {
             let customText = document.createElement('p');
             customText.textContent = item.text;
-            li.appendChild(customText);
+            div2.appendChild(customText);
         }
+        li.appendChild(div2);
         incorrectItemsList.appendChild(li);
     })
 
