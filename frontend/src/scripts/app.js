@@ -884,11 +884,24 @@ adminForm.addEventListener('submit', e => {
 
 const initNewNoteBtn = document.querySelector('[data-init-new-note]');
 const newNoteForm = document.querySelector('form.new-note-form');
+const cancelNewNoteBtn = document.querySelector('[data-cancel-new-note');
+const noteForm_title = document.querySelector('form.new-note-form #title');
+const noteForm_author = document.querySelector('form.new-note-form #author');
+const noteForm_contents = document.querySelector('form.new-note-form #noteContents');
 
 initNewNoteBtn.addEventListener('click', () => {
     newNoteForm.classList.add('show');
+    initNewNoteBtn.style.display = 'none';
 });
 
 newNoteForm.addEventListener('submit', e => {
     e.preventDefault();
+});
+
+cancelNewNoteBtn.addEventListener('click', () => {
+    noteForm_title.value = '';
+    noteForm_author.value = '';
+    noteForm_contents.value = '';
+    newNoteForm.classList.remove('show');
+    initNewNoteBtn.style.display = 'block';
 })

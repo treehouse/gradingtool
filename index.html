@@ -146,12 +146,15 @@
                 </details>
                 <button class="init-new-note" data-init-new-note="">Add New Note</button>
                 <form action="" class="new-note-form">
-                    <input type="text" placeholder="Note title *" required>
-                    <input type="text" placeholder="Note author">
-                    <textarea name=""></textarea>
+                    <legend>New Note</legend>
+                    <label for="title">Note Title <span>*</span></label>
+                    <input id="title" type="text" required>
+                    <label for="author">Note Author</label>
+                    <input id="author" type="text">
+                    <textarea id="noteContents" name=""></textarea>
                     <div class="btn-group">
                         <button type="submit">Add</button>
-                        <button>Cancel</button>
+                        <button data-cancel-new-note>Cancel</button>
                     </div>
                 </form>
             </div>
