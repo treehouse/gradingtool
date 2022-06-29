@@ -14,7 +14,9 @@
     <script src="https://kit.fontawesome.com/6e358658ed.js" crossorigin="anonymous"></script>
     <title>Treehouse | Grading Tool</title>
 </head>
-<body class="dark">
+<body class="">
+    <div id="overlay" class="overlay"></div>
+    <textarea class="hidden-textarea-for-reasons-unknown-dont-ask-about-it-leave-me-alone" data-secret-textarea></textarea>
 
     <!-- no fly zone, yo -->
     <div class="no-fly-zone mobile">
@@ -84,7 +86,6 @@
                                 <button class="active" title="toggle questionable graded requirements" data-show-question=""><i class="fa-solid fa-question"></i></button>
                                 <button class="active" title="toggle incorrect graded requirements" data-show-wrong=""><i class="fa-solid fa-xmark"></i></button>
                             </div>
-                            <p class="header-description">Showing all requirement grades</p>
                         </div>
                         <div class="review-output">
                             <ul class="correct-items-container">

@@ -39,7 +39,7 @@ loaders.forEach((loader => {
 
 const tdName = document.querySelectorAll('[data-td-name]');
 tdName.forEach(name => {
-    name.textContent = 'Treehouse Grading Tool'
+    name.textContent = 'Choose a Techdegree'
 });
 const lightTheme = document.getElementById('light');
 const darkTheme = document.getElementById('dark');
@@ -735,4 +735,103 @@ function handleReviewToggles(e) {
             incorrectItemsParent.style.display = 'block';
         }
     }
+}
+
+/**
+ * 
+ * 
+ * copying slack message
+ */
+const secretTextarea = document.querySelector('[data-secret-textarea]');
+const copyBtn = document.querySelector('[data-copy-review]');
+
+const toggle_correct = document.querySelector('[data-show-correct]');
+const toggle_question = document.querySelector('[data-show-question]');
+const toggle_wrong = document.querySelector('[data-show-wrong]');
+
+
+
+copyBtn.addEventListener('click', copySlackMessage);
+
+function copySlackMessage() {
+
+    if (toggle_correct.classList.contains('active')) {
+        gradedData.correctItems.meets.forEach(item => {
+            secretTextarea.value += `:meets: ${item.textContent}\n`
+        });
+        gradedData.correctItems.exceeds.forEach(item => {
+            secretTextarea.value += `:meets: :exceeds: ${item.textContent}\n`
+        })
+        secretTextarea.value += `\n`
+    }
+    if (toggle_question.classList.contains('active')) {
+        gradedData.questionableItems.forEach(item => {
+            secretTextarea.value += `:questioned: ${item.req.textContent}\n> ${item.text}\n`
+        })
+        secretTextarea.value += `\n`
+    }
+    if (toggle_wrong.classList.contains('active')) {
+        gradedData.incorrectItems.forEach(item => {
+            secretTextarea.value += `:needs-work: ${item.req.textContent}\n> ${item.text}\n`
+        })
+    }
+
+    copyBtn.textContent = 'Copied! 🚀'
+
+    setTimeout(() => {
+        copyBtn.textContent = 'Self Destructing in 5...'
+        copyBtn.classList.add('self-destruct');
+
+        
+        
+        
+        document.querySelectorAll('p').forEach(item => { 
+            let ranDur = Math.floor(Math.random() * 1000)
+            let ranDel = Math.floor(Math.random() * 1000)
+            let pos = ['X', 'Y'];
+            let ranPos = Math.floor(Math.random() * pos.length)
+            // item.style.animation = `shake${pos[ranPos]} ${ranDur}ms ${ranDel}ms ease infinite` 
+            item.style.animation = `pulse ${ranDur}ms ${ranDel}ms ease infinite` 
+        })
+        document.querySelectorAll('button').forEach(item => { 
+            let ranDur = Math.floor(Math.random() * 1000)
+            let ranDel = Math.floor(Math.random() * 1000)
+            let pos = ['X', 'Y'];
+            let ranPos = Math.floor(Math.random() * pos.length)
+            // item.style.animation = `shake${pos[ranPos]} ${ranDur}ms ${ranDel}ms ease infinite` 
+            item.style.animation = `pulse ${ranDur}ms ${ranDel}ms ease infinite` 
+        })
+        document.querySelectorAll('li').forEach(item => { 
+            let ranDur = Math.floor(Math.random() * 1000)
+            let ranDel = Math.floor(Math.random() * 1000)
+            let pos = ['X', 'Y'];
+            let ranPos = Math.floor(Math.random() * pos.length)
+            // item.style.animation = `shake${pos[ranPos]} ${ranDur}ms ${ranDel}ms ease infinite` 
+            item.style.animation = `pulse ${ranDur}ms ${ranDel}ms ease infinite` 
+        })
+
+
+        setTimeout(() => {
+            copyBtn.textContent = 'Self Destructing in 4...'
+            document.getElementById('overlay').classList.add('show');
+            setTimeout(() => {
+                copyBtn.textContent = 'Self Destructing in 3...'
+                setTimeout(() => {
+                    copyBtn.textContent = 'Self Destructing in 2...'
+                    setTimeout(() => {
+                        copyBtn.textContent = 'Self Destructing in 1...'
+                        setTimeout(() => {
+                            copyBtn.textContent = 'BOOM 💥'
+                            setTimeout(() => {
+                                location.reload();
+                            }, 1000)
+                        }, 1000)
+                    }, 1000)
+                }, 1000)
+            }, 1000)
+        }, 1000)
+    }, 1300)
+
+    secretTextarea.select();
+    document.execCommand("copy");
 }

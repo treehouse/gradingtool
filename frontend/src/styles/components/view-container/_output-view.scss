@@ -112,12 +112,33 @@
         cursor: pointer;
         padding: 0.75rem 1rem;
         border: none;
+        display: block;
+        margin: 0 auto;
         transition: transform 0.3s ease-in-out, background 0.3s ease,
           color 0.3s ease;
         &:hover {
           transform: scale(1.05);
         }
+        &.self-destruct {
+          pointer-events: none;
+          @include bg(transparent);
+          animation: totalDestructionHomie 6s ease-in-out forwards !important;
+        }
       }
     }
+  }
+}
+
+@keyframes totalDestructionHomie {
+  0% {
+    transform: scale(1);
+  }
+  99% {
+    @include bg(rgb(255, 72, 72));
+    @include bg(var(--td-accent));
+    transform: scale(2);
+  }
+  100% {
+    @include bg(transparent);
   }
 }
