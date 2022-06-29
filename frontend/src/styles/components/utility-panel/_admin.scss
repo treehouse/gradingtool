@@ -1,1 +1,17 @@
+.admin-container {
+  p.admin-error-message {
+    color: $failing-grade-color;
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 1rem auto;
+    opacity: 0;
+    pointer-events: none;
+    &.show {
+      animation: fadeInUp 0.5s ease forwards;
+    }
+  }
 
+  form button.error {
+    animation: shakeX 1s ease forwards;
+  }
+}

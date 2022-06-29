@@ -860,5 +860,9 @@ const accessBtn = document.querySelector('[data-login-access-btn]');
 const adminForm = document.querySelector('.admin-container form');
 
 adminForm.addEventListener('submit', e => {
+    const errorMsg = document.querySelector('.admin-error-message');
+    errorMsg.classList.add('show');
+    errorMsg.textContent = 'This functionality is not available yet.'
+    accessBtn.classList.add('error')
     e.preventDefault();
 })
