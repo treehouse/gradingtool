@@ -17,6 +17,7 @@
       width: 100%;
       border: 2px solid var(--panel-bg);
       padding: 1rem 0.5rem;
+      @include theme-transition;
       &:focus {
         outline: 2px solid var(--td-accent);
       }
@@ -26,6 +27,7 @@
   button {
     @include bg(var(--td-accent));
     @include radius(5px);
+    @include theme-transition;
     padding: 1rem;
     border: none;
     cursor: pointer;
