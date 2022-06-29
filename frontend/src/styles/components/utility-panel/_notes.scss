@@ -11,17 +11,66 @@
       font-size: 0.9rem;
     }
   }
-  button.add-new-note {
-    font-family: "Gotham Rounded", sans-serif;
+  button.init-new-note {
     @include theme-transition;
+    @include bg(var(--td-accent));
+    @include radius(5px);
     cursor: pointer;
     padding: 1rem;
     width: 100%;
-    @include bg(var(--td-accent));
     color: white;
     border: none;
-    @include radius(5px);
     text-align: center;
     margin: 1rem auto;
+  }
+
+  form.new-note-form {
+    display: none;
+    opacity: 0;
+    &.show {
+      display: block;
+      animation: fadeInUp 0.5s ease-in-out forwards;
+    }
+    input {
+      @include bg(var(--primary-bg));
+      @include radius(5px);
+      border: none;
+      padding: 0.5rem 1rem;
+      width: 100%;
+      margin-bottom: 0.5rem;
+
+      &:focus {
+        outline: 2px solid var(--td-accent);
+      }
+      &::placeholder {
+        color: var(--primary-color);
+      }
+      &:first-child {
+        margin-bottom: 0.25rem;
+      }
+    }
+    textarea {
+      @include bg(var(--primary-bg));
+      @include radius(5px);
+      color: var(--primary-color);
+      padding: 0.5rem;
+      border: none;
+      width: 100%;
+      height: 125px;
+      margin-bottom: 0.5rem;
+    }
+    .btn-group {
+      @include flex(row, nowrap, center, center);
+      button {
+        padding: 0.5rem 1rem;
+        &:first-child {
+          margin-right: 0.25rem;
+        }
+        &:last-child {
+          @include bg(var(--primary-bg));
+          color: var(--primary-color);
+        }
+      }
+    }
   }
 }

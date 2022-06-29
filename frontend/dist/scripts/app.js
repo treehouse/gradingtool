@@ -869,4 +869,22 @@ adminForm.addEventListener('submit', e => {
     errorMsg.textContent = 'This functionality is not available yet.'
     accessBtn.classList.add('error')
     e.preventDefault();
+});
+
+
+
+
+
+
+/**
+ * 
+ * notes panel
+ * 
+ */
+
+const initNewNoteBtn = document.querySelector('[data-init-new-note]');
+const newNoteForm = document.querySelector('form.new-note-form');
+
+initNewNoteBtn.addEventListener('click', () => {
+    newNoteForm.classList.add('show');
 })

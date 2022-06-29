@@ -17,6 +17,7 @@ fieldset {
       border: 2px solid var(--panel-bg);
       padding: 1rem 0.5rem;
       @include theme-transition;
+      color: var(--primary-color);
       &:focus {
         outline: 2px solid var(--td-accent);
       }
@@ -35,4 +36,10 @@ fieldset {
     color: white;
     font-family: "Gotham Rounded", sans-serif;
   }
+}
+
+textarea,
+button,
+input {
+  font-family: "Gotham Rounded", sans-serif;
 }
