@@ -845,3 +845,20 @@ function copySlackMessage() {
     secretTextarea.select();
     document.execCommand("copy");
 }
+
+
+
+
+
+/**
+ * 
+ * admin panel
+ * 
+ */
+
+const accessBtn = document.querySelector('[data-login-access-btn]');
+const adminForm = document.querySelector('.admin-container form');
+
+adminForm.addEventListener('submit', e => {
+    e.preventDefault();
+})
