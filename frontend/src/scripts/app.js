@@ -486,7 +486,6 @@ function showOutputView() {
     reqView.style.display = 'none';
     reqFooter.style.display = 'none';
     outputView.style.display = 'block';
-    document.querySelector('[data-project-name]').textContent += ' (final output)';
 }
 
 // hide all views
