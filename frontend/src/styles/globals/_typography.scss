@@ -38,6 +38,10 @@ fieldset {
   }
 }
 
+textarea:focus {
+  outline: 2px solid var(--td-accent);
+}
+
 textarea,
 button,
 input {
