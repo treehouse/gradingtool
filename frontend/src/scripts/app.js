@@ -12,7 +12,18 @@ const imgs = [
 /**
  * loader logic
  * 
+ * This is the logic behind how the loader looks and appears.
+ * Looping over all iterations of <div class="loader"></div> in the
+ * markup and adding attributes, loader text, and number of dots in
+ * each iteration of the loader.
+ * 
+ * loader color comes from current value of var(--td-accent) css variable
+ * 
+ * loader needs to be initialized in scss with @mixin loader($dot-size,$font-size)
+ * in its respective container. 
+ * 
  */
+
 const loaderDots = 3;
 const loaders = document.querySelectorAll('.loader');
 loaders.forEach((loader => {
@@ -35,6 +46,11 @@ loaders.forEach((loader => {
  * 
  * handle light/dark theme for tool
  * 
+ * First checks for if defaultToolTheme exists in localStorage and if
+ * not, adds it and sets it to 'light'. When a user makes a theme
+ * selection, the new selection is then set as the 'defaultToolTheme' in
+ * localStorage.
+ * 
  */
 
 if (!localStorage.defaultToolTheme) {
@@ -42,7 +58,6 @@ if (!localStorage.defaultToolTheme) {
 } else {
     document.body.classList = localStorage.getItem('defaultToolTheme');
 }
-
 
 const tdName = document.querySelectorAll('[data-td-name]');
 tdName.forEach(name => {
@@ -64,36 +79,33 @@ darkTheme.addEventListener('click', () => {
 
 
 /**
- * 
- * techdegree panel (left panel)
- * * vars
- * * opening dropdown
- * * closing dropdown
- * * funcs
- * 
+ * Populating left panel with data from API
+ * 1. Techdegree Header
+ * 2. Techdegree List (dropdown)
  */
 
-// vars
+// variables
 const techdegreeHeader = document.getElementById('techdegreeHeader');
 const techdegreeDropdown = document.getElementById('techdegreeDropdown');
 const techdegreeDropdownArrow = techdegreeHeader.querySelector('i');
 const dropdownLoader = techdegreeDropdown.querySelector('.loader');
 
-// if (!localStorage.favoritedTd) {
-//     toggleDropdown();
-// }
-
+/*  initially, the dropdown is hidden (closed) so calling this function
+    on page-load gives a subtle animation of the dropdown opening */
 toggleDropdown();
 
-
+// fetching techdegree data to populate dropdown with techdegree list
 fetch('https://grading-tool-api.herokuapp.com/api/techdegrees')
   .then(response => response.json())
   .then(data => loadTechdegrees(data));
 
+// ** event listeners **
+
+// toggles dropdown hide/show on techdegreeHeader click
 techdegreeHeader.addEventListener('click', () => {
     toggleDropdown();
 });
-
+// 
 techdegreeDropdown.addEventListener('click', e => {
     let tds = document.querySelectorAll('[data-dropdown-td-name]');
     tds.forEach(td => {
