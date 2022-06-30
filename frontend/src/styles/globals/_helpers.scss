@@ -25,14 +25,13 @@
   @include radius(5px);
   @include center-flex;
   @include bg(transparent);
-  display: flex!important;
-  transition: background .3s ease;
+  display: flex !important;
+  transition: background 0.3s ease;
   cursor: pointer;
   &:hover {
     @include bg(var(--close-btn-hover));
   }
 }
-
 
 .divider {
   @include size(5px, 100%);
@@ -42,4 +41,9 @@
   margin: 1rem auto;
 }
 
-
+.disclaimer {
+  text-align: center;
+  color: $failing-grade-color;
+  font-size: 0.8rem;
+  margin: 1rem auto;
+}
