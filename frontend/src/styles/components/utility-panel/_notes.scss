@@ -98,6 +98,15 @@
     li {
       position: relative;
       margin: 1.25rem auto;
+      &::before {
+        content: "";
+        @include size(100%, 3px);
+        @include radius(25px);
+        @include bg(var(--td-accent));
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
       i.fa-xmark {
         @include radius(50%);
         @include bg(var(--primary-bg));
@@ -106,7 +115,7 @@
         @include simple-size(25px);
         opacity: 0;
         font-size: 0.8rem;
-        top: -0.75rem;
+        top: 0;
         left: 95%;
         cursor: pointer;
         transition: color 0.3s ease, background 0.3s ease, opacity 0.3s ease;
@@ -116,29 +125,22 @@
         }
       }
       p {
+        padding-left: 1rem;
         &.note-title {
           margin-bottom: 1rem;
           margin-top: 2rem;
+          padding-top: 0.5rem;
         }
         &.note {
           position: relative;
-          padding: 0.75rem 0 0.75rem 1rem;
           font-size: 0.9rem;
           margin: 1rem 0;
           font-weight: 300;
-          &::before {
-            content: "";
-            @include size(100%, 3px);
-            @include radius(25px);
-            @include bg(var(--td-accent));
-            position: absolute;
-            left: 0;
-            top: 0;
-          }
         }
         &.note-info {
           font-size: 0.9rem;
           font-weight: 300;
+          padding-bottom: 0.5rem;
         }
       }
       &:hover {
