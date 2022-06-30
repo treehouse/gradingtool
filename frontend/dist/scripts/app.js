@@ -889,13 +889,67 @@ const noteForm_title = document.querySelector('form.new-note-form #title');
 const noteForm_author = document.querySelector('form.new-note-form #author');
 const noteForm_contents = document.querySelector('form.new-note-form #noteContents');
 
+const noteContainer = document.querySelector('[data-notes-container]');
+
 initNewNoteBtn.addEventListener('click', () => {
     newNoteForm.classList.add('show');
     initNewNoteBtn.style.display = 'none';
 });
 
+noteContainer.addEventListener('click', e => {
+    if (e.target.classList.contains('fa-xmark')) {
+        e.target.parentNode.remove();
+    }
+})
+
 newNoteForm.addEventListener('submit', e => {
     e.preventDefault();
+
+    let today = new Date();
+    const yyyy = today.getFullYear();
+    let mm = today.getMonth() + 1;
+    let dd = today.getDate();
+
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+
+    today = mm + '/' + dd + '/' + yyyy;
+
+    let title = noteForm_title.value;
+    let author = noteForm_author.value;
+    let text = noteForm_contents.value;
+
+    let li = document.createElement('li');
+    let icon = document.createElement('i');
+    icon.classList = 'fa-solid fa-xmark';
+    let noteTitle = document.createElement('p');
+    noteTitle.classList = 'note-title';
+    noteTitle.textContent = title;
+    let note = document.createElement('p');
+    note.classList = 'note';
+    note.textContent = text;
+    let noteInfo = document.createElement('p');
+    noteInfo.classList = 'note-info';
+    let authorSpan = document.createElement('span');
+    authorSpan.textContent = author;
+    let noteDateSpan = document.createElement('span');
+    noteDateSpan.textContent = today;
+
+    noteInfo.innerHTML = `-${authorSpan.innerHTML} on ${noteDateSpan.innerHTML}`
+
+    li.appendChild(icon);
+    li.appendChild(noteTitle);
+    li.appendChild(note);
+    li.appendChild(noteInfo);
+
+    noteContainer.appendChild(li);
+
+    noteForm_title.value = '';
+    noteForm_author.value = '';
+    noteForm_contents.value = '';
+    newNoteForm.classList.remove('show');
+    initNewNoteBtn.style.display = 'block';
+
 });
 
 cancelNewNoteBtn.addEventListener('click', () => {
