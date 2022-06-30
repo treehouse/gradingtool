@@ -38,6 +38,10 @@ fieldset {
   }
 }
 
+input,
+textarea {
+  color: var(--primary-color) !important;
+}
 textarea:focus {
   outline: 2px solid var(--td-accent);
 }
