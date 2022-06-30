@@ -37,6 +37,13 @@ loaders.forEach((loader => {
  * 
  */
 
+if (!localStorage.defaultToolTheme) {
+    localStorage.setItem('defaultToolTheme', 'light');
+} else {
+    document.body.classList = localStorage.getItem('defaultToolTheme');
+}
+
+
 const tdName = document.querySelectorAll('[data-td-name]');
 tdName.forEach(name => {
     name.textContent = 'Choose a Techdegree'
@@ -44,10 +51,12 @@ tdName.forEach(name => {
 const lightTheme = document.getElementById('light');
 const darkTheme = document.getElementById('dark');
 lightTheme.addEventListener('click', () => {
-    document.body.classList = '';
+    document.body.classList = 'light';
+    localStorage.setItem('defaultToolTheme', 'light');
 });
 darkTheme.addEventListener('click', () => {
     document.body.classList = 'dark';
+    localStorage.setItem('defaultToolTheme', 'dark');
 });
 
 
