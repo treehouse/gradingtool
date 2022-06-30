@@ -1,4 +1,5 @@
 .project-notes-container {
+  overflow: auto;
   details {
     @include bg(var(--primary-bg));
     @include radius(5px);
