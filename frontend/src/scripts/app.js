@@ -462,6 +462,74 @@ function loadProjectRequirements(data) {
         });
         // createReqFooter();
     }
+
+    // load project files
+
+    let projectFileData = {
+        mockups: {},
+        currentMocks: []
+    }
+
+    let mockupIconContainer = document.getElementById('mockupTypeContainer');
+    mockupIconContainer.innerHTML = '';
+
+    if (data.mobileMockup) {
+        projectFileData.mockups.mobile = data.mobileMockup
+        projectFileData.currentMocks.push(data.mobileMockup)
+        
+        let li = document.createElement('li');
+        li.classList = 'mockup-type';
+        let icon = document.createElement('i');
+        icon.classList = 'fa-solid fa-mobile-screen-button';
+        let name = document.createElement('span')
+        name.textContent = 'mobile';
+        li.appendChild(icon);
+        li.appendChild(name);
+
+        mockupIconContainer.appendChild(li)
+    }
+
+    if (data.tabletMockup) {
+        projectFileData.mockups.tablet = data.tabletMockup
+        projectFileData.currentMocks.push(data.tabletMockup)
+
+        let li = document.createElement('li');
+        li.classList = 'mockup-type';
+        let icon = document.createElement('i');
+        icon.classList = 'fa-solid fa-tablet-screen-button';
+        let name = document.createElement('span')
+        name.textContent = 'tablet';
+        li.appendChild(icon);
+        li.appendChild(name);
+
+        mockupIconContainer.appendChild(li)
+    }
+
+    if (data.desktopMockup) {
+        projectFileData.mockups.desktop = data.desktopMockup
+        projectFileData.currentMocks.push(data.desktopMockup)
+
+        let li = document.createElement('li');
+        li.classList = 'mockup-type';
+        let icon = document.createElement('i');
+        icon.classList = 'fa-solid fa-desktop';
+        let name = document.createElement('span')
+        name.textContent = 'desktop';
+        li.appendChild(icon);
+        li.appendChild(name);
+
+        mockupIconContainer.appendChild(li)
+    }
+
+    if (!data.mobileMockup && !data.tabletMockup && !data.desktopMockup) {
+
+        let li = document.createElement('li');
+        li.classList.add('disabled');
+        li.textContent = 'There are no mockups for this project 😢';
+        mockupIconContainer.append(li)
+    }
+    
+    
 }
 
 function updateProgressBar() {
@@ -760,13 +828,8 @@ reviewHeader.addEventListener('click', e => {
 function handleReviewToggles(e) {
 
     const correctItemsParent = document.querySelector('.correct-items-container');
-    const correctItems = document.querySelectorAll('.review-output li.correct');
-
     const questionedItemsParent = document.querySelector('.questioned-items-container');
-    const questionedItems = document.querySelectorAll('.review-output li.questioned');
-
     const incorrectItemsParent = document.querySelector('.incorrect-items-container');
-    const incorrectItems = document.querySelectorAll('.review-output li.incorrect');
 
     if (e.target === reviewHeader_toggle_correct) {
         e.target.classList.toggle('active');
