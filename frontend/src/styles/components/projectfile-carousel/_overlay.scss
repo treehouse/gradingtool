@@ -1,0 +1,57 @@
+$overlay-white: rgb(233, 238, 240);
+
+.overlay_projectFiles {
+  @include size(100vh, 100vw);
+  @include flex(row, nowrap, center, center);
+  @include bg(rgba(black, 0.45));
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 500;
+  display: none;
+  &.show {
+    display: flex;
+    animation: fadeIn 0.3s ease forwards;
+  }
+  .controls {
+    @include absolute-center;
+    @include flex(row, nowrap, space-between, center);
+    padding: 2rem;
+    width: 75%;
+    i {
+      @include radius(50%);
+      @include simple-size(45px);
+      @include bg($overlay-white);
+      @include center-flex;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: black;
+      opacity: 0;
+      transition: transform 0.1s ease-in-out;
+      box-shadow: 0 4px 12px rgba(black, 0.25);
+      animation: fadeIn 1s 0.6s ease-in-out forwards;
+      &:hover {
+        transform: scale(1.1);
+      }
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+  .gallery-container {
+    @include wrapper(1440px);
+    @include simple-size(100%);
+    @include radius(15px);
+    @include center-flex;
+    max-height: 75%;
+    max-width: 60%;
+    opacity: 0;
+    animation: fadeIn 0.3s 0.3s ease-in-out forwards;
+    img {
+      @include radius(0.75rem);
+      max-height: 100%;
+      max-width: 100%;
+      box-shadow: 0 4px 12px rgba(black, 0.25);
+    }
+  }
+}

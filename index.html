@@ -104,7 +104,6 @@
                             <button data-copy-review="">Copy Review</button>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </section>
@@ -133,7 +132,25 @@
                 <i id="close-util-panel-btn" class="fa-solid fa-xmark close-btn"></i>
             </header>
             <!-- project files -->
-            <div data-util-section class="project-files-container util-item"></div>
+            <div data-util-section class="project-files-container util-item">
+                <header>
+                    <p class="title">Mockups</p>
+                </header>
+                <ul class="mockup-type-container">
+                    <li class="mockup-type">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                        <span>mobile</span>
+                    </li>
+                    <li class="mockup-type">
+                        <i class="fa-solid fa-tablet-screen-button"></i>
+                        <span>tablet</span>
+                    </li>
+                    <li class="mockup-type">
+                        <i class="fa-solid fa-desktop"></i>
+                        <span>desktop</span>
+                    </li>
+                </ul>
+            </div>
 
             <!-- project notes -->
             <div data-util-section class="project-notes-container util-item">
@@ -192,6 +209,16 @@
             </div>
         </section>
 
+        <!-- project-files-carousel -->
+        <div class="overlay_projectFiles" data-carousel>
+            <div class="controls">
+                <i class="fa-solid fa-angle-left" data-prev-image></i>
+                <i class="fa-solid fa-angle-right" data-next-image></i>
+            </div>
+            <div class="gallery-container">
+                <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3820&q=80" alt="">
+            </div>
+        </div>
 
     </main>
 

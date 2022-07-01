@@ -41,6 +41,33 @@ loaders.forEach((loader => {
 
 
 
+/**
+ * 
+ * Project files
+ * 
+ */
+const carousel = document.querySelector('[data-carousel]');
+const projectFilesContainer = document.querySelector('.project-files-container');
+projectFilesContainer.addEventListener('click', e => {
+    if (e.target.classList.contains('mockup-type') || e.target.parentNode.classList.contains('mockup-type')) {
+        toggleCarousel();
+    }
+});
+
+carousel.addEventListener('click', e => {
+    if (e.target.classList.contains('overlay_projectFiles')) {
+        toggleCarousel();
+    }
+})
+
+function toggleCarousel() {
+    carousel.classList.toggle('show');
+}
+
+
+
+
+
 
 /**
  * 
@@ -105,7 +132,7 @@ fetch('https://grading-tool-api.herokuapp.com/api/techdegrees')
 techdegreeHeader.addEventListener('click', () => {
     toggleDropdown();
 });
-// 
+
 techdegreeDropdown.addEventListener('click', e => {
     let tds = document.querySelectorAll('[data-dropdown-td-name]');
     tds.forEach(td => {
@@ -122,7 +149,6 @@ techdegreeDropdown.addEventListener('click', e => {
     })
 })
 
-// funcs
 function toggleDropdown() {
     if (techdegreeDropdown.hasAttribute('active')) {
         techdegreeDropdown.removeAttribute('active');

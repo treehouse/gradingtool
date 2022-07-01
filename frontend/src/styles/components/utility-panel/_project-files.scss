@@ -1,0 +1,28 @@
+.project-files-container {
+  header {
+    p.title {
+      margin: 0 auto;
+    }
+  }
+  .mockup-type-container {
+    @include flex(row, nowrap, center, center);
+    margin-top: 1rem;
+    li {
+      @include flex(column, nowrap, center, center);
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      text-align: center;
+      transition: transform 0.2s;
+      span {
+        font-size: 0.8rem;
+        margin-top: 1rem;
+      }
+      i {
+        font-size: 1.5rem;
+      }
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
