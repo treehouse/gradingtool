@@ -891,6 +891,8 @@ function copySlackMessage() {
 
     secretTextarea.select();
     document.execCommand("copy");
+
+    secretTextarea.value = '';
 }
 
 
