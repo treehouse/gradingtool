@@ -531,12 +531,15 @@ function loadProjectRequirements(data) {
 
     let mockupIcons = document.querySelectorAll('li.mockup-type');
     const gallery = document.getElementById('galleryContainer');
+
+    currentIndex = '';
+
     mockupIcons.forEach((icon, index) => {
         icon.setAttribute('data-mockup-index', index);
 
         icon.addEventListener('click', e => {
             gallery.innerHTML = '';
-            let currentIndex = e.target.getAttribute('data-mockup-index');
+            currentIndex = e.target.getAttribute('data-mockup-index');
             let currentMock = projectFileData.currentMocks[currentIndex];
             let img = document.createElement('img');
             img.src = currentMock;
@@ -544,8 +547,39 @@ function loadProjectRequirements(data) {
         })
     });
 
-    
-    
+    // carousel logic
+    const controls = document.getElementById('controls');
+    let prevArrow = document.querySelector('[data-prev-image]')
+    let nextArrow = document.querySelector('[data-next-image]')
+
+    controls.addEventListener('click', e => {
+
+        if (e.target === prevArrow) {
+            
+            if (currentIndex === 0) {
+                currentIndex = projectFileData.currentMocks.length -1;
+            } else {
+                currentIndex -= 1;
+            }
+
+        }
+
+        if (e.target === nextArrow) {
+            if (currentIndex === projectFileData.currentMocks.length -1) {
+                currentIndex = 0;
+            } else {
+                currentIndex ++;
+            }
+        }
+
+        console.log(projectFileData.currentMocks.length);
+
+        gallery.innerHTML = '';
+        let currentMock = projectFileData.currentMocks[currentIndex];
+        let img = document.createElement('img');
+        img.src = currentMock;
+        gallery.appendChild(img);
+    });
 }
 
 function updateProgressBar() {
