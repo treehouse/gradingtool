@@ -15,6 +15,11 @@
       transition: transform 0.2s;
       &.disabled {
         pointer-events: none;
+        font-size: 0.8rem;
+      }
+      span,
+      i {
+        pointer-events: none;
       }
       span {
         font-size: 0.8rem;

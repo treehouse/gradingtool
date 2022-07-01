@@ -525,9 +525,25 @@ function loadProjectRequirements(data) {
 
         let li = document.createElement('li');
         li.classList.add('disabled');
-        li.textContent = 'There are no mockups for this project 😢';
+        li.textContent = 'There are no mockups for this project.';
         mockupIconContainer.append(li)
     }
+
+    let mockupIcons = document.querySelectorAll('li.mockup-type');
+    const gallery = document.getElementById('galleryContainer');
+    mockupIcons.forEach((icon, index) => {
+        icon.setAttribute('data-mockup-index', index);
+
+        icon.addEventListener('click', e => {
+            gallery.innerHTML = '';
+            let currentIndex = e.target.getAttribute('data-mockup-index');
+            let currentMock = projectFileData.currentMocks[currentIndex];
+            let img = document.createElement('img');
+            img.src = currentMock;
+            gallery.appendChild(img);
+        })
+    });
+
     
     
 }
