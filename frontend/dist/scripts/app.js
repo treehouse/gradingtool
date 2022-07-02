@@ -553,26 +553,24 @@ function loadProjectRequirements(data) {
     let nextArrow = document.querySelector('[data-next-image]')
 
     controls.addEventListener('click', e => {
-
+        console.log(currentIndex);
         if (e.target === prevArrow) {
             
-            if (currentIndex === 0) {
+            if (currentIndex == 0) {
                 currentIndex = projectFileData.currentMocks.length -1;
             } else {
                 currentIndex -= 1;
             }
-
         }
 
         if (e.target === nextArrow) {
-            if (currentIndex === projectFileData.currentMocks.length -1) {
+            if (currentIndex == projectFileData.currentMocks.length -1) {
                 currentIndex = 0;
             } else {
                 currentIndex ++;
             }
         }
-
-        console.log(projectFileData.currentMocks.length);
+;
 
         gallery.innerHTML = '';
         let currentMock = projectFileData.currentMocks[currentIndex];
