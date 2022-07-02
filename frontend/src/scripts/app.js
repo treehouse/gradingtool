@@ -231,6 +231,33 @@ function loadProjectList(id) {
                 projList.appendChild(li);
             })
         }
+
+        let resourceList = document.getElementById('resourceList');
+        resourceList.innerHTML = '';
+    
+        if (data.resources) {
+            data.resources.forEach(res => {
+                let li = document.createElement('li');
+                li.setAttribute('title', res.description)
+                let a = document.createElement('a');
+                a.setAttribute('href', res.link);
+                a.setAttribute('target', '_blank');
+                let icon = document.createElement('i');
+                icon.classList = 'fa-solid fa-link';
+                a.appendChild(icon);
+                let group = document.createElement('div');
+                group.classList = 'group';
+                let title = document.createElement('p');
+                title.textContent = res.title;
+                let link = document.createElement('p');
+                link.textContent = res.link;
+                group.appendChild(title);
+                group.appendChild(link);
+                a.appendChild(group);
+                li.appendChild(a);
+                resourceList.appendChild(li);
+            })
+        }
     }
     
 }

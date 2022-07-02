@@ -1,0 +1,36 @@
+ul.resource-list {
+  padding: 0 1rem 1rem;
+  li {
+    padding: 0.33rem 0.25rem;
+
+    a {
+      @include flex(row, nowrap, flex-start, center);
+      text-decoration: none;
+      color: var(--primary-color);
+      font-size: 0.9rem;
+      @include bg(rgba(white, 0.1));
+      @include bg(var(--primary-bg));
+      @include radius(5px);
+      overflow: hidden;
+      i {
+        margin-right: 0.33rem;
+        padding: 1rem 0.75rem;
+      }
+      p {
+        &:nth-child(1) {
+          font-weight: 300;
+        }
+        &:nth-child(2) {
+          @include textOverflow(1);
+          color: var(--td-accent);
+          transition: margin 0.3s ease;
+        }
+      }
+    }
+    &:hover {
+      a p:nth-child(2) {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}
