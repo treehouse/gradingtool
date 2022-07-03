@@ -112,10 +112,38 @@ darkTheme.addEventListener('click', () => {
  */
 
 // variables
+const techdegreePanel = document.getElementById('techdegreePanel');
 const techdegreeHeader = document.getElementById('techdegreeHeader');
 const techdegreeDropdown = document.getElementById('techdegreeDropdown');
-const techdegreeDropdownArrow = techdegreeHeader.querySelector('i');
 const dropdownLoader = techdegreeDropdown.querySelector('.loader');
+const panelToggle = document.querySelectorAll('[data-panel-toggle]');
+let isPanelHidden = false;
+
+panelToggle.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        togglePanel();
+    })
+});
+
+function togglePanel() {
+    if (!isPanelHidden) {
+        isPanelHidden = true;
+    } else {
+        isPanelHidden = false;
+    }
+    const toggleList = document.querySelectorAll('[data-toggle]');
+
+    techdegreePanel.classList.toggle('hide');
+
+    toggleList.forEach(item => {
+        item.classList.toggle('active');
+    });
+}
+
+// panelToggle.addEventListener('click', () => {
+//     techdegreePanel.classList.toggle('show');
+//     panelToggle.querySelector('i').classList.toggle('rotate');
+// })
 
 /*  initially, the dropdown is hidden (closed) so calling this function
     on page-load gives a subtle animation of the dropdown opening */
@@ -128,10 +156,6 @@ fetch('https://grading-tool-api.herokuapp.com/api/techdegrees')
 
 // ** event listeners **
 
-// toggles dropdown hide/show on techdegreeHeader click
-techdegreeHeader.addEventListener('click', () => {
-    toggleDropdown();
-});
 
 techdegreeDropdown.addEventListener('click', e => {
     let tds = document.querySelectorAll('[data-dropdown-td-name]');
@@ -153,7 +177,6 @@ function toggleDropdown() {
     if (techdegreeDropdown.hasAttribute('active')) {
         techdegreeDropdown.removeAttribute('active');
         techdegreeDropdown.style.animation = 'bounceOutUp 1s ease-in-out forwards'
-        techdegreeDropdownArrow.style.transform = 'rotate(0deg)'
         setTimeout(() => {
             techdegreeDropdown.style.display = 'none';
         }, 600)
@@ -161,7 +184,6 @@ function toggleDropdown() {
         techdegreeDropdown.setAttribute('active', '');
         techdegreeDropdown.style.display = 'block';
         techdegreeDropdown.style.animation = 'bounceInDown 1s ease-out forwards'
-        techdegreeDropdownArrow.style.transform = 'rotate(180deg)'
     }
 }
 

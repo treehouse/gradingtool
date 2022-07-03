@@ -32,28 +32,32 @@
     <!-- gradingtool -->
     <main class="gradingtool desktop">
 
+        <div class="panel-toggle-view toggle-item" data-toggle>
+            <img data-panel-toggle class="panel-toggle" src="./frontend/dist/images/panel-toggle.png" alt="">
+        </div>
+
         <!-- left panel -->
-        <section class="panel techdegree-panel">
+        <section class="panel techdegree-panel active toggle-item" data-toggle id="techdegreePanel">
             <!-- header -->
-            <header id="techdegreeHeader">
-                <img data-td-logo src="./frontend/dist/images/fewd.png" alt="">
+            <header id="techdegreeHeade" data-toggle class="active toggle-item flex">
+                <img data-td-logo class="logo" src="./frontend/dist/images/fewd.png" alt="">
                 <p data-td-name></p>
-                <i class="fa-solid fa-angle-down"></i>
+                <img data-panel-toggle class="panel-toggle" src="./frontend/dist/images/panel-toggle.png" alt="">
             </header>
             <!-- td list -->
-            <div class="techdegree-dropdown" id="techdegreeDropdown">
+            <div class="techdegree-dropdown toggle-item active" id="techdegreeDropdown" data-toggle>
                 <div class="loader"></div>
             </div>
             <!-- project list -->
-            <ul class="td-project-list" id="tdProjectList">
+            <ul class="td-project-list toggle-item active" id="tdProjectList" data-toggle>
                 <div class="loader"></div>
                 <!-- <li data-project-id="1" style="">My Personal Profile Page</li><li data-project-id="2">Mobile-first Responsive Layout</li><li data-project-id="3">An Online Registration Form</li><li data-project-id="4">Web Style Guide</li><li data-project-id="5">An Interactive Photo Gallery</li><li data-project-id="6">Game Show App</li><li data-project-id="7">WebApp Dashboard</li><li data-project-id="8">Use an API to Create an Employee Directory</li><li data-project-id="9">Capstone Portfolio</li> -->
             </ul>
             <!-- resources -->
-            <ul class="resource-list" id="resourceList">
+            <ul class="resource-list toggle-item active" id="resourceList" data-toggle>
                 <!-- dynamic -->
             </ul>
-            <div class="meet-the-noobs">
+            <div class="meet-the-noobs toggle-item active" data-toggle>
                 <!-- <header>Developed by <i class="fa-solid fa-chevron-down"></i></header> -->
                 <details>
                     <summary>Developed by</summary>

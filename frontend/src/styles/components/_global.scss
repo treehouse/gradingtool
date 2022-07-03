@@ -4,8 +4,7 @@
   section {
     @include flex(column, nowrap, flex-start, stretch);
     &.techdegree-panel {
-      @include strict-width($techdegree-panel-width);
-      @include theme-transition;
+      // in _header.scss
     }
     &.view-container {
       @include size(100%, $view-container-width);
