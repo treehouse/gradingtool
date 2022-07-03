@@ -10,9 +10,7 @@ ul.td-project-list {
     @include flex(row, nowrap, flex-start, center);
     padding: 0.25rem 0.33rem;
     cursor: pointer;
-    opacity: 0;
     transition: opacity 0.3s ease;
-    animation: fadeIn 1s ease forwards;
     span {
       transition: margin 0.3s ease-in-out;
       pointer-events: none;
