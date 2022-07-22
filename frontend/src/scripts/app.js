@@ -602,16 +602,13 @@ function loadProjectRequirements(data) {
     let nextArrow = document.querySelector('[data-next-image]')
 
     controls.addEventListener('click', e => {
-        console.log(currentIndex);
         if (e.target === prevArrow) {
-            
             if (currentIndex == 0) {
                 currentIndex = projectFileData.currentMocks.length -1;
             } else {
                 currentIndex -= 1;
             }
         }
-
         if (e.target === nextArrow) {
             if (currentIndex == projectFileData.currentMocks.length -1) {
                 currentIndex = 0;
@@ -619,7 +616,6 @@ function loadProjectRequirements(data) {
                 currentIndex ++;
             }
         }
-;
 
         gallery.innerHTML = '';
         let currentMock = projectFileData.currentMocks[currentIndex];
@@ -986,13 +982,13 @@ function copySlackMessage() {
     }
     if (toggle_question.classList.contains('active')) {
         gradedData.questionableItems.forEach(item => {
-            secretTextarea.value += `:questioned: ${item.req.textContent}\n> ${item.text}\n`
+            secretTextarea.value += `:questioned: :exceeds: ${item.req.textContent}\n> ${item.text}\n`
         })
         secretTextarea.value += `\n`
     }
     if (toggle_wrong.classList.contains('active')) {
         gradedData.incorrectItems.forEach(item => {
-            secretTextarea.value += `:needs-work: ${item.req.textContent}\n> ${item.text}\n`
+            secretTextarea.value += `:needs-work: :exceeds: ${item.req.textContent}\n> ${item.text}\n`
         })
     }
 
