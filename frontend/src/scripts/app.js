@@ -982,13 +982,13 @@ function copySlackMessage() {
     }
     if (toggle_question.classList.contains('active')) {
         gradedData.questionableItems.forEach(item => {
-            secretTextarea.value += `:questioned: :exceeds: ${item.req.textContent}\n> ${item.text}\n`
+            secretTextarea.value += `:questioned: ${item.req.textContent}\n> ${item.text}\n`
         })
         secretTextarea.value += `\n`
     }
     if (toggle_wrong.classList.contains('active')) {
         gradedData.incorrectItems.forEach(item => {
-            secretTextarea.value += `:needs-work: :exceeds: ${item.req.textContent}\n> ${item.text}\n`
+            secretTextarea.value += `:needs-work: ${item.req.textContent}\n> ${item.text}\n`
         })
     }
 
