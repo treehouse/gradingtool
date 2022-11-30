@@ -217,17 +217,24 @@ function loadProjectList(id) {
         _id,
         color,
         name,
-        resources,
         "projects": *[_type == "project" && references(^._id)] | order(projectNumber){
             title,
             _id
+        },
+        resources[]->{
+            title,
+            description,
+            link
         }
     }[0]
     `);
     let PROJECT_URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${PROJECTS_QUERY}`
     fetch(PROJECT_URL)
     .then(response => response.json())
-    .then(data => populate(data.result, id))
+    .then(data => {
+        console.log(data.result)
+        populate(data.result, id)
+    })
 
     function populate(data, id) {
         if (document.querySelector('.td-project-list .loader')) {
@@ -333,6 +340,11 @@ tdList.addEventListener('click', e => {
             *[_type == "project" && _id == "${id}"]{
                 _id,
                 title,
+                studyGuide,
+                mobileMockup,
+                tabletMockup,
+                desktopMockup,
+                activeMockup,
                 "gradingSections": *[_type == "gradingSection" && references(^._id)]|order(order){
                     title,
                     _id,
@@ -341,7 +353,8 @@ tdList.addEventListener('click', e => {
                         _id,
                         isExceeds,
                     }
-                }
+                },
+                notes[]->
             }[0]
             `);
             let SINGLE_PROJECT_URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${SINGLE_PROJECT_QUERY}`
