@@ -149,13 +149,11 @@ function togglePanel() {
     on page-load gives a subtle animation of the dropdown opening */
 toggleDropdown();
 
-let PROJECT_ID= "supw1mz3";
-let DATASET = "production";
 let TDS_QUERY = encodeURIComponent('*[_type == "techdegree"]');
 
-let PROJECT_URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${TDS_QUERY}`;
+let TDS_URL = `https://supw1mz3.api.sanity.io/v2021-10-21/data/query/production?query=${TDS_QUERY}`;
 
-fetch(PROJECT_URL)
+fetch(TDS_URL)
     .then(response => response.json())
     .then(data => loadTechdegrees(data.result));
 
@@ -228,8 +226,8 @@ function loadProjectList(id) {
         }
     }[0]
     `);
-    let PROJECT_URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${PROJECTS_QUERY}`
-    fetch(PROJECT_URL)
+    let PROJECTS_URL = `https://supw1mz3.api.sanity.io/v2021-10-21/data/query/production?query=${PROJECTS_QUERY}`
+    fetch(PROJECTS_URL)
     .then(response => response.json())
     .then(data => {
         console.log(data.result)
@@ -357,7 +355,7 @@ tdList.addEventListener('click', e => {
                 notes[]->
             }[0]
             `);
-            let SINGLE_PROJECT_URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${SINGLE_PROJECT_QUERY}`
+            let SINGLE_PROJECT_URL = `https://supw1mz3.api.sanity.io/v2021-10-21/data/query/production?query=${SINGLE_PROJECT_QUERY}`
             fetch(SINGLE_PROJECT_URL)
             .then(response => response.json())
             .then(data => {
