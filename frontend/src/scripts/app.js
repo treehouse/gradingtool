@@ -11,17 +11,17 @@ const imgs = [
 
 /**
  * loader logic
- * 
+ *
  * This is the logic behind how the loader looks and appears.
  * Looping over all iterations of <div class="loader"></div> in the
  * markup and adding attributes, loader text, and number of dots in
  * each iteration of the loader.
- * 
+ *
  * loader color comes from current value of var(--td-accent) css variable
- * 
+ *
  * loader needs to be initialized in scss with @mixin loader($dot-size,$font-size)
- * in its respective container. 
- * 
+ * in its respective container.
+ *
  */
 
 const loaderDots = 3;
@@ -42,9 +42,9 @@ loaders.forEach((loader => {
 
 
 /**
- * 
+ *
  * Project files
- * 
+ *
  */
 const carousel = document.querySelector('[data-carousel]');
 const projectFilesContainer = document.querySelector('.project-files-container');
@@ -70,14 +70,14 @@ function toggleCarousel() {
 
 
 /**
- * 
+ *
  * handle light/dark theme for tool
- * 
+ *
  * First checks for if defaultToolTheme exists in localStorage and if
  * not, adds it and sets it to 'light'. When a user makes a theme
  * selection, the new selection is then set as the 'defaultToolTheme' in
  * localStorage.
- * 
+ *
  */
 
 if (!localStorage.defaultToolTheme) {
@@ -149,13 +149,15 @@ function togglePanel() {
     on page-load gives a subtle animation of the dropdown opening */
 toggleDropdown();
 
-// fetching techdegree data to populate dropdown with techdegree list
-fetch('https://grading-tool-api.herokuapp.com/api/techdegrees')
-  .then(response => response.json())
-  .then(data => loadTechdegrees(data));
+let TDS_QUERY = encodeURIComponent('*[_type == "techdegree"]');
+
+let TDS_URL = `https://supw1mz3.api.sanity.io/v2021-10-21/data/query/production?query=${TDS_QUERY}`;
+
+fetch(TDS_URL)
+    .then(response => response.json())
+    .then(data => loadTechdegrees(data.result));
 
 // ** event listeners **
-
 
 techdegreeDropdown.addEventListener('click', e => {
     let tds = document.querySelectorAll('[data-dropdown-td-name]');
@@ -195,7 +197,7 @@ function loadTechdegrees(data) {
         let li = document.createElement('li');
         li.setAttribute('data-dropdown-td-name', '');
         let span = document.createElement('span');
-        span.setAttribute('data-td-list-item-id', td.id);
+        span.setAttribute('data-td-list-item-id', td._id);
         span.textContent = td.name;
         let icon = document.createElement('i');
         icon.classList = 'fa-solid fa-star';
@@ -207,10 +209,31 @@ function loadTechdegrees(data) {
 
 function loadProjectList(id) {
     const projList = document.getElementById('tdProjectList');
-    fetch(`https://grading-tool-api.herokuapp.com/api/techdegrees/${id}`)
-        .then(response => response.json())
-        .then(data => populate(data, id))
-        
+
+    let PROJECTS_QUERY = encodeURIComponent(`
+    *[_type == "techdegree" && _id == "${id}"]{
+        _id,
+        color,
+        name,
+        "projects": *[_type == "project" && references(^._id)] | order(projectNumber){
+            title,
+            _id
+        },
+        resources[]->{
+            title,
+            description,
+            link
+        }
+    }[0]
+    `);
+    let PROJECTS_URL = `https://supw1mz3.api.sanity.io/v2021-10-21/data/query/production?query=${PROJECTS_QUERY}`
+    fetch(PROJECTS_URL)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.result)
+        populate(data.result, id)
+    })
+
     function populate(data, id) {
         if (document.querySelector('.td-project-list .loader')) {
             document.querySelector('.td-project-list .loader').style.display = 'none';
@@ -227,7 +250,7 @@ function loadProjectList(id) {
         // update project list
         projList.innerHTML = '';
         let animationDelayTimer = 100;
-        if (data.projects.length === 0) {
+        if (!data.projects?.length) {
             let li = document.createElement('li');
             li.classList.add('error');
             li.textContent = '🙁 Something went wrong.';
@@ -235,11 +258,11 @@ function loadProjectList(id) {
             document.querySelector('[data-project-name]').textContent = '';
             requirementList.innerHTML = '<p class="no-data-message">There is no data for this Techdegree.</p>'
         } else {
-            // toggleDropdown(); 
+            // toggleDropdown();
             requirementList.innerHTML = '';
             data.projects.forEach((proj, index) => {
                 let li = document.createElement('li');
-                li.setAttribute('data-project-id', proj.id);
+                li.setAttribute('data-project-id', proj._id);
                 li.setAttribute('data-project', '')
                 li.style.animationDelay = `${animationDelayTimer}ms`;
                 let spanNum = document.createElement('span');
@@ -256,7 +279,7 @@ function loadProjectList(id) {
 
         let resourceList = document.getElementById('resourceList');
         resourceList.innerHTML = '';
-    
+
         if (data.resources) {
             data.resources.forEach(res => {
                 let li = document.createElement('li');
@@ -281,13 +304,12 @@ function loadProjectList(id) {
             })
         }
     }
-    
 }
 
 
 
 /**
- * 
+ *
  * views (requirements)
  * vars
  * funcs
@@ -312,9 +334,34 @@ tdList.addEventListener('click', e => {
             proj.classList = 'active';
 
             let id = e.target.getAttribute('data-project-id');
-            fetch(`https://grading-tool-api.herokuapp.com/api/projects/${id}`)
-                .then(response => response.json())
-                .then(data => loadProjectRequirements(data))
+            let SINGLE_PROJECT_QUERY = encodeURIComponent(`
+            *[_type == "project" && _id == "${id}"]{
+                _id,
+                title,
+                studyGuide,
+                mobileMockup,
+                tabletMockup,
+                desktopMockup,
+                activeMockup,
+                "gradingSections": *[_type == "gradingSection" && references(^._id)]|order(order){
+                    title,
+                    _id,
+                    "requirements": *[_type == "requirement" && references(^._id)]|order(order){
+                        title,
+                        _id,
+                        isExceeds,
+                    }
+                },
+                notes[]->
+            }[0]
+            `);
+            let SINGLE_PROJECT_URL = `https://supw1mz3.api.sanity.io/v2021-10-21/data/query/production?query=${SINGLE_PROJECT_QUERY}`
+            fetch(SINGLE_PROJECT_URL)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.result);
+                loadProjectRequirements(data.result);
+            })
         }
     })
 });
@@ -346,11 +393,11 @@ function handleGrading(e) {
         if (e.target.classList.contains('correct')) {
             currentTextarea.classList.remove('show');
             currentTextarea.value = '';
-        } else 
+        } else
         if (e.target.classList.contains('error') || e.target.classList.contains('question')) {
             currentTextarea.classList.add('show');
         }
-        
+
     } else
     if (e.target.classList.contains('correct')) {
         checkBtn(e);
@@ -424,7 +471,7 @@ function loadProjectRequirements(data) {
     document.querySelector('[data-project-name]').textContent = data.title;
     const requirementList = document.getElementById('requirementList');
     requirementList.innerHTML = '';
-    if (data.gradingSections.length === 0) {
+    if (!data.gradingSections?.length) {
         requirementList.innerHTML = '<p class="no-data-message">Oops! There is no data for this project.</p>'
     } else {
         data.gradingSections.forEach((section, sectionIndex) => {
@@ -439,7 +486,7 @@ function loadProjectRequirements(data) {
             const requirementTitle = document.createElement('p');
             requirementTitle.classList.add('requirement-title');
             requirementTitle.textContent = section.title;
-    
+
             // create top level requirement header
             titleGroup.appendChild(span);
             titleGroup.appendChild(requirementTitle);
@@ -463,20 +510,20 @@ function loadProjectRequirements(data) {
                 }
                 const subReqTitle = document.createElement('p');
                 subReqTitle.classList = 'sub-requirements-title';
-                subReqTitle.textContent = req.description;
+                subReqTitle.textContent = req.title;
                 const textarea = document.createElement('textarea');
                 textarea.setAttribute('placeholder', 'Optional - write a helpful message about your grade selection.')
                 const btnGroup = document.createElement('div');
                 btnGroup.classList.add('req-btn-group');
 
-                const correctBtn = document.createElement('button');  
+                const correctBtn = document.createElement('button');
                 correctBtn.classList = 'correct grading-btn';
                 const correctIcon = document.createElement('i');
                 correctIcon.classList = 'fa-solid fa-check';
                 correctBtn.appendChild(correctIcon);
 
-                const questionBtn = document.createElement('button');   
-                questionBtn.classList = 'question grading-btn'; 
+                const questionBtn = document.createElement('button');
+                questionBtn.classList = 'question grading-btn';
                 const questionIcon = document.createElement('i');
                 questionIcon.classList = 'fa-solid fa-question';
                 questionBtn.appendChild(questionIcon)
@@ -504,7 +551,7 @@ function loadProjectRequirements(data) {
                 li.appendChild(btnGroup);
 
                 subRequirementParent.appendChild(li);
-                
+
                 ulParent.appendChild(subRequirementParent);
             });
             reqFooter.classList.remove('disabled');
@@ -525,7 +572,7 @@ function loadProjectRequirements(data) {
     if (data.mobileMockup) {
         projectFileData.mockups.mobile = data.mobileMockup
         projectFileData.currentMocks.push(data.mobileMockup)
-        
+
         let li = document.createElement('li');
         li.classList = 'mockup-type';
         let icon = document.createElement('i');
@@ -647,11 +694,11 @@ function resetProgressBar() {
 
 
 /**
- * 
+ *
  * final output window
  * vars
  * funcs
- * 
+ *
  */
 
 // views
@@ -737,7 +784,7 @@ function buildReview() {
         gradedData.incorrectItems.push({ req: item, text: customText });
     });
 
-    
+
 
     // building correct items
     gradedData.correctItems.meets.forEach(item => {
@@ -835,13 +882,13 @@ backToReview.addEventListener('click', showReqView);
 
 
 /**
- * 
+ *
  * utility panel logic
  * * vars
  * * opening panel
  * * closing panel
  * * funcs
- * 
+ *
  */
 
 // vars
@@ -901,10 +948,10 @@ function handleActiveUtility(index) {
 
 
 /**
- * 
+ *
  * final output view
- * 
- * 
+ *
+ *
  */
 
 
@@ -914,7 +961,7 @@ const reviewHeader_toggle_question = document.querySelector('[data-show-question
 const reviewHeader_toggle_wrong = document.querySelector('[data-show-wrong]');
 
 reviewHeader.addEventListener('click', e => {
-   
+
     handleReviewToggles(e);
 });
 
@@ -954,8 +1001,8 @@ function handleReviewToggles(e) {
 }
 
 /**
- * 
- * 
+ *
+ *
  * copying slack message
  */
 const secretTextarea = document.querySelector('[data-secret-textarea]');
@@ -998,32 +1045,32 @@ function copySlackMessage() {
         copyBtn.textContent = 'Self Destructing in 5...'
         copyBtn.classList.add('self-destruct');
 
-        
-        
-        
-        document.querySelectorAll('p').forEach(item => { 
+
+
+
+        document.querySelectorAll('p').forEach(item => {
             let ranDur = Math.floor(Math.random() * 1000)
             let ranDel = Math.floor(Math.random() * 1000)
             let pos = ['X', 'Y'];
             let ranPos = Math.floor(Math.random() * pos.length)
-            // item.style.animation = `shake${pos[ranPos]} ${ranDur}ms ${ranDel}ms ease infinite` 
-            item.style.animation = `pulse ${ranDur}ms ${ranDel}ms ease infinite` 
+            // item.style.animation = `shake${pos[ranPos]} ${ranDur}ms ${ranDel}ms ease infinite`
+            item.style.animation = `pulse ${ranDur}ms ${ranDel}ms ease infinite`
         })
-        document.querySelectorAll('button').forEach(item => { 
+        document.querySelectorAll('button').forEach(item => {
             let ranDur = Math.floor(Math.random() * 1000)
             let ranDel = Math.floor(Math.random() * 1000)
             let pos = ['X', 'Y'];
             let ranPos = Math.floor(Math.random() * pos.length)
-            // item.style.animation = `shake${pos[ranPos]} ${ranDur}ms ${ranDel}ms ease infinite` 
-            item.style.animation = `pulse ${ranDur}ms ${ranDel}ms ease infinite` 
+            // item.style.animation = `shake${pos[ranPos]} ${ranDur}ms ${ranDel}ms ease infinite`
+            item.style.animation = `pulse ${ranDur}ms ${ranDel}ms ease infinite`
         })
-        document.querySelectorAll('li').forEach(item => { 
+        document.querySelectorAll('li').forEach(item => {
             let ranDur = Math.floor(Math.random() * 1000)
             let ranDel = Math.floor(Math.random() * 1000)
             let pos = ['X', 'Y'];
             let ranPos = Math.floor(Math.random() * pos.length)
-            // item.style.animation = `shake${pos[ranPos]} ${ranDur}ms ${ranDel}ms ease infinite` 
-            item.style.animation = `pulse ${ranDur}ms ${ranDel}ms ease infinite` 
+            // item.style.animation = `shake${pos[ranPos]} ${ranDur}ms ${ranDel}ms ease infinite`
+            item.style.animation = `pulse ${ranDur}ms ${ranDel}ms ease infinite`
         })
 
 
@@ -1056,9 +1103,9 @@ function copySlackMessage() {
 
 
 /**
- * 
+ *
  * admin panel
- * 
+ *
  */
 
 const accessBtn = document.querySelector('[data-login-access-btn]');
@@ -1082,9 +1129,9 @@ adminForm.addEventListener('submit', e => {
 
 
 /**
- * 
+ *
  * notes panel
- * 
+ *
  */
 
 const initNewNoteBtn = document.querySelector('[data-init-new-note]');
