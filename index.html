@@ -5,14 +5,98 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- favicon -->
-    <!-- <link rel="shortcut icon" href="./frontend/dist/images/favicon.png" type="image/x-icon"> -->
+    <link rel="shortcut icon" href="./frontend/assets/favicon.png" type="image/x-icon">
     <!-- animation library -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- styles -->
     <link rel="stylesheet" href="./frontend/dist/styles/app.css" />
     <!-- fontawesome library -->
-    <!-- <script src="https://kit.fontawesome.com/6e358658ed.js" crossorigin="anonymous"></script> -->
-    <title>Document</title>
+    <script src="https://kit.fontawesome.com/6e358658ed.js" crossorigin="anonymous"></script>
+    <title>Treehouse | Grading Tool</title>
   </head>
-  <body></body>
+  <body>
+
+    <div class="gradingtool">
+      <!-- techdegree panel -->
+      <div class="panel">
+        <ul class="techdegree-list">
+          <!-- dynamic -->
+          <li><i class="fa-solid fa-code"></i></li>
+          <li><i class="fa-brands fa-square-js"></i></li>
+          <li><i class="fa-brands fa-python"></i></li>
+          <li><i class="fa-solid fa-chart-simple"></i></li>
+          <li><i class="fa-solid fa-brush"></i></li>
+        </ul>
+        <ul class="utility-list">
+          <li><i class="fa-solid fa-gear"></i></li>
+        </ul>
+      </div>
+      <!-- project panel -->
+      <div class="panel">
+        <div class="panel-toggle"></div>
+        <div class="content">
+          <p class="current-techdegree-title" id="currentTechdegreeTitle">
+            <!-- dynamic -->
+            Frontend Web Development Techdegree
+          </p>
+          <div class="list-group">
+            <p class="title">Project List</p>
+            <ul>
+              <!-- dynamic -->
+              <li>My Personal Profile Page</li>
+              <li>Mobile-first Responsive Layout</li>
+              <li>An Online Registration Form</li>
+              <li>Web Style Guide</li>
+              <li>An Interactive Photo Gallery</li>
+              <li>Game Show App</li>
+              <li>WebApp Dashboard</li>
+              <li>Use an API to Create an Employee Directory</li>
+              <li>Capstone Portfolio</li>
+            </ul>
+          </div>
+          <div class="list-group">
+            <p class="title">Link</p>
+            <ul>
+              <!-- dynamic -->
+              <li><a href="#"><i class="fa-solid fa-link"></i> CSS Validator</a></li>
+              <li><a href="#"><i class="fa-solid fa-link"></i> HTML Validator</a></li>
+              <li><a href="#"><i class="fa-solid fa-link"></i> JavaScript Validator</a></li>
+            </ul>
+          </div>
+          <div class="list-group">
+            <p class="title">Mockups</p>
+            <ul>
+              <!-- dynamic -->
+              <li><a href="#"><i class="fa-solid fa-image"></i> mobile mockup</a></li>
+              <li><a href="#"><i class="fa-solid fa-image"></i> tablet mockup</a></li>
+              <li><a href="#"><i class="fa-solid fa-image"></i> desktop mockup</a></li>
+            </ul>
+          </div>
+          <div class="list-group">
+            <p class="title">Study-guide</p>
+            <ul>
+              <!-- dynamic -->
+              <li><a href="#"><i class="fa-solid fa-file"></i> guide - my personal profile page</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- grading -->
+      <div class="project-grading">
+        <header>
+          <div class="project-content">
+            <h1>My Personal Profile Page</h1>
+            <div class="requirement-count" id="requirementCount"><span>0</span> / <span>0</span></div>
+          </div>
+          <ul>
+            <li class="active" id="projectRequirementsView">project requirements</li>
+            <li id="gradingOutputView">grading output</li>
+          </ul>
+        </header>
+        <main>
+          <div class="box"></div>
+        </main>
+      </div>
+    </div>
+  </body>
 </html>
