@@ -1,0 +1,6 @@
+.gradingtool {
+    display: none;
+    @include break(medium) {
+      display: flex;
+    }
+  }

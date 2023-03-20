@@ -1,4 +1,4 @@
-@import url("https://fonts.cdnfonts.com/css/gotham-rounded");
+@import url("https://fonts.googleapis.com/css2?family=Gotham+Rounded:wght@300;400;500;600;700&display=swap");
 
 * {
   margin: 0;
@@ -9,4 +9,37 @@
   }
   &::-webkit-scrollbar-thumb {
   }
+}
+
+* li {
+  list-style: none;
+}
+
+* a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  //theme colors
+  --accent:#58CA71;
+
+  --bg-dark:##E3E5E8;
+  --bg-light:##F2F3F5;
+
+  --text-dark: ;
+  --text-light: ;
+
+  --td-icon-color: ;
+  --td-icon-bg: ;
+
+  --techdegree-panel-bg:var(--bg-dark);
+  --project-panel-bg:var(--bg-light);
+  --project-grading-bg:#FFFFFF;
+
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
 }

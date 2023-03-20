@@ -1,0 +1,20 @@
+.mobile-bumper {
+    @include bg(red);
+    @include center-flex;
+    height: 100vh;
+    .container {
+        text-align: center;
+        width: 90%;
+        max-width: 500px;
+        border-radius: 2rem;
+        background-color: white;
+        padding: 2rem;
+        //treehouse logo bumper
+        img {
+            margin-bottom: 1.5rem;
+        }
+    }
+    @include break(medium) {
+      display: none;
+    }
+  }
