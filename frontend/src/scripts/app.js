@@ -230,7 +230,6 @@ function loadProjectList(id) {
     fetch(PROJECTS_URL)
     .then(response => response.json())
     .then(data => {
-        console.log(data.result)
         populate(data.result, id)
     })
 
@@ -359,7 +358,6 @@ tdList.addEventListener('click', e => {
             fetch(SINGLE_PROJECT_URL)
             .then(response => response.json())
             .then(data => {
-                console.log(data.result);
                 loadProjectRequirements(data.result);
             })
         }
@@ -814,13 +812,14 @@ function buildReview() {
         div.appendChild(icon2);
         li.appendChild(div);
         let req = document.createElement('span');
-        req.textContent = item.textContent;
+        const requirement = item.querySelector('.sub-requirements-title');
+        req.textContent = requirement.textContent;
         li.appendChild(req);
         correctItemsList.appendChild(li);
     });
 
     // building questionable items
-    gradedData.questionableItems.forEach(item => {
+    gradedData.questionableItems.forEach(item => { 
         let li = document.createElement('li');
         li.classList = 'questioned';
         const div1 = document.createElement('div');
@@ -832,7 +831,8 @@ function buildReview() {
         const div2 = document.createElement('div2');
         div2.classList.add('req-content');
         let req = document.createElement('span');
-        req.textContent = item.req.textContent;
+        const requirement = item.req.querySelector('.sub-requirements-title');
+        req.textContent = requirement.textContent;
         div2.appendChild(req);
         if (item.text !== '') {
             let customText = document.createElement('p');
@@ -856,7 +856,8 @@ function buildReview() {
         const div2 = document.createElement('div2');
         div2.classList.add('req-content');
         let req = document.createElement('span');
-        req.textContent = item.req.textContent;
+        const requirement = item.req.querySelector('.sub-requirements-title');
+        req.textContent = requirement.textContent;
         div2.appendChild(req);
         if (item.text !== '') {
             let customText = document.createElement('p');
@@ -1020,22 +1021,28 @@ function copySlackMessage() {
 
     if (toggle_correct.classList.contains('active')) {
         gradedData.correctItems.meets.forEach(item => {
-            secretTextarea.value += `:meets: ${item.textContent}\n`
+            const requirement = item.querySelector('.sub-requirements-title');
+            secretTextarea.value += `:meets: ${requirement.textContent}\n`
         });
         gradedData.correctItems.exceeds.forEach(item => {
-            secretTextarea.value += `:meets: :exceeds: ${item.textContent}\n`
+            const requirement = item.querySelector('.sub-requirements-title');
+            secretTextarea.value += `:meets: :exceeds: ${requirement.textContent}\n`
         })
         secretTextarea.value += `\n`
     }
     if (toggle_question.classList.contains('active')) {
         gradedData.questionableItems.forEach(item => {
-            secretTextarea.value += `:questioned: ${item.req.textContent}\n> ${item.text}\n`
+            const requirement = item.req.querySelector('.sub-requirements-title');
+            const isExceeds = item.req.classList.contains('exceeds-item');
+            secretTextarea.value += `:questioned: ${isExceeds && ":exceeds:"} ${requirement.textContent}\n> ${item.text}\n`
         })
         secretTextarea.value += `\n`
     }
     if (toggle_wrong.classList.contains('active')) {
         gradedData.incorrectItems.forEach(item => {
-            secretTextarea.value += `:needs-work: ${item.req.textContent}\n> ${item.text}\n`
+            const requirement = item.req.querySelector('.sub-requirements-title');
+            const isExceeds = item.req.classList.contains('exceeds-item');
+            secretTextarea.value += `:needs-work: ${isExceeds && ":exceeds:"} ${requirement.textContent}\n> ${item.text}\n`
         })
     }
 
