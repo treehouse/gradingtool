@@ -1034,7 +1034,7 @@ function copySlackMessage() {
         gradedData.questionableItems.forEach(item => {
             const requirement = item.req.querySelector('.sub-requirements-title');
             const isExceeds = item.req.classList.contains('exceeds-item');
-            secretTextarea.value += `:questioned: ${isExceeds && ":exceeds:"} ${requirement.textContent}\n> ${item.text}\n`
+            secretTextarea.value += `:questioned: ${isExceeds ? ":exceeds:" : ''} ${requirement.textContent}\n> ${item.text}\n`
         })
         secretTextarea.value += `\n`
     }
@@ -1042,7 +1042,7 @@ function copySlackMessage() {
         gradedData.incorrectItems.forEach(item => {
             const requirement = item.req.querySelector('.sub-requirements-title');
             const isExceeds = item.req.classList.contains('exceeds-item');
-            secretTextarea.value += `:needs-work: ${isExceeds && ":exceeds:"} ${requirement.textContent}\n> ${item.text}\n`
+            secretTextarea.value += `:needs-work: ${isExceeds ? ":exceeds:" : ''} ${requirement.textContent}\n> ${item.text}\n`
         })
     }
 
