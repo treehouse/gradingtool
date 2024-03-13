@@ -845,7 +845,6 @@ function buildReview() {
 
     // building incorrect items
     gradedData.incorrectItems.forEach(item => {
-        console.log(item)
         let li = document.createElement('li');
         li.classList = 'incorrect';
         const div1 = document.createElement('div');
@@ -857,7 +856,6 @@ function buildReview() {
         const div2 = document.createElement('div2');
         div2.classList.add('req-content');
         let req = document.createElement('span');
-        console.log(item)
         const requirement = item.req.querySelector('.sub-requirements-title');
         req.textContent = requirement.textContent;
         div2.appendChild(req);
@@ -1036,7 +1034,7 @@ function copySlackMessage() {
         gradedData.questionableItems.forEach(item => {
             const requirement = item.req.querySelector('.sub-requirements-title');
             const isExceeds = item.req.classList.contains('exceeds-item');
-            secretTextarea.value += `:questioned: ${isExceeds && ":exceeds:"} ${requirement.textContent}\n> ${item.text}\n`
+            secretTextarea.value += `:questioned: ${isExceeds ? ":exceeds:" : ''} ${requirement.textContent}\n> ${item.text}\n`
         })
         secretTextarea.value += `\n`
     }
@@ -1044,7 +1042,7 @@ function copySlackMessage() {
         gradedData.incorrectItems.forEach(item => {
             const requirement = item.req.querySelector('.sub-requirements-title');
             const isExceeds = item.req.classList.contains('exceeds-item');
-            secretTextarea.value += `:needs-work: ${isExceeds && ":exceeds:"} ${requirement.textContent}\n> ${item.text}\n`
+            secretTextarea.value += `:needs-work: ${isExceeds ? ":exceeds:" : ''} ${requirement.textContent}\n> ${item.text}\n`
         })
     }
 
