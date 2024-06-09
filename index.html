@@ -1,254 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- favicon -->
-    <link rel="shortcut icon" href="./frontend/dist/images/favicon.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="./frontend/dist/images/favicon.png"
+      type="image/x-icon"
+    />
     <!-- animation library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <!-- styles -->
-    <link rel="stylesheet" href="./frontend/dist/styles/app.css">
+    <link rel="stylesheet" href="./frontend/dist/styles/app.css" />
     <!-- fontawesome library -->
-    <script src="https://kit.fontawesome.com/6e358658ed.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/6e358658ed.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Treehouse | Grading Tool</title>
-</head>
-<body class="">
-    
+  </head>
+  <body class="">
+    <div class="new-overlay"><div class="new-modal">
+        <h1>YO, THERE'S A NEW GRADING TOOOOOOL<h1>
+            <p>Yeah.. I rebuilt it again.. 🙄 🖕🏼</p>
+            <p>but this one is</p>
+            <img src="./frontend/dist/images/new.png" alt="">
+            <div class="new-btn-group">
+                <button id="im-lame">i lIkE oLd tHinGs, iM lAMe</button>
+                <button id="new-app">Take me to the new tool!</button>
+            </div>
+    </div></div>
     <div id="overlay" class="overlay"></div>
-    <textarea class="hidden-textarea-for-reasons-unknown-dont-ask-about-it-leave-me-alone" data-secret-textarea></textarea>
+    <textarea
+      class="hidden-textarea-for-reasons-unknown-dont-ask-about-it-leave-me-alone"
+      data-secret-textarea
+    ></textarea>
 
     <!-- no fly zone, yo -->
     <div class="no-fly-zone mobile">
-        <header>
-            <i class="fa-solid fa-circle-exclamation"></i>
-            <h1> Hold up!</h1>
-        </header>
-        <div class="divider"></div>
-        <p>Let's make sure you're not on your mobile device incase you need to do some debugging. That way you can give the best experience for the student. Try opening this page up in your browser.</p>
+      <header>
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <h1>Hold up!</h1>
+      </header>
+      <div class="divider"></div>
+      <p>
+        Let's make sure you're not on your mobile device incase you need to do
+        some debugging. That way you can give the best experience for the
+        student. Try opening this page up in your browser.
+      </p>
     </div>
 
     <!-- gradingtool -->
     <main class="gradingtool desktop">
+      <div class="panel-toggle-view toggle-item" data-toggle>
+        <img
+          data-panel-toggle
+          class="panel-toggle"
+          src="./frontend/dist/images/panel-toggle.png"
+          alt=""
+        />
+      </div>
 
-        <div class="panel-toggle-view toggle-item" data-toggle>
-            <img data-panel-toggle class="panel-toggle" src="./frontend/dist/images/panel-toggle.png" alt="">
+      <!-- left panel -->
+      <section
+        class="panel techdegree-panel active toggle-item"
+        data-toggle
+        id="techdegreePanel"
+      >
+        <!-- header -->
+        <header
+          id="techdegreeHeade"
+          data-toggle
+          class="active toggle-item flex"
+        >
+          <img
+            data-td-logo
+            class="logo"
+            src="./frontend/dist/images/fewd.png"
+            alt=""
+          />
+          <p data-td-name></p>
+          <img
+            data-panel-toggle
+            class="panel-toggle"
+            src="./frontend/dist/images/panel-toggle.png"
+            alt=""
+          />
+        </header>
+        <!-- td list -->
+        <div
+          class="techdegree-dropdown toggle-item active"
+          id="techdegreeDropdown"
+          data-toggle
+        >
+          <div class="loader"></div>
         </div>
-
-        <!-- left panel -->
-        <section class="panel techdegree-panel active toggle-item" data-toggle id="techdegreePanel">
-            <!-- header -->
-            <header id="techdegreeHeade" data-toggle class="active toggle-item flex">
-                <img data-td-logo class="logo" src="./frontend/dist/images/fewd.png" alt="">
-                <p data-td-name></p>
-                <img data-panel-toggle class="panel-toggle" src="./frontend/dist/images/panel-toggle.png" alt="">
-            </header>
-            <!-- td list -->
-            <div class="techdegree-dropdown toggle-item active" id="techdegreeDropdown" data-toggle>
-                <div class="loader"></div>
-            </div>
-            <!-- project list -->
-            <ul class="td-project-list toggle-item active" id="tdProjectList" data-toggle>
-                <div class="loader"></div>
-                <!-- <li data-project-id="1" style="">My Personal Profile Page</li><li data-project-id="2">Mobile-first Responsive Layout</li><li data-project-id="3">An Online Registration Form</li><li data-project-id="4">Web Style Guide</li><li data-project-id="5">An Interactive Photo Gallery</li><li data-project-id="6">Game Show App</li><li data-project-id="7">WebApp Dashboard</li><li data-project-id="8">Use an API to Create an Employee Directory</li><li data-project-id="9">Capstone Portfolio</li> -->
-            </ul>
-            <!-- resources -->
-            <ul class="resource-list toggle-item active" id="resourceList" data-toggle>
-                <!-- dynamic -->
-            </ul>
-            <div class="meet-the-noobs toggle-item active" data-toggle>
-                <!-- <header>Developed by <i class="fa-solid fa-chevron-down"></i></header> -->
-                <details>
-                    <summary>Developed by</summary>
-                    <ul>
-                        <li>
-                            <img src="./frontend/dist/images/dustin.png">
-                            <div class="group">
-                                <p>Dustin Usey</p>
-                                <p class="sub">Frontend</p>
-                            </div>
-                        </li>
-                        <li>
-                            <img src="./frontend/dist/images/brian.png">
-                            <div class="group">
-                                <p>Brian Jensen</p>
-                                <p class="sub">Backend</p>
-                            </div>
-                        </li>
-                        <li>
-                            <img src="./frontend/dist/images/rohald.png">
-                            <div class="group">
-                                <p>Rohald van Merode</p>
-                                <p class="sub">Backend</p>
-                            </div>
-                        </li>
-                    </ul>
-                </details>
-            </div>
-        </section>
-
-
-        <!-- middle -->
-        <section class="view-container">
-            <div class="view-header view-parent-item">
-                <h1 data-project-name></h1>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" data-progress-bar></div>
-                </div>
-            </div>
-
-            <div class="views view-parent-item">
-                <div class="loader-container">
-                    <div class="loader"></div>
-                </div>
-                <div class="view requirement-list" id="requirementList">
-                    <!-- dynamic content -->
-                </div>
-                <div class="req-footer disabled">
-                    <div class="btn-group">
-                        <button data-finish-review="">Finish Review</button>
-                    </div>
-                </div>
-                <div class="view finished-output-list">
-                    <div class="output-header">
-                        <button data-back-btn="">
-                            <i class="fa-solid fa-circle-chevron-left"></i>
-                            Back to review
-                        </button>
-                    </div>
-                    <div class="review-container">
-                        <div class="review-header" id="review-header">
-                            <div class="btn-group">
-                                <button class="active" title="toggle correctly graded requirements" data-show-correct=""><i class="fa-solid fa-check"></i></button>
-                                <button class="active" title="toggle questionable graded requirements" data-show-question=""><i class="fa-solid fa-question"></i></button>
-                                <button class="active" title="toggle incorrect graded requirements" data-show-wrong=""><i class="fa-solid fa-xmark"></i></button>
-                            </div>
-                            <p class="header-description">Toggle which reviews you want to show</p>
-                        </div>
-                        <div class="review-output">
-                            <ul class="correct-items-container">
-                                <!-- dynamic -->
-                            </ul>
-                            <ul class="questioned-items-container">
-                                <!-- dynamic -->
-                            </ul>
-                            <ul class="incorrect-items-container">
-                                <!-- dynamic -->
-                            </ul>
-                        </div>
-                        <div class="review-footer">
-                            <button data-copy-review="">Copy Review</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- right panel -->
-        <section class="panel utility-panel">
+        <!-- project list -->
+        <ul
+          class="td-project-list toggle-item active"
+          id="tdProjectList"
+          data-toggle
+        >
+          <div class="loader"></div>
+          <!-- <li data-project-id="1" style="">My Personal Profile Page</li><li data-project-id="2">Mobile-first Responsive Layout</li><li data-project-id="3">An Online Registration Form</li><li data-project-id="4">Web Style Guide</li><li data-project-id="5">An Interactive Photo Gallery</li><li data-project-id="6">Game Show App</li><li data-project-id="7">WebApp Dashboard</li><li data-project-id="8">Use an API to Create an Employee Directory</li><li data-project-id="9">Capstone Portfolio</li> -->
+        </ul>
+        <!-- resources -->
+        <ul
+          class="resource-list toggle-item active"
+          id="resourceList"
+          data-toggle
+        >
+          <!-- dynamic -->
+        </ul>
+        <div class="meet-the-noobs toggle-item active" data-toggle>
+          <!-- <header>Developed by <i class="fa-solid fa-chevron-down"></i></header> -->
+          <details>
+            <summary>Developed by</summary>
             <ul>
-                <li data-toggle-util><i class="fa-solid fa-folder"></i></li>
-                <li data-toggle-util><i class="fa-solid fa-comment"></i></li>
-                <li data-toggle-util><i class="fa-solid fa-toggle-on"></i></li>
-                <li data-toggle-util><i class="fa-solid fa-unlock-keyhole"></i></li>
-            </ul>
-        </section>
-
-
-        <!-- off-screen panel -->
-        <section class="off-screen-panel panel" id="off-screen-panel">
-            <header>
-                <div class="title-container">
-                    <p data-util-section-title>Project Files</p>
-                    <p data-util-section-title>Techdegree Notes</p>
-                    <p data-util-section-title>Themes</p>
-                    <p data-util-section-title>Admin</p>
+              <li>
+                <img src="./frontend/dist/images/dustin.png" />
+                <div class="group">
+                  <p>Dustin Usey</p>
+                  <p class="sub">Frontend</p>
                 </div>
-                <i id="close-util-panel-btn" class="fa-solid fa-xmark close-btn"></i>
-            </header>
-            <!-- project files -->
-            <div data-util-section class="project-files-container util-item">
-                <header>
-                    <p class="title">Mockups</p>
-                </header>
-                <ul class="mockup-type-container" id="mockupTypeContainer">
-                    <!-- dynamic -->
-                    <li class="disabled">loading mockups...</li>
-                </ul>
-            </div>
+              </li>
+              <li>
+                <img src="./frontend/dist/images/brian.png" />
+                <div class="group">
+                  <p>Brian Jensen</p>
+                  <p class="sub">Backend</p>
+                </div>
+              </li>
+              <li>
+                <img src="./frontend/dist/images/rohald.png" />
+                <div class="group">
+                  <p>Rohald van Merode</p>
+                  <p class="sub">Backend</p>
+                </div>
+              </li>
+            </ul>
+          </details>
+        </div>
+      </section>
 
-            <!-- project notes -->
-            <div data-util-section class="project-notes-container util-item">
-                <details>
-                    <summary>Information about notes</summary>
-                    <br>
-                    Welcome to Notes!
-                    <br><br>
-                    <span>These are helpful snippets that are project specific. Please be aware that your notes are visible to everyone. This also means if you delete a note, it will be deleted for everyone. So be mindful when adding/deleting notes.</span>
-                    <br><br>
-                    <span>Also remember to keep this section maintained by deleting old notes from time-to-time.</span>
-                </details>
-                <button class="init-new-note" data-init-new-note="">Add New Note</button>
-                <p class="disclaimer">Notes currently do not save.</p>
-                <form action="" class="new-note-form">
-                    <legend>New Note</legend>
-                    <label for="title">Note Title <span>*</span></label>
-                    <input id="title" type="text" required>
-                    <label for="author">Note Author</label>
-                    <input id="author" type="text">
-                    <textarea id="noteContents" name=""></textarea>
-                    <div class="btn-group">
-                        <button type="submit">Add</button>
-                        <button data-cancel-new-note>Cancel</button>
-                    </div>
-                </form>
-                <p class="note-header">Notes:</p>
-                <ul class="notes" data-notes-container>
-                    <!-- dynamic -->
-                </ul>
-            </div>
-
-            <!-- theme container -->
-            <div data-util-section class="theme-container util-item show">
-                <ul>
-                    <li><p>Choose your theme! 😎</p></li>
-                    <li id="light"><img src="./frontend/dist/images/lightmode.png" alt=""></li>
-                    <li id="dark" class="active"><img src="./frontend/dist/images/darkmode.png" alt=""></li>
-                </ul>
-            </div>
-
-            <!-- admin container -->
-            <div data-util-section class="admin-container util-item">
-                <form action="">
-                    <fieldset>
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" placeholder="enter your email address">
-                    </fieldset>
-                    <fieldset>
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" placeholder="enter your password">
-                    </fieldset>
-                    <button data-login-access-btn type="submit">Let me in</button>
-                    <p class="admin-error-message"></p>
-                </form>
-            </div>
-        </section>
-
-        <!-- project-files-carousel -->
-        <div class="overlay_projectFiles" data-carousel>
-            <div class="controls" id="controls">
-                <i class="fa-solid fa-angle-left" data-prev-image></i>
-                <i class="fa-solid fa-angle-right" data-next-image></i>
-            </div>
-            <div class="gallery-container" id="galleryContainer">
-                <!-- dynamic -->
-            </div>
+      <!-- middle -->
+      <section class="view-container">
+        <div class="view-header view-parent-item">
+          <h1 data-project-name></h1>
+          <div class="progress-bar-container">
+            <div class="progress-bar" data-progress-bar></div>
+          </div>
         </div>
 
+        <div class="views view-parent-item">
+          <div class="loader-container">
+            <div class="loader"></div>
+          </div>
+          <div class="view requirement-list" id="requirementList">
+            <!-- dynamic content -->
+          </div>
+          <div class="req-footer disabled">
+            <div class="btn-group">
+              <button data-finish-review="">Finish Review</button>
+            </div>
+          </div>
+          <div class="view finished-output-list">
+            <div class="output-header">
+              <button data-back-btn="">
+                <i class="fa-solid fa-circle-chevron-left"></i>
+                Back to review
+              </button>
+            </div>
+            <div class="review-container">
+              <div class="review-header" id="review-header">
+                <div class="btn-group">
+                  <button
+                    class="active"
+                    title="toggle correctly graded requirements"
+                    data-show-correct=""
+                  >
+                    <i class="fa-solid fa-check"></i>
+                  </button>
+                  <button
+                    class="active"
+                    title="toggle questionable graded requirements"
+                    data-show-question=""
+                  >
+                    <i class="fa-solid fa-question"></i>
+                  </button>
+                  <button
+                    class="active"
+                    title="toggle incorrect graded requirements"
+                    data-show-wrong=""
+                  >
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                </div>
+                <p class="header-description">
+                  Toggle which reviews you want to show
+                </p>
+              </div>
+              <div class="review-output">
+                <ul class="correct-items-container">
+                  <!-- dynamic -->
+                </ul>
+                <ul class="questioned-items-container">
+                  <!-- dynamic -->
+                </ul>
+                <ul class="incorrect-items-container">
+                  <!-- dynamic -->
+                </ul>
+              </div>
+              <div class="review-footer">
+                <button data-copy-review="">Copy Review</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- right panel -->
+      <section class="panel utility-panel">
+        <ul>
+          <li data-toggle-util><i class="fa-solid fa-folder"></i></li>
+          <li data-toggle-util><i class="fa-solid fa-comment"></i></li>
+          <li data-toggle-util><i class="fa-solid fa-toggle-on"></i></li>
+          <li data-toggle-util><i class="fa-solid fa-unlock-keyhole"></i></li>
+        </ul>
+      </section>
+
+      <!-- off-screen panel -->
+      <section class="off-screen-panel panel" id="off-screen-panel">
+        <header>
+          <div class="title-container">
+            <p data-util-section-title>Project Files</p>
+            <p data-util-section-title>Techdegree Notes</p>
+            <p data-util-section-title>Themes</p>
+            <p data-util-section-title>Admin</p>
+          </div>
+          <i id="close-util-panel-btn" class="fa-solid fa-xmark close-btn"></i>
+        </header>
+        <!-- project files -->
+        <div data-util-section class="project-files-container util-item">
+          <header>
+            <p class="title">Mockups</p>
+          </header>
+          <ul class="mockup-type-container" id="mockupTypeContainer">
+            <!-- dynamic -->
+            <li class="disabled">loading mockups...</li>
+          </ul>
+        </div>
+
+        <!-- project notes -->
+        <div data-util-section class="project-notes-container util-item">
+          <details>
+            <summary>Information about notes</summary>
+            <br />
+            Welcome to Notes!
+            <br /><br />
+            <span
+              >These are helpful snippets that are project specific. Please be
+              aware that your notes are visible to everyone. This also means if
+              you delete a note, it will be deleted for everyone. So be mindful
+              when adding/deleting notes.</span
+            >
+            <br /><br />
+            <span
+              >Also remember to keep this section maintained by deleting old
+              notes from time-to-time.</span
+            >
+          </details>
+          <button class="init-new-note" data-init-new-note="">
+            Add New Note
+          </button>
+          <p class="disclaimer">Notes currently do not save.</p>
+          <form action="" class="new-note-form">
+            <legend>New Note</legend>
+            <label for="title">Note Title <span>*</span></label>
+            <input id="title" type="text" required />
+            <label for="author">Note Author</label>
+            <input id="author" type="text" />
+            <textarea id="noteContents" name=""></textarea>
+            <div class="btn-group">
+              <button type="submit">Add</button>
+              <button data-cancel-new-note>Cancel</button>
+            </div>
+          </form>
+          <p class="note-header">Notes:</p>
+          <ul class="notes" data-notes-container>
+            <!-- dynamic -->
+          </ul>
+        </div>
+
+        <!-- theme container -->
+        <div data-util-section class="theme-container util-item show">
+          <ul>
+            <li><p>Choose your theme! 😎</p></li>
+            <li id="light">
+              <img src="./frontend/dist/images/lightmode.png" alt="" />
+            </li>
+            <li id="dark" class="active">
+              <img src="./frontend/dist/images/darkmode.png" alt="" />
+            </li>
+          </ul>
+        </div>
+
+        <!-- admin container -->
+        <div data-util-section class="admin-container util-item">
+          <form action="">
+            <fieldset>
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="enter your email address"
+              />
+            </fieldset>
+            <fieldset>
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="enter your password"
+              />
+            </fieldset>
+            <button data-login-access-btn type="submit">Let me in</button>
+            <p class="admin-error-message"></p>
+          </form>
+        </div>
+      </section>
+
+      <!-- project-files-carousel -->
+      <div class="overlay_projectFiles" data-carousel>
+        <div class="controls" id="controls">
+          <i class="fa-solid fa-angle-left" data-prev-image></i>
+          <i class="fa-solid fa-angle-right" data-next-image></i>
+        </div>
+        <div class="gallery-container" id="galleryContainer">
+          <!-- dynamic -->
+        </div>
+      </div>
     </main>
 
     <script src="./frontend/dist/scripts/app.js"></script>
-</body>
+  </body>
 </html>
