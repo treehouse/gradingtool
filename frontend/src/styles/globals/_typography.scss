@@ -1,4 +1,4 @@
-@import url("https://fonts.cdnfonts.com/css/gotham-rounded");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 
 form,
 fieldset {
@@ -12,7 +12,7 @@ fieldset {
     input {
       @include bg(var(--primary-bg));
       @include radius(5px);
-      font-family: "Gotham Rounded", sans-serif;
+      font-family: "Quicksand", sans-serif;
       width: 100%;
       border: 2px solid var(--panel-bg);
       padding: 1rem 0.5rem;
@@ -34,7 +34,7 @@ fieldset {
     width: 100%;
     text-align: center;
     color: white;
-    font-family: "Gotham Rounded", sans-serif;
+    font-family: "Quicksand", sans-serif;
   }
 }
 
@@ -49,5 +49,5 @@ textarea:focus {
 textarea,
 button,
 input {
-  font-family: "Gotham Rounded", sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
